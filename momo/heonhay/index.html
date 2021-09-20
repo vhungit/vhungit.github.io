@@ -16,12 +16,12 @@
     }
 
     .fade {
-      animation: fadein 2s;
-      -moz-animation: fadein 2s;
+      animation: fadein 1s;
+      -moz-animation: fadein 1s;
       /* Firefox */
-      -webkit-animation: fadein 2s;
+      -webkit-animation: fadein 1s;
       /* Safari and Chrome */
-      -o-animation: fadein 2s;
+      -o-animation: fadein 1s;
       /* Opera */
     }
 
@@ -89,12 +89,25 @@
   <div id="canvasContainer" style="height: 100%; width: 100%; z-index: 0; display: none;" class="fade">
     <canvas id="unity-canvas" style="width: 100%; height: 100%; background: #ffffff"></canvas>
   </div>
-  <script src="dist/default/bundle.js"></script>
-  <script src="Build/build.loader.js"></script>
+
   <script>
-    // console.log("Production build, console turned off");
-    // console.log = function(){};
-    var buildUrl = "Build";
+    let overlapContainer = document.getElementById("overlapContainer");
+    overlapContainer.style.display = "block";
+    overlapContainer.classList.add("fade");
+
+    function loadScript(url) {
+      let s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src = url;
+      document.body.append(s);
+    }
+
+    loadScript("dist/default/bundle.js");
+    loadScript("Build/build.loader.js");
+    
+
+    onload = function () {
+    let buildUrl = "Build";
     createUnityInstance(document.querySelector("#unity-canvas"), {
       devicePixelRatio: 0.75,
       dataUrl: buildUrl + "/build.data.unityweb",
@@ -111,16 +124,16 @@
         detail: { unityInstance }
       });
       window.dispatchEvent(ev);
-      let e = document.getElementById("overlapContainer");
-      e.style.display = "block";
-      e.classList.add("fade");
+      
       setTimeout(function () {
-        e.style.display = "none";
+        overlapContainer.style.display = "none";
         document.getElementById("canvasContainer").style.display = "";
-      }, 3000);
+      }, 2000);
     }).catch((e) => {
       console.log(e);
     });
+  }
+    
   </script>
 </body>
 
