@@ -1,139 +1,121 @@
 <!DOCTYPE html>
 <html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | test</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">test</div>
+      </div>
+    </div>
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Heo Nhảy</title>
-  <style>
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      padding: 0px;
-      margin: 0px;
-      background: rgb(255, 255, 255);
-    }
-
-    .fade {
-      animation: fadein 2s;
-      -moz-animation: fadein 2s;
-      /* Firefox */
-      -webkit-animation: fadein 2s;
-      /* Safari and Chrome */
-      -o-animation: fadein 2s;
-      /* Opera */
-    }
-
-    .overlapper {
-      background: white url("data:image/png;base64,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") no-repeat center;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      display: none;
-    }
-
-    @keyframes fadein {
-      from {
-        opacity: 0;
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
       }
 
-      to {
-        opacity: 1;
-      }
-    }
-
-    @-moz-keyframes fadein {
-
-      /* Firefox */
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @-webkit-keyframes fadein {
-
-      /* Safari and Chrome */
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @-o-keyframes fadein {
-
-      /* Opera */
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
-</head>
-
-<body style="text-align: center">
-  <div id="overlapContainer" class="overlapper">
-
-  </div>
-  <div id="canvasContainer" style="height: 100%; width: 100%; z-index: 0; display: none;" class="fade">
-    <canvas id="unity-canvas" style="width: 100%; height: 100%; background: #ffffff"></canvas>
-  </div>
-  <script>
-
-    let overlapContainer = document.getElementById("overlapContainer");
-    overlapContainer.style.display = "block";
-    overlapContainer.classList.add("fade");
-
-
-    function loadScript(url) {
-      let s = document.createElement("script");
-      s.type = "text/javascript";
-      s.src = url;
-      document.body.append(s);
-    }
-
-    loadScript("bundle.js");
-    loadScript("Build/build.loader.js");
-
-    onload = function () {
-      let buildUrl = "Build";
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        devicePixelRatio: 0.75,
-        dataUrl: buildUrl + "/build.data.unityweb",
-        frameworkUrl: buildUrl + "/build.framework.js.unityweb",
-        codeUrl: buildUrl + "/build.wasm.unityweb",
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/build.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/build.data.gz",
+        frameworkUrl: buildUrl + "/build.framework.js.gz",
+        codeUrl: buildUrl + "/build.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "Heo Nhảy",
-        productVersion: "0.1",
-      }).then((unityInstance) => {
-        console.log("success");
-        window.unityInstance = unityInstance;
-        let ev = new CustomEvent('unityInited', {
-          detail: { unityInstance }
+        productName: "test",
+        productVersion: "1.0",
+        showBanner: unityShowBanner,
+      };
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
+
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+
+        unityShowBanner('WebGL builds are not supported on mobile devices.');
+      } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
         });
-        window.dispatchEvent(ev);
-        setTimeout(function () {
-          document.getElementById("overlapContainer").style.display = "none";
-          document.getElementById("canvasContainer").style.display = "";
-        }, 2000);
-      }).catch((e) => {
-        console.log(e);
-      });
-    }
-
-  </script>
-</body>
-
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
 </html>
