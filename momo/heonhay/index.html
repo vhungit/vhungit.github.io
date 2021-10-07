@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>{{{ PRODUCT_NAME }}}</title>
+  <title>Momo Jump</title>
   <style>
     html,
     body {
@@ -105,19 +105,19 @@
     }
 
     loadScript("bundle.js");
-    loadScript("Build/{{{ LOADER_FILENAME }}}");
+    loadScript("Build/build.loader.js");
 
     onload = function () {
       let buildUrl = "Build";
       createUnityInstance(document.querySelector("#unity-canvas"), {
         devicePixelRatio: 0.75,
-        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
-        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
-        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+        dataUrl: buildUrl + "/build.data.unityweb",
+        frameworkUrl: buildUrl + "/build.framework.js.unityweb",
+        codeUrl: buildUrl + "/build.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "{{{ COMPANY_NAME }}}",
-        productName: "{{{ PRODUCT_NAME }}}",
-        productVersion: "{{{ PRODUCT_VERSION }}}",
+        companyName: "Momo",
+        productName: "Momo Jump",
+        productVersion: "1.0",
       }).then((unityInstance) => {
         console.log("success");
         window.unityInstance = unityInstance;
