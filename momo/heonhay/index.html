@@ -116,7 +116,7 @@
     onload = function () {
       let buildUrl = "Build";
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        devicePixelRatio: IsIOS ? 0.6 : 0.75,
+        devicePixelRatio: 0.75,
         dataUrl: buildUrl + "/build.data.unityweb",
         frameworkUrl: buildUrl + "/build.framework.js.unityweb",
         codeUrl: buildUrl + "/build.wasm.unityweb",
