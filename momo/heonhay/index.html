@@ -172,36 +172,48 @@
     }
 
     loadScript("bundle.js", trackingLoading);
-    loadScript("Build/build.asm.loader.js");
+    loadScript("Build/97f12ad2f6799d749c5eaf41d5297067.js");
 
     onload = function () {
       var buildUrl = "Build";
       createUnityInstance(document.querySelector("#unity-canvas"), {
         devicePixelRatio: 0.75,
-        dataUrl: buildUrl + "/build.data.unityweb",
-        frameworkUrl: buildUrl + "/build.asm.framework.js.unityweb",
-        codeUrl: buildUrl + "/build.asm.js.unityweb",
+        dataUrl: buildUrl + "/f42ca122fa3233c87458fe2189b1685e.data.unityweb",
+        frameworkUrl: buildUrl + "/7a4e078586dfe2c6202c7a900be10970.js.unityweb",
+        codeUrl: buildUrl + "/4bf4ca28497e949b724935798beeb6ec.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Momo",
         productName: "Momo Jump",
         productVersion: "1.0.2",
       }).then((unityInstance) => {
+        LoadDone(unityInstance);
         console.log("success");
-        window.unityInstance = unityInstance;
-        var ev = new CustomEvent('unityInited', {
-          detail: { unityInstance }
-        });
-        window.dispatchEvent(ev);
-        setTimeout(function () {
-          document.getElementById("overlapContainer").style.display = "none";
-          document.getElementById("canvasContainer").style.display = "";
-        }, 2000);
-        trackingStartGame();
       }).catch((e) => {
-        showCloseBtn();
+        LoadError();
         console.log(e);
-        alert("Bạn vui lòng cập nhật phần mềm hệ thống nhé, game hiện chỉ support từ ios 12 và từ android 6");
       });
+    }
+
+    function LoadWwasmFail() {
+
+    }
+
+    function LoadDone(unityInstance) {
+      window.unityInstance = unityInstance;
+      var ev = new CustomEvent('unityInited', {
+        detail: { unityInstance }
+      });
+      window.dispatchEvent(ev);
+      setTimeout(function () {
+        document.getElementById("overlapContainer").style.display = "none";
+        document.getElementById("canvasContainer").style.display = "";
+      }, 2000);
+      trackingStartGame();
+    }
+
+    function LoadError()
+    {
+      alert("Momo Jump hiện chỉ support từ ios 13.2 và android 6");
     }
 
   </script>
