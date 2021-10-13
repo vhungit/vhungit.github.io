@@ -151,9 +151,9 @@
     var buildUrl = "Build";
     var loaderUrl = buildUrl + "/97f12ad2f6799d749c5eaf41d5297067.js";
     var config = {
-      dataUrl: buildUrl + "/11ae66c64cec9f04c0fc7f2d69823835.data.unityweb",
+      dataUrl: buildUrl + "/069ad7bcd10a8ed17e06fcb2595b40ad.data.unityweb",
       frameworkUrl: buildUrl + "/aff594bfaf96817d883c8c800f11d0c5.js.unityweb",
-      codeUrl: buildUrl + "/45560ba3cc4abd1c9788179223161e9b.wasm.unityweb",
+      codeUrl: buildUrl + "/c52a6deb3aa7fd01d8dafa96792837bc.wasm.unityweb",
       memoryUrl: buildUrl + "/",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "Momo",
@@ -170,7 +170,8 @@
         window.unityInstance = unityInstance;
         loadDone();
       }).catch((message) => {
-        loadError();
+        //loadError();
+        LoadASM();
       });
     });
 
@@ -193,8 +194,28 @@
       }
     }
 
-
     function unityShowBanner() {
+    }
+
+    function LoadASM() {
+      console.log("load asm");
+      buildUrl = "BuildAsm";
+      loaderUrl = buildUrl + "/903436cc3652e7e2b45daa89118adf94.js";
+      config.dataUrl = buildUrl + "/3f7776943ba99699c5470985d6b7067f.data.unityweb";
+      config.frameworkUrl = buildUrl + "/9005a8ccc481aaf58b4265d45972bf94.js.unityweb";
+      config.codeUrl = buildUrl + "/af8fe451002df374d74a760e829ba397.js.unityweb";
+      config.memoryUrl = buildUrl + "/00c0fc8a1ee02fea224cc193c9b44630.mem.unityweb";
+
+      loadScript(loaderUrl, () => {
+        createUnityInstance(canvas, config, (progress) => {
+
+        }).then((unityInstance) => {
+          window.unityInstance = unityInstance;
+          loadDone();
+        }).catch((message) => {
+          loadError();
+        });
+      });
     }
 
     function loadDone() {
@@ -206,6 +227,10 @@
 
     function loadError() {
       document.querySelector("#load-error").style.display = "block";
+    }
+
+    function isAndroid() {
+      return /android/i.test(userAgent);
     }
 
 
