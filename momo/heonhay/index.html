@@ -144,16 +144,17 @@
     <canvas id="unity-canvas" width="100%" height="100%"></canvas>
   </div>
   <script>
+    var startTime = Date.now();
     var container = document.querySelector("#unity-container");
     var canvas = document.querySelector("#unity-canvas");
     var overlapContainer = document.getElementById("overlapContainer");
 
-    var buildUrl = "Build";
+    var buildUrl = "Build"
     var loaderUrl = buildUrl + "/97f12ad2f6799d749c5eaf41d5297067.js";
     var config = {
-      dataUrl: buildUrl + "/069ad7bcd10a8ed17e06fcb2595b40ad.data.unityweb",
+      dataUrl: buildUrl + "/acb715c91e82cf3bc0171bdff0323719.data.unityweb",
       frameworkUrl: buildUrl + "/aff594bfaf96817d883c8c800f11d0c5.js.unityweb",
-      codeUrl: buildUrl + "/c52a6deb3aa7fd01d8dafa96792837bc.wasm.unityweb",
+      codeUrl: buildUrl + "/f7bbc71735a4a7a88bd7833cdccff63c.wasm.unityweb",
       memoryUrl: buildUrl + "/",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "Momo",
@@ -162,7 +163,7 @@
       showBanner: unityShowBanner,
     };
 
-    loadScript("bundle.js");
+    loadScript("bundle.js", trackingLoading);
     loadScript(loaderUrl, () => {
       createUnityInstance(canvas, config, (progress) => {
 
@@ -201,11 +202,10 @@
       console.log("load asm");
       buildUrl = "BuildAsm";
       loaderUrl = buildUrl + "/903436cc3652e7e2b45daa89118adf94.js";
-      config.dataUrl = buildUrl + "/3f7776943ba99699c5470985d6b7067f.data.unityweb";
+      config.dataUrl = buildUrl + "/4b83d193b1e72155e6c0dae129537505.data.unityweb";
       config.frameworkUrl = buildUrl + "/9005a8ccc481aaf58b4265d45972bf94.js.unityweb";
-      config.codeUrl = buildUrl + "/af8fe451002df374d74a760e829ba397.js.unityweb";
+      config.codeUrl = buildUrl + "/45b0a924481e2ab33bffe88c8890b309.js.unityweb";
       config.memoryUrl = buildUrl + "/00c0fc8a1ee02fea224cc193c9b44630.mem.unityweb";
-
       loadScript(loaderUrl, () => {
         createUnityInstance(canvas, config, (progress) => {
 
@@ -223,16 +223,42 @@
         overlapContainer.style.display = "none";
         overlapContainer.style.display = "";
       }, 2000);
+      trackingStartGame();
     }
 
     function loadError() {
       document.querySelector("#load-error").style.display = "block";
     }
 
-    function isAndroid() {
-      return /android/i.test(userAgent);
+    function trackingLoading() {
+      console.log("Loading...")
+      if (window.MaxApi) {
+        window.MaxApi.trackEvent("momo-jump", {
+          action: '',
+          stage: 'game_loading'
+        });
+      }
     }
-
+    function trackingClose() {
+      console.log("Exit...")
+      if (window.MaxApi) {
+        window.MaxApi.trackEvent("momo-jump", {
+          action: 'loading_exit',
+          stage: '',
+          time: Date.now() - startTime
+        });
+      }
+    }
+    function trackingStartGame() {
+      console.log("Start...")
+      if (window.MaxApi) {
+        window.MaxApi.trackEvent("momo-jump", {
+          action: '',
+          stage: 'home_show',
+          session_time: Date.now() - startTime
+        });
+      }
+    }
 
     canvas.style.width = window.innerWidth + 'px';
     canvas.style.height = window.innerHeight + 'px';
