@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no">
-  <title>Unity WebGL Player | New Unity Project</title>
+  <title>New Unity Project</title>
   <style>
     html,
     body {
@@ -30,10 +30,10 @@
 
     .btnClose {
       position: fixed;
-      top: 100px;
-      left: 100px;
-      width: 50px;
-      height: 50px;
+      top: 5vw;
+      left: 5vw;
+      width: 5vw;
+      height: 5vw;
       margin: 17px 10.5px 13px 16px;
       padding: 9px 9px 9px 9px;
       opacity: 0.5;
@@ -56,6 +56,7 @@
       position: absolute;
       display: none;
       touch-action: none;
+      background-size: contain;
     }
   </style>
 </head>
@@ -66,8 +67,8 @@
       <div></div>
     </div>
   </div>
-  <div id="unity-container" class="unity-mobile">
-    <canvas id="unity-canvas"></canvas>
+  <div id="unity-container" class="unity-desktop">
+    <canvas id="unity-canvas" width="100%" height="100%"></canvas>
   </div>
   <script>
     var container = document.querySelector("#unity-container");
@@ -77,11 +78,11 @@
     var buildUrl = "Build";
     var loaderUrl = buildUrl + "/057b0af975f1917dc711e4c08a51b374.js";
     var config = {
-      // devicePixelRatio: 0.75,
-      dataUrl: buildUrl + "/40c48e094abdadd5bb8ac1b1ed4f46cb.data.unityweb",
-      frameworkUrl: buildUrl + "/04f5568656d576eba815a962b41d4a82.js.unityweb",
-      codeUrl: buildUrl + "/966e25283b345ed471ab51ce5a3feefc.js.unityweb",
-      memoryUrl: buildUrl + "/6a5fdfa95dcfd4348fe7b6885a083812.mem.unityweb",
+      devicePixelRatio: 0.75,
+      dataUrl: buildUrl + "/d08f1f7eabca5517a71c19442627da4e.data.unityweb",
+      frameworkUrl: buildUrl + "/22c669eea7b60872cf350887dae40bba.js.unityweb",
+      codeUrl: buildUrl + "/10b57f745a4aa2ff0114ea92af4e9e56.js.unityweb",
+      memoryUrl: buildUrl + "/a6fa900d45a4ce464dbec6a49a9fe2d4.mem.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "DefaultCompany",
       productName: "New Unity Project",
