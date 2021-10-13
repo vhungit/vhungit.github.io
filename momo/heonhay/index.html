@@ -36,7 +36,6 @@
       opacity: 0.5;
       border-radius: 11px;
       background-color: black;
-      display: none;
     }
 
     .btnClose div {
@@ -114,7 +113,7 @@
     <canvas id="unity-canvas" style="width: 100%; height: 100%; background: #ffffff"></canvas>
   </div>
   <script>
-    var startTime = new Date.now();
+    var startTime = Date.now();
     var overlapContainer = document.getElementById("overlapContainer");
     overlapContainer.style.display = "block";
     overlapContainer.classList.add("fade");
@@ -157,7 +156,7 @@
         window.MaxApi.trackEvent("momo-jump", {
           action: 'loading_exit',
           stage: '',
-          time: new Date.now() - startTime
+          time: Date.now() - startTime
         });
       }
     }
@@ -167,12 +166,12 @@
         window.MaxApi.trackEvent("momo-jump", {
           action: '',
           stage: 'home_show',
-          session_time: new Date.now() - startTime
+          session_time: Date.now() - startTime
         });
       }
     }
 
-    loadScript("bundle.js", tracking);
+    loadScript("bundle.js", trackingLoading);
     loadScript("Build/build.loader.js");
 
     onload = function () {
