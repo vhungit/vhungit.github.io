@@ -58,10 +58,10 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/057b0af975f1917dc711e4c08a51b374.js";
       var config = {
-        dataUrl: buildUrl + "/c674bc4799615cb118806b0ac4b3041a.data.unityweb",
-        frameworkUrl: buildUrl + "/59e478d08d4c86c04f6b0ce63395d04d.js.unityweb",
-        codeUrl: buildUrl + "/c54867d662841b42c3724e5de4d0681a.js.unityweb",
-        memoryUrl: buildUrl + "/0e539133fcc05cb0919235918eba1621.mem.unityweb",
+        dataUrl: buildUrl + "/db19538dd786128493d56bad5cf6e6d5.data.unityweb",
+        frameworkUrl: buildUrl + "/04f5568656d576eba815a962b41d4a82.js.unityweb",
+        codeUrl: buildUrl + "/966e25283b345ed471ab51ce5a3feefc.js.unityweb",
+        memoryUrl: buildUrl + "/6a5fdfa95dcfd4348fe7b6885a083812.mem.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "New Unity Project",
@@ -108,6 +108,7 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+          window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
