@@ -97,7 +97,7 @@ System.register([], function (_export, _context) {
 
     function loadSettingsJson(cc) {
       var server = '';
-      var settings = 'src/settings.76cbd.json';
+      var settings = 'src/settings.60128.json';
       return new Promise(function (resolve, reject) {
         if (typeof fsUtils !== 'undefined' && !settings.startsWith('http')) {
           var result = fsUtils.readJsonSync(settings);
