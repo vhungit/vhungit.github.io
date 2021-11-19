@@ -97,7 +97,7 @@ System.register([], function (_export, _context) {
 
     function loadSettingsJson(cc) {
       var server = '';
-      var settings = 'src/settings.c9d65.json';
+      var settings = 'src/settings.7e1c7.json';
       return new Promise(function (resolve, reject) {
         if (typeof fsUtils !== 'undefined' && !settings.startsWith('http')) {
           var result = fsUtils.readJsonSync(settings);
@@ -167,7 +167,7 @@ System.register([], function (_export, _context) {
     var launchScene = settings.launchScene; // load scene
 
     cc.director.loadScene(launchScene, null, function () {
-      cc.view.setDesignResolutionSize(720, 1280, 3);
+      cc.view.setDesignResolutionSize(720, 1280, 4);
       console.log("Success to load scene: ".concat(launchScene));
     });
   }
