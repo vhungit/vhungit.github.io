@@ -6641,7 +6641,9 @@ System.register("chunks:///_virtual/shaking.ts", ['./_rollupPluginModLoBabelHelp
         };
 
         _proto.init = function init() {
-          MaxApiUtils.RegisterShaking(this.onShaking);
+          MaxApiUtils.RegisterShaking(function () {
+            alert("lolo");
+          });
         };
 
         _proto.onShaking = function onShaking() {
