@@ -7557,7 +7557,7 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
               callback();
             });
             this.isListeningShaking = true;
-            console.log("RegisterShaking");
+            alert("RegisterShaking");
           }
         };
 
@@ -7565,7 +7565,7 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
           if (window.MaxApi && this.isListeningShaking) {
             window.MaxApi.unregisterShakeSensitivity();
             this.isListeningShaking = false;
-            console.log("UnRegisterShaking");
+            alert("UnRegisterShaking");
           }
         };
 
