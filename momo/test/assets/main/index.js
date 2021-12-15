@@ -6641,9 +6641,7 @@ System.register("chunks:///_virtual/shaking.ts", ['./_rollupPluginModLoBabelHelp
         };
 
         _proto.init = function init() {
-          MaxApiUtils.RegisterShaking(function () {
-            alert("lolo");
-          });
+          MaxApiUtils.RegisterShaking(this.onShaking);
         };
 
         _proto.onShaking = function onShaking() {
@@ -7556,14 +7554,12 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
           var _this = this;
 
           if (window.MaxApi && !this.isListeningShaking) {
-            this.callbackSave = callback;
+            this.shakingCallback = callback;
             window.MaxApi.registerShakeSensitivity();
             window.MaxApi.listen("onShaker", function (response) {
-              alert("hungkaka");
-
-              _this.callbackSave();
-
-              alert("onshake");
+              if (_this.shakingCallback) {
+                _this.shakingCallback();
+              }
             });
             this.isListeningShaking = true;
           }
@@ -7573,6 +7569,7 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
           if (window.MaxApi && this.isListeningShaking) {
             window.MaxApi.unregisterShakeSensitivity();
             this.isListeningShaking = false;
+            this.shakingCallback = null;
           }
         };
 
@@ -7863,7 +7860,7 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
 
       _defineProperty(MaxApiUtils, "isListeningShaking", false);
 
-      _defineProperty(MaxApiUtils, "callbackSave", null);
+      _defineProperty(MaxApiUtils, "shakingCallback", null);
 
       _defineProperty(MaxApiUtils, "avatarEndpoint", "");
 
