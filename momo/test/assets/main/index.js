@@ -6647,7 +6647,6 @@ System.register("chunks:///_virtual/shaking.ts", ['./_rollupPluginModLoBabelHelp
         _proto.onShaking = function onShaking() {
           this.counter++;
           this.counterLable.string = this.counter.toString();
-          alert(this.counter);
         };
 
         _proto.onResetClick = function onResetClick() {
