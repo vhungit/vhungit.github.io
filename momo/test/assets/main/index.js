@@ -7554,10 +7554,10 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
             window.MaxApi.registerShakeSensitivity();
             window.MaxApi.listen("onShaker", function (response) {
               console.log("onShaker");
+              alert("shaking");
               callback();
             });
             this.isListeningShaking = true;
-            alert("RegisterShaking");
           }
         };
 
