@@ -6645,7 +6645,6 @@ System.register("chunks:///_virtual/shaking.ts", ['./_rollupPluginModLoBabelHelp
         };
 
         _proto.onShaking = function onShaking() {
-          alert(this.counter);
           this.counter++;
           this.counterLable.string = this.counter.toString();
           alert(this.counter);
@@ -7555,6 +7554,7 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
           if (window.MaxApi && !this.isListeningShaking) {
             window.MaxApi.registerShakeSensitivity();
             window.MaxApi.listen("onShaker", function (response) {
+              alert("hungkaka");
               callback();
               alert("onshake");
             });
