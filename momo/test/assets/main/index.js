@@ -7553,11 +7553,16 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
         };
 
         MaxApiUtils.RegisterShaking = function RegisterShaking(callback) {
+          var _this = this;
+
           if (window.MaxApi && !this.isListeningShaking) {
+            this.callbackSave = callback;
             window.MaxApi.registerShakeSensitivity();
             window.MaxApi.listen("onShaker", function (response) {
               alert("hungkaka");
-              callback();
+
+              _this.callbackSave();
+
               alert("onshake");
             });
             this.isListeningShaking = true;
@@ -7710,18 +7715,18 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
         };
 
         MaxApiUtils.getAvatarEndPoint = function getAvatarEndPoint() {
-          var _this = this;
+          var _this2 = this;
 
           return new Promise(function (resolve) {
             if (!window.MaxApi) {
               resolve("");
             } else {
-              if (_this.avatarEndpoint.length > 0) {
-                resolve(_this.avatarEndpoint);
+              if (_this2.avatarEndpoint.length > 0) {
+                resolve(_this2.avatarEndpoint);
               }
 
               window.MaxApi.getAvatarEndPoint(function (response) {
-                _this.avatarEndpoint = response;
+                _this2.avatarEndpoint = response;
                 resolve(response);
               });
             }
@@ -7857,6 +7862,8 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
       }());
 
       _defineProperty(MaxApiUtils, "isListeningShaking", false);
+
+      _defineProperty(MaxApiUtils, "callbackSave", null);
 
       _defineProperty(MaxApiUtils, "avatarEndpoint", "");
 
