@@ -6645,12 +6645,12 @@ System.register("chunks:///_virtual/shaking.ts", ['./_rollupPluginModLoBabelHelp
         };
 
         _proto.onShaking = function onShaking() {
-          this.counter = 0;
+          this.counter++;
           this.counterLable.string = this.counter.toString();
         };
 
         _proto.onResetClick = function onResetClick() {
-          this.counter++;
+          this.counter = 0;
         };
 
         return Shaking;
@@ -7553,8 +7553,6 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
           if (window.MaxApi && !this.isListeningShaking) {
             window.MaxApi.registerShakeSensitivity();
             window.MaxApi.listen("onShaker", function (response) {
-              console.log("onShaker");
-              alert("shaking");
               callback();
             });
             this.isListeningShaking = true;
@@ -7565,7 +7563,6 @@ System.register("chunks:///_virtual/MaxApiUtils.ts", ['./_rollupPluginModLoBabel
           if (window.MaxApi && this.isListeningShaking) {
             window.MaxApi.unregisterShakeSensitivity();
             this.isListeningShaking = false;
-            alert("UnRegisterShaking");
           }
         };
 
