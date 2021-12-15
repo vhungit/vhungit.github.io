@@ -6641,16 +6641,13 @@ System.register("chunks:///_virtual/shaking.ts", ['./_rollupPluginModLoBabelHelp
         };
 
         _proto.init = function init() {
-          var _this2 = this;
-
-          MaxApiUtils.RegisterShaking(function () {
-            _this2.onShaking();
-          });
+          MaxApiUtils.RegisterShaking(this.onShaking);
         };
 
         _proto.onShaking = function onShaking() {
           this.counter++;
           this.counterLable.string = this.counter.toString();
+          alert(this.counter);
         };
 
         _proto.onResetClick = function onResetClick() {
