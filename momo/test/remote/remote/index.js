@@ -1,4 +1,10 @@
-System.register("chunks:///_virtual/remote",[],(function(){"use strict";return{execute:function(){}}}));
+System.register("chunks:///_virtual/remote", [], function () {
+  'use strict';
+
+  return {
+    execute: function () {}
+  };
+});
 
 (function(r) {
   r('virtual:///prerequisite-imports/remote', 'chunks:///_virtual/remote'); 
@@ -18,3 +24,4 @@ System.register("chunks:///_virtual/remote",[],(function(){"use strict";return{e
     };
     });
 });
+//# sourceMappingURL=index.js.map
