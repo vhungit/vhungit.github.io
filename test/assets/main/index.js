@@ -1,14 +1,440 @@
-System.register("chunks:///_virtual/Utils.ts",["cc"],(function(t){"use strict";var n,o,r,e;return{setters:[function(t){n=t.cclegacy,o=t.Quat,r=t.Vec3,e=t.math}],execute:function(){n._RF.push({},"10e5ec48SRIkIMCKunjzFih","Utils",void 0);t("Utils",function(){function t(){}return t.RotationAroundNode=function(t,n,i,u){var c=new o,s=new r,a=new r,d=t.worldPosition,l=e.toRadian(u);return o.fromAxisAngle(c,i,l),r.subtract(s,d,n),r.transformQuat(a,s,c),t.worldPosition=r.add(a,n,a),o.rotateAround(c,t.worldRotation,i,l),c},t}());n._RF.pop()}}}));
+System.register("chunks:///_virtual/Utils.ts", ['cc'], function (exports) {
+  'use strict';
 
-System.register("chunks:///_virtual/GameMgr.ts",["cc","./_rollupPluginModLoBabelHelpers.js"],(function(t){"use strict";var r,e,n,o,a,i,c,s;return{setters:[function(t){r=t.cclegacy,e=t._decorator,n=t.game,o=t.Quat,a=t.Component},function(t){i=t.inheritsLoose,c=t.defineProperty,s=t.assertThisInitialized}],execute:function(){var u;r._RF.push({},"ba7b0kbqfJLdYQzftkpTGSQ","GameMgr",void 0);var p=e.ccclass;e.property;n.config.showFPS=!0;t("GameMgr",p("GameMgr")(u=function(t){function r(){for(var r,e=arguments.length,n=new Array(e),a=0;a<e;a++)n[a]=arguments[a];return r=t.call.apply(t,[this].concat(n))||this,c(s(r),"rotation",new o),r}i(r,t);var e=r.prototype;return e.start=function(){this.rotation=this.node.rotation},e.update=function(t){},r}(a))||u);r._RF.pop()}}}));
+  var cclegacy, Quat, Vec3, math;
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      Quat = module.Quat;
+      Vec3 = module.Vec3;
+      math = module.math;
+    }],
+    execute: function () {
+      cclegacy._RF.push({}, "10e5ec48SRIkIMCKunjzFih", "Utils", undefined);
 
-System.register("chunks:///_virtual/CameraCtrl.ts",["cc","./_rollupPluginModLoBabelHelpers.js"],(function(t){"use strict";var r,e,i,o,n,a,s,l,u,c,h,p;return{setters:[function(t){r=t.cclegacy,e=t._decorator,i=t.Node,o=t.Quat,n=t.Vec3,a=t.math,s=t.Component},function(t){l=t.applyDecoratedDescriptor,u=t.inheritsLoose,c=t.initializerDefineProperty,h=t.assertThisInitialized,p=t.defineProperty}],execute:function(){var d,f,v,g,y;r._RF.push({},"cde180h0PZNpp22lh0ZnyJ1","CameraCtrl",void 0);var m=e.ccclass,w=e.property;t("CameraCtrl",(d=m("CameraCtrl"),f=w(i),d((y=l((g=function(t){function r(){for(var r,e=arguments.length,i=new Array(e),a=0;a<e;a++)i[a]=arguments[a];return r=t.call.apply(t,[this].concat(i))||this,c(h(r),"target",y,h(r)),p(h(r),"angle",2),p(h(r),"_quat",new o),p(h(r),"v1",new n),p(h(r),"v2",new n),r}u(r,t);var e=r.prototype;return e.start=function(){},e.update=function(t){var r=a.toRadian(this.angle*t);o.fromAxisAngle(this._quat,n.UP,r),n.subtract(this.v1,this.node.worldPosition,this.target.worldPosition),n.transformQuat(this.v2,this.v1,this._quat),this.node.worldPosition=n.add(this.v2,this.target.worldPosition,this.v2),o.rotateAround(this._quat,this.node.worldRotation,n.UP,r),this.node.lookAt(this.target.position)},r}(s)).prototype,"target",[f],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),v=g))||v));r._RF.pop()}}}));
+      var Utils = exports('Utils', /*#__PURE__*/function () {
+        function Utils() {}
 
-System.register("chunks:///_virtual/Input.ts",["cc","./_rollupPluginModLoBabelHelpers.js"],(function(t){"use strict";var n,e,o,s,i,c,a,u,h;return{setters:[function(t){n=t.cclegacy,e=t._decorator,o=t.Node,s=t.Vec2,i=t.Component},function(t){c=t.defineProperty,a=t.inheritsLoose,u=t.createClass,h=t.assertThisInitialized}],execute:function(){var r,p,l;n._RF.push({},"e1c6c5BxUBFlrIibwgDLx5h","Input",void 0);var T,d=e.ccclass;e.property;!function(t){t[t.None=0]="None",t[t.Down=1]="Down",t[t.Press=2]="Press",t[t.Up=3]="Up"}(T||(T={}));t("Input",d("Input")((l=p=function(t){function n(){for(var n,e=arguments.length,o=new Array(e),i=0;i<e;i++)o[i]=arguments[i];return n=t.call.apply(t,[this].concat(o))||this,c(h(n),"state",T.None),c(h(n),"isTouchDown",!1),c(h(n),"delta",new s),n}a(n,t);var e=n.prototype;return e.onLoad=function(){n.instance=this,this.node.on(o.EventType.TOUCH_START,this.onTouchBegan,this),this.node.on(o.EventType.TOUCH_MOVE,this.onTouchMove,this),this.node.on(o.EventType.TOUCH_END,this.onTouchEnded,this),this.node.on(o.EventType.TOUCH_CANCEL,this.onTouchCancelled,this)},e.lateUpdate=function(){this.state==T.Down?this.state=T.Press:this.state==T.Up&&(this.state=T.None)},e.onTouchBegan=function(t){t.getTouches();this.isTouchDown=!0,this.state=T.Down,this.StopPropagation(t)},e.onTouchEnded=function(t){t.getTouches();this.isTouchDown=!1,this.state=T.Up,this.StopPropagation(t)},e.onTouchCancelled=function(t){this.isTouchDown=!1,this.state=T.Up,this.StopPropagation(t)},e.onTouchMove=function(t){var n=t.getTouches();this.isTouchDown=!0,this.state=T.Press,this.delta=n[0].getDelta(),this.StopPropagation(t)},e.StopPropagation=function(t){},u(n,null,[{key:"Instance",get:function(){return n.instance}},{key:"State",get:function(){return n.instance.state}},{key:"IsTouchDown",get:function(){return n.instance.state==T.Down}},{key:"IsTouchUp",get:function(){return n.instance.state==T.Up}},{key:"Delta",get:function(){return n.instance.delta}}]),n}(i),c(p,"instance",null),r=l))||r);n._RF.pop()}}}));
+        Utils.RotationAroundNode = function RotationAroundNode(self, wpos, axis, angle) {
+          var _quat = new Quat();
 
-System.register("chunks:///_virtual/Rotation.ts",["cc","./_rollupPluginModLoBabelHelpers.js"],(function(e){"use strict";var t,r,i,n,o,a,l,c,u,s;return{setters:[function(e){t=e.cclegacy,r=e._decorator,i=e.CCFloat,n=e.Vec3,o=e.Component},function(e){a=e.applyDecoratedDescriptor,l=e.inheritsLoose,c=e.initializerDefineProperty,u=e.assertThisInitialized,s=e.defineProperty}],execute:function(){var p,d,f,h,y,g,b;t._RF.push({},"eddd4lxbtdOHrEJO75AcVdI","Rotation",void 0);var v=r.ccclass,m=r.property;e("Rotation",(p=v("Rotation"),d=m(i),f=m(n),p((g=a((y=function(e){function t(){for(var t,r=arguments.length,i=new Array(r),o=0;o<r;o++)i[o]=arguments[o];return t=e.call.apply(e,[this].concat(i))||this,c(u(t),"speed",g,u(t)),c(u(t),"direction",b,u(t)),s(u(t),"eulerAngle",new n),t}l(t,e);var r=t.prototype;return r.start=function(){},r.update=function(e){this.eulerAngle.add(this.direction.normalize().multiplyScalar(this.speed*e)),this.node.eulerAngles=this.eulerAngle},t}(o)).prototype,"speed",[d],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 100}}),b=a(y.prototype,"direction",[f],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return new n(0,0,1)}}),h=y))||h));t._RF.pop()}}}));
+          var v1 = new Vec3();
+          var v2 = new Vec3();
+          var pos2 = self.worldPosition;
+          var rad = math.toRadian(angle); // Calculate the quaternion based on the axis of rotation and 
+          // the arc of rotation
 
-System.register("chunks:///_virtual/main",["./Utils.ts","./GameMgr.ts","./CameraCtrl.ts","./Input.ts","./Rotation.ts"],(function(){"use strict";return{setters:[null,null,null,null,null],execute:function(){}}}));
+          Quat.fromAxisAngle(_quat, axis, rad); // Subtract, the vector between the target point and the camera point
+
+          Vec3.subtract(v1, pos2, wpos); // Rotate the vector dir according to the calculated quaternion, and then
+          // calculate the rotated distance
+
+          Vec3.transformQuat(v2, v1, _quat);
+          self.worldPosition = Vec3.add(v2, wpos, v2); // Rotate the quaternion around the specified axis in world space 
+          // according to the axis and radian 
+
+          Quat.rotateAround(_quat, self.worldRotation, axis, rad);
+          return _quat;
+        };
+
+        return Utils;
+      }());
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/GameMgr.ts", ['cc', './_rollupPluginModLoBabelHelpers.js'], function (exports) {
+  'use strict';
+
+  var cclegacy, _decorator, game, Quat, Component, _inheritsLoose, _defineProperty, _assertThisInitialized;
+
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      game = module.game;
+      Quat = module.Quat;
+      Component = module.Component;
+    }, function (module) {
+      _inheritsLoose = module.inheritsLoose;
+      _defineProperty = module.defineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }],
+    execute: function () {
+      var _dec, _class, _temp;
+
+      cclegacy._RF.push({}, "ba7b0kbqfJLdYQzftkpTGSQ", "GameMgr", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      game.config.showFPS = true;
+      var GameMgr = exports('GameMgr', (_dec = ccclass('GameMgr'), _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(GameMgr, _Component);
+
+        function GameMgr() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _defineProperty(_assertThisInitialized(_this), "rotation", new Quat());
+
+          return _this;
+        }
+
+        var _proto = GameMgr.prototype;
+
+        _proto.start = function start() {
+          this.rotation = this.node.rotation;
+        };
+
+        _proto.update = function update(dt) {};
+
+        return GameMgr;
+      }(Component), _temp)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/CameraCtrl.ts", ['cc', './_rollupPluginModLoBabelHelpers.js'], function (exports) {
+  'use strict';
+
+  var cclegacy, _decorator, Node, Quat, Vec3, math, Component, _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, _defineProperty;
+
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Quat = module.Quat;
+      Vec3 = module.Vec3;
+      math = module.math;
+      Component = module.Component;
+    }, function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+      _defineProperty = module.defineProperty;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor, _temp;
+
+      cclegacy._RF.push({}, "cde180h0PZNpp22lh0ZnyJ1", "CameraCtrl", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      /**
+       * Predefined variables
+       * Name = CameraCtrl
+       * DateTime = Tue Dec 07 2021 17:24:33 GMT+0700 (Indochina Time)
+       * Author = hungkaka
+       * FileBasename = CameraCtrl.ts
+       * FileBasenameNoExtension = CameraCtrl
+       * URL = db://assets/Src/CameraCtrl.ts
+       * ManualUrl = https://docs.cocos.com/creator/3.3/manual/en/
+       *
+       */
+
+      var CameraCtrl = exports('CameraCtrl', (_dec = ccclass('CameraCtrl'), _dec2 = property(Node), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(CameraCtrl, _Component);
+
+        function CameraCtrl() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "target", _descriptor, _assertThisInitialized(_this));
+
+          _defineProperty(_assertThisInitialized(_this), "angle", 2);
+
+          _defineProperty(_assertThisInitialized(_this), "_quat", new Quat());
+
+          _defineProperty(_assertThisInitialized(_this), "v1", new Vec3());
+
+          _defineProperty(_assertThisInitialized(_this), "v2", new Vec3());
+
+          return _this;
+        }
+
+        var _proto = CameraCtrl.prototype;
+
+        _proto.start = function start() {// [3]
+        };
+
+        _proto.update = function update(deltaTime) {
+          var rad = math.toRadian(this.angle * deltaTime); // Calculate the quaternion based on the axis of rotation and 
+          // the arc of rotation
+
+          Quat.fromAxisAngle(this._quat, Vec3.UP, rad); // Subtract, the vector between the target point and the camera point
+
+          Vec3.subtract(this.v1, this.node.worldPosition, this.target.worldPosition); // Rotate the vector dir according to the calculated quaternion, and then
+          // calculate the rotated distance
+
+          Vec3.transformQuat(this.v2, this.v1, this._quat);
+          this.node.worldPosition = Vec3.add(this.v2, this.target.worldPosition, this.v2); // Rotate the quaternion around the specified axis in world space 
+          // according to the axis and radian 
+
+          Quat.rotateAround(this._quat, this.node.worldRotation, Vec3.UP, rad);
+          this.node.lookAt(this.target.position);
+        };
+
+        return CameraCtrl;
+      }(Component), _temp), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "target", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/Input.ts", ['cc', './_rollupPluginModLoBabelHelpers.js'], function (exports) {
+  'use strict';
+
+  var cclegacy, _decorator, Node, Vec2, Component, _defineProperty, _inheritsLoose, _createClass, _assertThisInitialized;
+
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Vec2 = module.Vec2;
+      Component = module.Component;
+    }, function (module) {
+      _defineProperty = module.defineProperty;
+      _inheritsLoose = module.inheritsLoose;
+      _createClass = module.createClass;
+      _assertThisInitialized = module.assertThisInitialized;
+    }],
+    execute: function () {
+      var _dec, _class, _class2, _temp;
+
+      cclegacy._RF.push({}, "e1c6c5BxUBFlrIibwgDLx5h", "Input", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var TouchState;
+
+      (function (TouchState) {
+        TouchState[TouchState["None"] = 0] = "None";
+        TouchState[TouchState["Down"] = 1] = "Down";
+        TouchState[TouchState["Press"] = 2] = "Press";
+        TouchState[TouchState["Up"] = 3] = "Up";
+      })(TouchState || (TouchState = {}));
+
+      var Input = exports('Input', (_dec = ccclass('Input'), _dec(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Input, _Component);
+
+        function Input() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _defineProperty(_assertThisInitialized(_this), "state", TouchState.None);
+
+          _defineProperty(_assertThisInitialized(_this), "isTouchDown", false);
+
+          _defineProperty(_assertThisInitialized(_this), "delta", new Vec2());
+
+          return _this;
+        }
+
+        var _proto = Input.prototype;
+
+        _proto.onLoad = function onLoad() {
+          Input.instance = this;
+          this.node.on(Node.EventType.TOUCH_START, this.onTouchBegan, this);
+          this.node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+          this.node.on(Node.EventType.TOUCH_END, this.onTouchEnded, this);
+          this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchCancelled, this);
+        };
+
+        _proto.lateUpdate = function lateUpdate() {
+          if (this.state == TouchState.Down) {
+            this.state = TouchState.Press;
+          } else if (this.state == TouchState.Up) {
+            this.state = TouchState.None;
+          }
+        };
+
+        _proto.onTouchBegan = function onTouchBegan(event) {
+          var touches = event.getTouches();
+          this.isTouchDown = true;
+          this.state = TouchState.Down;
+          this.StopPropagation(event);
+        };
+
+        _proto.onTouchEnded = function onTouchEnded(event) {
+          var touches = event.getTouches();
+          this.isTouchDown = false;
+          this.state = TouchState.Up;
+          this.StopPropagation(event);
+        };
+
+        _proto.onTouchCancelled = function onTouchCancelled(event) {
+          this.isTouchDown = false;
+          this.state = TouchState.Up;
+          this.StopPropagation(event);
+        };
+
+        _proto.onTouchMove = function onTouchMove(event) {
+          var touches = event.getTouches();
+          this.isTouchDown = true;
+          this.state = TouchState.Press;
+          this.delta = touches[0].getDelta();
+          this.StopPropagation(event);
+        };
+
+        _proto.StopPropagation = function StopPropagation(event) {//event.propagationImmediateStopped = true;
+        };
+
+        _createClass(Input, null, [{
+          key: "Instance",
+          get: function get() {
+            return Input.instance;
+          }
+        }, {
+          key: "State",
+          get: function get() {
+            return Input.instance.state;
+          }
+        }, {
+          key: "IsTouchDown",
+          get: function get() {
+            return Input.instance.state == TouchState.Down;
+          }
+        }, {
+          key: "IsTouchUp",
+          get: function get() {
+            return Input.instance.state == TouchState.Up;
+          }
+        }, {
+          key: "Delta",
+          get: function get() {
+            return Input.instance.delta;
+          }
+        }]);
+
+        return Input;
+      }(Component), _defineProperty(_class2, "instance", null), _temp)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/Rotation.ts", ['cc', './_rollupPluginModLoBabelHelpers.js'], function (exports) {
+  'use strict';
+
+  var cclegacy, _decorator, CCFloat, Vec3, Component, _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, _defineProperty;
+
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      CCFloat = module.CCFloat;
+      Vec3 = module.Vec3;
+      Component = module.Component;
+    }, function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+      _defineProperty = module.defineProperty;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2, _temp;
+
+      cclegacy._RF.push({}, "eddd4lxbtdOHrEJO75AcVdI", "Rotation", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      /**
+       * Author = vhung.it
+       *
+       */
+
+      var Rotation = exports('Rotation', (_dec = ccclass('Rotation'), _dec2 = property(CCFloat), _dec3 = property(Vec3), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Rotation, _Component);
+
+        function Rotation() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "speed", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "direction", _descriptor2, _assertThisInitialized(_this));
+
+          _defineProperty(_assertThisInitialized(_this), "eulerAngle", new Vec3());
+
+          return _this;
+        }
+
+        var _proto = Rotation.prototype;
+
+        _proto.start = function start() {};
+
+        _proto.update = function update(dt) {
+          this.eulerAngle.add(this.direction.normalize().multiplyScalar(this.speed * dt));
+          this.node.eulerAngles = this.eulerAngle;
+        };
+
+        return Rotation;
+      }(Component), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "speed", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 100;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "direction", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return new Vec3(0, 0, 1);
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/main", ['./Utils.ts', './GameMgr.ts', './CameraCtrl.ts', './Input.ts', './Rotation.ts'], function () {
+  'use strict';
+
+  return {
+    setters: [null, null, null, null, null],
+    execute: function () {}
+  };
+});
 
 (function(r) {
   r('virtual:///prerequisite-imports/main', 'chunks:///_virtual/main'); 
