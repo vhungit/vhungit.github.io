@@ -7276,7 +7276,7 @@ System.register("chunks:///_virtual/Lobby.ts", ['./_rollupPluginModLoBabelHelper
 
         _proto.start = function start() {
           this.btnStart.node.on("click", this.onStartClick, this);
-          this.sprite.Fetch("https://suno.vn/blog/wp-content/uploads/2014/12/nike-lich-su-thiet-ke-logo.jpg");
+          this.sprite.Fetch("https://img.mservice.com.vn/momo_app_v2/new_version/img/Marketing/icon-transfer-menu-update-v-mo-mo-2@2x.png");
           this.sprite2.Fetch("https://atc-edge01.mservice.com.vn/momo-payment//business/merchant/22578/Logo-1548424689099_22578.jpg");
         };
 

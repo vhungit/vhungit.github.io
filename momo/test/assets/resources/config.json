@@ -211,6 +211,8 @@
         "b7ca0c92-b9f2-4477-9720-d5456663bb18@18d6f",
         "b7ca0c92-b9f2-4477-9720-d5456663bb18@7b4bc",
         "bd3ec7f9-0a6b-4168-8f57-bd6e9b71c3ab",
+        "beea2ff9-3140-4ab2-96c2-f65c50711112@003f0",
+        "beea2ff9-3140-4ab2-96c2-f65c50711112@18d6f",
         "c2ecef66-1feb-4706-b9dc-01dbdf74dd09@3c231",
         "c2ecef66-1feb-4706-b9dc-01dbdf74dd09@99602",
         "d3c7820c-2a98-4429-8bc7-b8453bc9ac41",
@@ -1145,6 +1147,16 @@
             "models/mainChar/animations/Slow Run/Slow Run",
             "cc.Prefab",
             1
+        ],
+        "beea2ff9-3140-4ab2-96c2-f65c50711112@18d6f": [
+            "models/mainChar/animations/Victory Idle/mixamo.com",
+            "cc.AnimationClip",
+            1
+        ],
+        "beea2ff9-3140-4ab2-96c2-f65c50711112@003f0": [
+            "models/mainChar/animations/Victory Idle/Victory Idle",
+            "cc.Prefab",
+            1
         ]
     },
     "scenes": {},
@@ -1269,6 +1281,8 @@
             "a277b738-ff5b-4fa8-b829-b12703b02fca@18d6f",
             "b7ca0c92-b9f2-4477-9720-d5456663bb18@18d6f",
             "b7ca0c92-b9f2-4477-9720-d5456663bb18@18d6f",
+            "beea2ff9-3140-4ab2-96c2-f65c50711112@18d6f",
+            "beea2ff9-3140-4ab2-96c2-f65c50711112@18d6f",
             "c2ecef66-1feb-4706-b9dc-01dbdf74dd09@99602",
             "c2ecef66-1feb-4706-b9dc-01dbdf74dd09@99602",
             "c2ecef66-1feb-4706-b9dc-01dbdf74dd09@99602",
