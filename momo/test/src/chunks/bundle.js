@@ -1244,13 +1244,52 @@ System.register("chunks:///_virtual/parse.js", ['./cjs-loader.mjs', './types.js'
   };
 });
 
-System.register("chunks:///_virtual/common.js", ['./cjs-loader.mjs'], function (exports, module) {
+System.register("chunks:///_virtual/index-light.js", ['./cjs-loader.mjs', './index-minimal.js', './types.js', './field.js', './oneof.js', './namespace.js', './mapfield.js', './method.js', './service.js', './message.js', './decoder.js', './verifier.js', './converter.js', './wrappers.js', './type.js', './root.js', './util.js', './object.js', './enum.js', './encoder.js'], function (exports, module) {
   'use strict';
 
-  var loader;
+  var loader, __cjsMetaURL$1, __cjsMetaURL$i, __cjsMetaURL$b, __cjsMetaURL$c, __cjsMetaURL$7, __cjsMetaURL$d, __cjsMetaURL$f, __cjsMetaURL$e, __cjsMetaURL$g, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$5, __cjsMetaURL$h, __cjsMetaURL$a, __cjsMetaURL$8, __cjsMetaURL$j, __cjsMetaURL$6, __cjsMetaURL$9, __cjsMetaURL$2;
+
   return {
     setters: [function (module) {
       loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$i = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$b = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$c = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$7 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$d = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$f = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$e = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$g = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$4 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$5 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$h = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$a = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$8 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$j = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$6 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$9 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
     }],
     execute: function () {
       exports('default', void 0);
@@ -1258,394 +1297,129 @@ System.register("chunks:///_virtual/common.js", ['./cjs-loader.mjs'], function (
       var _cjsExports;
 
       loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({}, _require);
+        var require = loader.createRequireWithReqMap({
+          "./index-minimal": __cjsMetaURL$1,
+          "./encoder": __cjsMetaURL$2,
+          "./decoder": __cjsMetaURL$3,
+          "./verifier": __cjsMetaURL$4,
+          "./converter": __cjsMetaURL$5,
+          "./object": __cjsMetaURL$6,
+          "./namespace": __cjsMetaURL$7,
+          "./root": __cjsMetaURL$8,
+          "./enum": __cjsMetaURL$9,
+          "./type": __cjsMetaURL$a,
+          "./field": __cjsMetaURL$b,
+          "./oneof": __cjsMetaURL$c,
+          "./mapfield": __cjsMetaURL$d,
+          "./service": __cjsMetaURL$e,
+          "./method": __cjsMetaURL$f,
+          "./message": __cjsMetaURL$g,
+          "./wrappers": __cjsMetaURL$h,
+          "./types": __cjsMetaURL$i,
+          "./util": __cjsMetaURL$j
+        }, _require);
 
         (function () {
-          module.exports = common;
-          var commonRe = /\/|\./;
+          var protobuf = module.exports = require("./index-minimal");
+
+          protobuf.build = "light";
           /**
-           * Provides common type definitions.
-           * Can also be used to provide additional google types or your own custom types.
-           * @param {string} name Short name as in `google/protobuf/[name].proto` or full file name
-           * @param {Object.<string,*>} json JSON definition within `google.protobuf` if a short name, otherwise the file's root definition
+           * A node-style callback as used by {@link load} and {@link Root#load}.
+           * @typedef LoadCallback
+           * @type {function}
+           * @param {Error|null} error Error, if any, otherwise `null`
+           * @param {Root} [root] Root, if there hasn't been an error
            * @returns {undefined}
-           * @property {INamespace} google/protobuf/any.proto Any
-           * @property {INamespace} google/protobuf/duration.proto Duration
-           * @property {INamespace} google/protobuf/empty.proto Empty
-           * @property {INamespace} google/protobuf/field_mask.proto FieldMask
-           * @property {INamespace} google/protobuf/struct.proto Struct, Value, NullValue and ListValue
-           * @property {INamespace} google/protobuf/timestamp.proto Timestamp
-           * @property {INamespace} google/protobuf/wrappers.proto Wrappers
-           * @example
-           * // manually provides descriptor.proto (assumes google/protobuf/ namespace and .proto extension)
-           * protobuf.common("descriptor", descriptorJson);
-           *
-           * // manually provides a custom definition (uses my.foo namespace)
-           * protobuf.common("my/foo/bar.proto", myFooBarJson);
            */
 
-          function common(name, json) {
-            if (!commonRe.test(name)) {
-              name = "google/protobuf/" + name + ".proto";
-              json = {
-                nested: {
-                  google: {
-                    nested: {
-                      protobuf: {
-                        nested: json
-                      }
-                    }
-                  }
-                }
-              };
-            }
-
-            common[name] = json;
-          } // Not provided because of limited use (feel free to discuss or to provide yourself):
-          //
-          // google/protobuf/descriptor.proto
-          // google/protobuf/source_context.proto
-          // google/protobuf/type.proto
-          //
-          // Stripped and pre-parsed versions of these non-bundled files are instead available as part of
-          // the repository or package within the google/protobuf directory.
-
-
-          common("any", {
-            /**
-             * Properties of a google.protobuf.Any message.
-             * @interface IAny
-             * @type {Object}
-             * @property {string} [typeUrl]
-             * @property {Uint8Array} [bytes]
-             * @memberof common
-             */
-            Any: {
-              fields: {
-                type_url: {
-                  type: "string",
-                  id: 1
-                },
-                value: {
-                  type: "bytes",
-                  id: 2
-                }
-              }
-            }
-          });
-          var timeType;
-          common("duration", {
-            /**
-             * Properties of a google.protobuf.Duration message.
-             * @interface IDuration
-             * @type {Object}
-             * @property {number|Long} [seconds]
-             * @property {number} [nanos]
-             * @memberof common
-             */
-            Duration: timeType = {
-              fields: {
-                seconds: {
-                  type: "int64",
-                  id: 1
-                },
-                nanos: {
-                  type: "int32",
-                  id: 2
-                }
-              }
-            }
-          });
-          common("timestamp", {
-            /**
-             * Properties of a google.protobuf.Timestamp message.
-             * @interface ITimestamp
-             * @type {Object}
-             * @property {number|Long} [seconds]
-             * @property {number} [nanos]
-             * @memberof common
-             */
-            Timestamp: timeType
-          });
-          common("empty", {
-            /**
-             * Properties of a google.protobuf.Empty message.
-             * @interface IEmpty
-             * @memberof common
-             */
-            Empty: {
-              fields: {}
-            }
-          });
-          common("struct", {
-            /**
-             * Properties of a google.protobuf.Struct message.
-             * @interface IStruct
-             * @type {Object}
-             * @property {Object.<string,IValue>} [fields]
-             * @memberof common
-             */
-            Struct: {
-              fields: {
-                fields: {
-                  keyType: "string",
-                  type: "Value",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.Value message.
-             * @interface IValue
-             * @type {Object}
-             * @property {string} [kind]
-             * @property {0} [nullValue]
-             * @property {number} [numberValue]
-             * @property {string} [stringValue]
-             * @property {boolean} [boolValue]
-             * @property {IStruct} [structValue]
-             * @property {IListValue} [listValue]
-             * @memberof common
-             */
-            Value: {
-              oneofs: {
-                kind: {
-                  oneof: ["nullValue", "numberValue", "stringValue", "boolValue", "structValue", "listValue"]
-                }
-              },
-              fields: {
-                nullValue: {
-                  type: "NullValue",
-                  id: 1
-                },
-                numberValue: {
-                  type: "double",
-                  id: 2
-                },
-                stringValue: {
-                  type: "string",
-                  id: 3
-                },
-                boolValue: {
-                  type: "bool",
-                  id: 4
-                },
-                structValue: {
-                  type: "Struct",
-                  id: 5
-                },
-                listValue: {
-                  type: "ListValue",
-                  id: 6
-                }
-              }
-            },
-            NullValue: {
-              values: {
-                NULL_VALUE: 0
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.ListValue message.
-             * @interface IListValue
-             * @type {Object}
-             * @property {Array.<IValue>} [values]
-             * @memberof common
-             */
-            ListValue: {
-              fields: {
-                values: {
-                  rule: "repeated",
-                  type: "Value",
-                  id: 1
-                }
-              }
-            }
-          });
-          common("wrappers", {
-            /**
-             * Properties of a google.protobuf.DoubleValue message.
-             * @interface IDoubleValue
-             * @type {Object}
-             * @property {number} [value]
-             * @memberof common
-             */
-            DoubleValue: {
-              fields: {
-                value: {
-                  type: "double",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.FloatValue message.
-             * @interface IFloatValue
-             * @type {Object}
-             * @property {number} [value]
-             * @memberof common
-             */
-            FloatValue: {
-              fields: {
-                value: {
-                  type: "float",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.Int64Value message.
-             * @interface IInt64Value
-             * @type {Object}
-             * @property {number|Long} [value]
-             * @memberof common
-             */
-            Int64Value: {
-              fields: {
-                value: {
-                  type: "int64",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.UInt64Value message.
-             * @interface IUInt64Value
-             * @type {Object}
-             * @property {number|Long} [value]
-             * @memberof common
-             */
-            UInt64Value: {
-              fields: {
-                value: {
-                  type: "uint64",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.Int32Value message.
-             * @interface IInt32Value
-             * @type {Object}
-             * @property {number} [value]
-             * @memberof common
-             */
-            Int32Value: {
-              fields: {
-                value: {
-                  type: "int32",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.UInt32Value message.
-             * @interface IUInt32Value
-             * @type {Object}
-             * @property {number} [value]
-             * @memberof common
-             */
-            UInt32Value: {
-              fields: {
-                value: {
-                  type: "uint32",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.BoolValue message.
-             * @interface IBoolValue
-             * @type {Object}
-             * @property {boolean} [value]
-             * @memberof common
-             */
-            BoolValue: {
-              fields: {
-                value: {
-                  type: "bool",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.StringValue message.
-             * @interface IStringValue
-             * @type {Object}
-             * @property {string} [value]
-             * @memberof common
-             */
-            StringValue: {
-              fields: {
-                value: {
-                  type: "string",
-                  id: 1
-                }
-              }
-            },
-
-            /**
-             * Properties of a google.protobuf.BytesValue message.
-             * @interface IBytesValue
-             * @type {Object}
-             * @property {Uint8Array} [value]
-             * @memberof common
-             */
-            BytesValue: {
-              fields: {
-                value: {
-                  type: "bytes",
-                  id: 1
-                }
-              }
-            }
-          });
-          common("field_mask", {
-            /**
-             * Properties of a google.protobuf.FieldMask message.
-             * @interface IDoubleValue
-             * @type {Object}
-             * @property {number} [value]
-             * @memberof common
-             */
-            FieldMask: {
-              fields: {
-                paths: {
-                  rule: "repeated",
-                  type: "string",
-                  id: 1
-                }
-              }
-            }
-          });
           /**
-           * Gets the root definition of the specified common proto file.
-           *
-           * Bundled definitions are:
-           * - google/protobuf/any.proto
-           * - google/protobuf/duration.proto
-           * - google/protobuf/empty.proto
-           * - google/protobuf/field_mask.proto
-           * - google/protobuf/struct.proto
-           * - google/protobuf/timestamp.proto
-           * - google/protobuf/wrappers.proto
-           *
-           * @param {string} file Proto file name
-           * @returns {INamespace|null} Root definition or `null` if not defined
+           * Loads one or multiple .proto or preprocessed .json files into a common root namespace and calls the callback.
+           * @param {string|string[]} filename One or multiple files to load
+           * @param {Root} root Root namespace, defaults to create a new one if omitted.
+           * @param {LoadCallback} callback Callback function
+           * @returns {undefined}
+           * @see {@link Root#load}
            */
 
-          common.get = function get(file) {
-            return common[file] || null;
-          };
+          function load(filename, root, callback) {
+            if (typeof root === "function") {
+              callback = root;
+              root = new protobuf.Root();
+            } else if (!root) root = new protobuf.Root();
+
+            return root.load(filename, callback);
+          }
+          /**
+           * Loads one or multiple .proto or preprocessed .json files into a common root namespace and calls the callback.
+           * @name load
+           * @function
+           * @param {string|string[]} filename One or multiple files to load
+           * @param {LoadCallback} callback Callback function
+           * @returns {undefined}
+           * @see {@link Root#load}
+           * @variation 2
+           */
+          // function load(filename:string, callback:LoadCallback):undefined
+
+          /**
+           * Loads one or multiple .proto or preprocessed .json files into a common root namespace and returns a promise.
+           * @name load
+           * @function
+           * @param {string|string[]} filename One or multiple files to load
+           * @param {Root} [root] Root namespace, defaults to create a new one if omitted.
+           * @returns {Promise<Root>} Promise
+           * @see {@link Root#load}
+           * @variation 3
+           */
+          // function load(filename:string, [root:Root]):Promise<Root>
+
+
+          protobuf.load = load;
+          /**
+           * Synchronously loads one or multiple .proto or preprocessed .json files into a common root namespace (node only).
+           * @param {string|string[]} filename One or multiple files to load
+           * @param {Root} [root] Root namespace, defaults to create a new one if omitted.
+           * @returns {Root} Root namespace
+           * @throws {Error} If synchronous fetching is not supported (i.e. in browsers) or if a file's syntax is invalid
+           * @see {@link Root#loadSync}
+           */
+
+          function loadSync(filename, root) {
+            if (!root) root = new protobuf.Root();
+            return root.loadSync(filename);
+          }
+
+          protobuf.loadSync = loadSync; // Serialization
+
+          protobuf.encoder = require("./encoder");
+          protobuf.decoder = require("./decoder");
+          protobuf.verifier = require("./verifier");
+          protobuf.converter = require("./converter"); // Reflection
+
+          protobuf.ReflectionObject = require("./object");
+          protobuf.Namespace = require("./namespace");
+          protobuf.Root = require("./root");
+          protobuf.Enum = require("./enum");
+          protobuf.Type = require("./type");
+          protobuf.Field = require("./field");
+          protobuf.OneOf = require("./oneof");
+          protobuf.MapField = require("./mapfield");
+          protobuf.Service = require("./service");
+          protobuf.Method = require("./method"); // Runtime
+
+          protobuf.Message = require("./message");
+          protobuf.wrappers = require("./wrappers"); // Utility
+
+          protobuf.types = require("./types");
+          protobuf.util = require("./util"); // Set up possibly cyclic reflection dependencies
+
+          protobuf.ReflectionObject._configure(protobuf.Root);
+
+          protobuf.Namespace._configure(protobuf.Type, protobuf.Service, protobuf.Enum);
+
+          protobuf.Root._configure(protobuf.Type);
+
+          protobuf.Field._configure(protobuf.Type);
         })();
 
         _cjsExports = exports('default', module.exports);
@@ -2110,52 +1884,13 @@ System.register("chunks:///_virtual/tokenize.js", ['./cjs-loader.mjs'], function
   };
 });
 
-System.register("chunks:///_virtual/index-light.js", ['./cjs-loader.mjs', './index-minimal.js', './types.js', './field.js', './oneof.js', './namespace.js', './mapfield.js', './method.js', './service.js', './message.js', './decoder.js', './verifier.js', './converter.js', './wrappers.js', './type.js', './root.js', './util.js', './object.js', './enum.js', './encoder.js'], function (exports, module) {
+System.register("chunks:///_virtual/common.js", ['./cjs-loader.mjs'], function (exports, module) {
   'use strict';
 
-  var loader, __cjsMetaURL$1, __cjsMetaURL$i, __cjsMetaURL$b, __cjsMetaURL$c, __cjsMetaURL$7, __cjsMetaURL$d, __cjsMetaURL$f, __cjsMetaURL$e, __cjsMetaURL$g, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$5, __cjsMetaURL$h, __cjsMetaURL$a, __cjsMetaURL$8, __cjsMetaURL$j, __cjsMetaURL$6, __cjsMetaURL$9, __cjsMetaURL$2;
-
+  var loader;
   return {
     setters: [function (module) {
       loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$i = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$b = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$c = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$7 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$d = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$f = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$e = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$g = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$4 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$5 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$h = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$a = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$8 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$j = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$6 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$9 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
     }],
     execute: function () {
       exports('default', void 0);
@@ -2163,129 +1898,394 @@ System.register("chunks:///_virtual/index-light.js", ['./cjs-loader.mjs', './ind
       var _cjsExports;
 
       loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./index-minimal": __cjsMetaURL$1,
-          "./encoder": __cjsMetaURL$2,
-          "./decoder": __cjsMetaURL$3,
-          "./verifier": __cjsMetaURL$4,
-          "./converter": __cjsMetaURL$5,
-          "./object": __cjsMetaURL$6,
-          "./namespace": __cjsMetaURL$7,
-          "./root": __cjsMetaURL$8,
-          "./enum": __cjsMetaURL$9,
-          "./type": __cjsMetaURL$a,
-          "./field": __cjsMetaURL$b,
-          "./oneof": __cjsMetaURL$c,
-          "./mapfield": __cjsMetaURL$d,
-          "./service": __cjsMetaURL$e,
-          "./method": __cjsMetaURL$f,
-          "./message": __cjsMetaURL$g,
-          "./wrappers": __cjsMetaURL$h,
-          "./types": __cjsMetaURL$i,
-          "./util": __cjsMetaURL$j
-        }, _require);
+        var require = loader.createRequireWithReqMap({}, _require);
 
         (function () {
-          var protobuf = module.exports = require("./index-minimal");
-
-          protobuf.build = "light";
+          module.exports = common;
+          var commonRe = /\/|\./;
           /**
-           * A node-style callback as used by {@link load} and {@link Root#load}.
-           * @typedef LoadCallback
-           * @type {function}
-           * @param {Error|null} error Error, if any, otherwise `null`
-           * @param {Root} [root] Root, if there hasn't been an error
+           * Provides common type definitions.
+           * Can also be used to provide additional google types or your own custom types.
+           * @param {string} name Short name as in `google/protobuf/[name].proto` or full file name
+           * @param {Object.<string,*>} json JSON definition within `google.protobuf` if a short name, otherwise the file's root definition
            * @returns {undefined}
+           * @property {INamespace} google/protobuf/any.proto Any
+           * @property {INamespace} google/protobuf/duration.proto Duration
+           * @property {INamespace} google/protobuf/empty.proto Empty
+           * @property {INamespace} google/protobuf/field_mask.proto FieldMask
+           * @property {INamespace} google/protobuf/struct.proto Struct, Value, NullValue and ListValue
+           * @property {INamespace} google/protobuf/timestamp.proto Timestamp
+           * @property {INamespace} google/protobuf/wrappers.proto Wrappers
+           * @example
+           * // manually provides descriptor.proto (assumes google/protobuf/ namespace and .proto extension)
+           * protobuf.common("descriptor", descriptorJson);
+           *
+           * // manually provides a custom definition (uses my.foo namespace)
+           * protobuf.common("my/foo/bar.proto", myFooBarJson);
            */
 
+          function common(name, json) {
+            if (!commonRe.test(name)) {
+              name = "google/protobuf/" + name + ".proto";
+              json = {
+                nested: {
+                  google: {
+                    nested: {
+                      protobuf: {
+                        nested: json
+                      }
+                    }
+                  }
+                }
+              };
+            }
+
+            common[name] = json;
+          } // Not provided because of limited use (feel free to discuss or to provide yourself):
+          //
+          // google/protobuf/descriptor.proto
+          // google/protobuf/source_context.proto
+          // google/protobuf/type.proto
+          //
+          // Stripped and pre-parsed versions of these non-bundled files are instead available as part of
+          // the repository or package within the google/protobuf directory.
+
+
+          common("any", {
+            /**
+             * Properties of a google.protobuf.Any message.
+             * @interface IAny
+             * @type {Object}
+             * @property {string} [typeUrl]
+             * @property {Uint8Array} [bytes]
+             * @memberof common
+             */
+            Any: {
+              fields: {
+                type_url: {
+                  type: "string",
+                  id: 1
+                },
+                value: {
+                  type: "bytes",
+                  id: 2
+                }
+              }
+            }
+          });
+          var timeType;
+          common("duration", {
+            /**
+             * Properties of a google.protobuf.Duration message.
+             * @interface IDuration
+             * @type {Object}
+             * @property {number|Long} [seconds]
+             * @property {number} [nanos]
+             * @memberof common
+             */
+            Duration: timeType = {
+              fields: {
+                seconds: {
+                  type: "int64",
+                  id: 1
+                },
+                nanos: {
+                  type: "int32",
+                  id: 2
+                }
+              }
+            }
+          });
+          common("timestamp", {
+            /**
+             * Properties of a google.protobuf.Timestamp message.
+             * @interface ITimestamp
+             * @type {Object}
+             * @property {number|Long} [seconds]
+             * @property {number} [nanos]
+             * @memberof common
+             */
+            Timestamp: timeType
+          });
+          common("empty", {
+            /**
+             * Properties of a google.protobuf.Empty message.
+             * @interface IEmpty
+             * @memberof common
+             */
+            Empty: {
+              fields: {}
+            }
+          });
+          common("struct", {
+            /**
+             * Properties of a google.protobuf.Struct message.
+             * @interface IStruct
+             * @type {Object}
+             * @property {Object.<string,IValue>} [fields]
+             * @memberof common
+             */
+            Struct: {
+              fields: {
+                fields: {
+                  keyType: "string",
+                  type: "Value",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.Value message.
+             * @interface IValue
+             * @type {Object}
+             * @property {string} [kind]
+             * @property {0} [nullValue]
+             * @property {number} [numberValue]
+             * @property {string} [stringValue]
+             * @property {boolean} [boolValue]
+             * @property {IStruct} [structValue]
+             * @property {IListValue} [listValue]
+             * @memberof common
+             */
+            Value: {
+              oneofs: {
+                kind: {
+                  oneof: ["nullValue", "numberValue", "stringValue", "boolValue", "structValue", "listValue"]
+                }
+              },
+              fields: {
+                nullValue: {
+                  type: "NullValue",
+                  id: 1
+                },
+                numberValue: {
+                  type: "double",
+                  id: 2
+                },
+                stringValue: {
+                  type: "string",
+                  id: 3
+                },
+                boolValue: {
+                  type: "bool",
+                  id: 4
+                },
+                structValue: {
+                  type: "Struct",
+                  id: 5
+                },
+                listValue: {
+                  type: "ListValue",
+                  id: 6
+                }
+              }
+            },
+            NullValue: {
+              values: {
+                NULL_VALUE: 0
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.ListValue message.
+             * @interface IListValue
+             * @type {Object}
+             * @property {Array.<IValue>} [values]
+             * @memberof common
+             */
+            ListValue: {
+              fields: {
+                values: {
+                  rule: "repeated",
+                  type: "Value",
+                  id: 1
+                }
+              }
+            }
+          });
+          common("wrappers", {
+            /**
+             * Properties of a google.protobuf.DoubleValue message.
+             * @interface IDoubleValue
+             * @type {Object}
+             * @property {number} [value]
+             * @memberof common
+             */
+            DoubleValue: {
+              fields: {
+                value: {
+                  type: "double",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.FloatValue message.
+             * @interface IFloatValue
+             * @type {Object}
+             * @property {number} [value]
+             * @memberof common
+             */
+            FloatValue: {
+              fields: {
+                value: {
+                  type: "float",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.Int64Value message.
+             * @interface IInt64Value
+             * @type {Object}
+             * @property {number|Long} [value]
+             * @memberof common
+             */
+            Int64Value: {
+              fields: {
+                value: {
+                  type: "int64",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.UInt64Value message.
+             * @interface IUInt64Value
+             * @type {Object}
+             * @property {number|Long} [value]
+             * @memberof common
+             */
+            UInt64Value: {
+              fields: {
+                value: {
+                  type: "uint64",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.Int32Value message.
+             * @interface IInt32Value
+             * @type {Object}
+             * @property {number} [value]
+             * @memberof common
+             */
+            Int32Value: {
+              fields: {
+                value: {
+                  type: "int32",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.UInt32Value message.
+             * @interface IUInt32Value
+             * @type {Object}
+             * @property {number} [value]
+             * @memberof common
+             */
+            UInt32Value: {
+              fields: {
+                value: {
+                  type: "uint32",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.BoolValue message.
+             * @interface IBoolValue
+             * @type {Object}
+             * @property {boolean} [value]
+             * @memberof common
+             */
+            BoolValue: {
+              fields: {
+                value: {
+                  type: "bool",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.StringValue message.
+             * @interface IStringValue
+             * @type {Object}
+             * @property {string} [value]
+             * @memberof common
+             */
+            StringValue: {
+              fields: {
+                value: {
+                  type: "string",
+                  id: 1
+                }
+              }
+            },
+
+            /**
+             * Properties of a google.protobuf.BytesValue message.
+             * @interface IBytesValue
+             * @type {Object}
+             * @property {Uint8Array} [value]
+             * @memberof common
+             */
+            BytesValue: {
+              fields: {
+                value: {
+                  type: "bytes",
+                  id: 1
+                }
+              }
+            }
+          });
+          common("field_mask", {
+            /**
+             * Properties of a google.protobuf.FieldMask message.
+             * @interface IDoubleValue
+             * @type {Object}
+             * @property {number} [value]
+             * @memberof common
+             */
+            FieldMask: {
+              fields: {
+                paths: {
+                  rule: "repeated",
+                  type: "string",
+                  id: 1
+                }
+              }
+            }
+          });
           /**
-           * Loads one or multiple .proto or preprocessed .json files into a common root namespace and calls the callback.
-           * @param {string|string[]} filename One or multiple files to load
-           * @param {Root} root Root namespace, defaults to create a new one if omitted.
-           * @param {LoadCallback} callback Callback function
-           * @returns {undefined}
-           * @see {@link Root#load}
+           * Gets the root definition of the specified common proto file.
+           *
+           * Bundled definitions are:
+           * - google/protobuf/any.proto
+           * - google/protobuf/duration.proto
+           * - google/protobuf/empty.proto
+           * - google/protobuf/field_mask.proto
+           * - google/protobuf/struct.proto
+           * - google/protobuf/timestamp.proto
+           * - google/protobuf/wrappers.proto
+           *
+           * @param {string} file Proto file name
+           * @returns {INamespace|null} Root definition or `null` if not defined
            */
 
-          function load(filename, root, callback) {
-            if (typeof root === "function") {
-              callback = root;
-              root = new protobuf.Root();
-            } else if (!root) root = new protobuf.Root();
-
-            return root.load(filename, callback);
-          }
-          /**
-           * Loads one or multiple .proto or preprocessed .json files into a common root namespace and calls the callback.
-           * @name load
-           * @function
-           * @param {string|string[]} filename One or multiple files to load
-           * @param {LoadCallback} callback Callback function
-           * @returns {undefined}
-           * @see {@link Root#load}
-           * @variation 2
-           */
-          // function load(filename:string, callback:LoadCallback):undefined
-
-          /**
-           * Loads one or multiple .proto or preprocessed .json files into a common root namespace and returns a promise.
-           * @name load
-           * @function
-           * @param {string|string[]} filename One or multiple files to load
-           * @param {Root} [root] Root namespace, defaults to create a new one if omitted.
-           * @returns {Promise<Root>} Promise
-           * @see {@link Root#load}
-           * @variation 3
-           */
-          // function load(filename:string, [root:Root]):Promise<Root>
-
-
-          protobuf.load = load;
-          /**
-           * Synchronously loads one or multiple .proto or preprocessed .json files into a common root namespace (node only).
-           * @param {string|string[]} filename One or multiple files to load
-           * @param {Root} [root] Root namespace, defaults to create a new one if omitted.
-           * @returns {Root} Root namespace
-           * @throws {Error} If synchronous fetching is not supported (i.e. in browsers) or if a file's syntax is invalid
-           * @see {@link Root#loadSync}
-           */
-
-          function loadSync(filename, root) {
-            if (!root) root = new protobuf.Root();
-            return root.loadSync(filename);
-          }
-
-          protobuf.loadSync = loadSync; // Serialization
-
-          protobuf.encoder = require("./encoder");
-          protobuf.decoder = require("./decoder");
-          protobuf.verifier = require("./verifier");
-          protobuf.converter = require("./converter"); // Reflection
-
-          protobuf.ReflectionObject = require("./object");
-          protobuf.Namespace = require("./namespace");
-          protobuf.Root = require("./root");
-          protobuf.Enum = require("./enum");
-          protobuf.Type = require("./type");
-          protobuf.Field = require("./field");
-          protobuf.OneOf = require("./oneof");
-          protobuf.MapField = require("./mapfield");
-          protobuf.Service = require("./service");
-          protobuf.Method = require("./method"); // Runtime
-
-          protobuf.Message = require("./message");
-          protobuf.wrappers = require("./wrappers"); // Utility
-
-          protobuf.types = require("./types");
-          protobuf.util = require("./util"); // Set up possibly cyclic reflection dependencies
-
-          protobuf.ReflectionObject._configure(protobuf.Root);
-
-          protobuf.Namespace._configure(protobuf.Type, protobuf.Service, protobuf.Enum);
-
-          protobuf.Root._configure(protobuf.Type);
-
-          protobuf.Field._configure(protobuf.Type);
+          common.get = function get(file) {
+            return common[file] || null;
+          };
         })();
 
         _cjsExports = exports('default', module.exports);
@@ -2296,10 +2296,10 @@ System.register("chunks:///_virtual/index-light.js", ['./cjs-loader.mjs', './ind
   };
 });
 
-System.register("chunks:///_virtual/mapfield.js", ['./cjs-loader.mjs', './types.js', './field.js', './util.js'], function (exports, module) {
+System.register("chunks:///_virtual/decoder.js", ['./cjs-loader.mjs', './types.js', './util.js', './enum.js'], function (exports, module) {
   'use strict';
 
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1, __cjsMetaURL$3;
+  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
 
   return {
     setters: [function (module) {
@@ -2307,9 +2307,9 @@ System.register("chunks:///_virtual/mapfield.js", ['./cjs-loader.mjs', './types.
     }, function (module) {
       __cjsMetaURL$2 = module.__cjsMetaURL;
     }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }, function (module) {
       __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
     }],
     execute: function () {
       exports('default', void 0);
@@ -2318,122 +2318,1697 @@ System.register("chunks:///_virtual/mapfield.js", ['./cjs-loader.mjs', './types.
 
       loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
         var require = loader.createRequireWithReqMap({
-          "./field": __cjsMetaURL$1,
+          "./enum": __cjsMetaURL$1,
           "./types": __cjsMetaURL$2,
           "./util": __cjsMetaURL$3
         }, _require);
 
         (function () {
-          module.exports = MapField; // extends Field
+          module.exports = decoder;
 
-          var Field = require("./field");
-
-          ((MapField.prototype = Object.create(Field.prototype)).constructor = MapField).className = "MapField";
-
-          var types = require("./types"),
+          var Enum = require("./enum"),
+              types = require("./types"),
               util = require("./util");
+
+          function missing(field) {
+            return "missing required '" + field.name + "'";
+          }
           /**
-           * Constructs a new map field instance.
-           * @classdesc Reflected map field.
-           * @extends FieldBase
-           * @constructor
-           * @param {string} name Unique name within its namespace
-           * @param {number} id Unique id within its namespace
-           * @param {string} keyType Key type
-           * @param {string} type Value type
-           * @param {Object.<string,*>} [options] Declared options
-           * @param {string} [comment] Comment associated with this field
+           * Generates a decoder specific to the specified message type.
+           * @param {Type} mtype Message type
+           * @returns {Codegen} Codegen instance
            */
 
 
-          function MapField(name, id, keyType, type, options, comment) {
-            Field.call(this, name, id, type, undefined, undefined, options, comment);
-            /* istanbul ignore if */
+          function decoder(mtype) {
+            /* eslint-disable no-unexpected-multiline */
+            var gen = util.codegen(["r", "l"], mtype.name + "$decode")("if(!(r instanceof Reader))")("r=Reader.create(r)")("var c=l===undefined?r.len:r.pos+l,m=new this.ctor" + (mtype.fieldsArray.filter(function (field) {
+              return field.map;
+            }).length ? ",k,value" : ""))("while(r.pos<c){")("var t=r.uint32()");
+            if (mtype.group) gen("if((t&7)===4)")("break");
+            gen("switch(t>>>3){");
+            var i = 0;
 
-            if (!util.isString(keyType)) throw TypeError("keyType must be a string");
+            for (; i <
+            /* initializes */
+            mtype.fieldsArray.length; ++i) {
+              var field = mtype._fieldsArray[i].resolve(),
+                  type = field.resolvedType instanceof Enum ? "int32" : field.type,
+                  ref = "m" + util.safeProp(field.name);
+
+              gen("case %i:", field.id); // Map fields
+
+              if (field.map) {
+                gen("if(%s===util.emptyObject)", ref)("%s={}", ref)("var c2 = r.uint32()+r.pos");
+                if (types.defaults[field.keyType] !== undefined) gen("k=%j", types.defaults[field.keyType]);else gen("k=null");
+                if (types.defaults[type] !== undefined) gen("value=%j", types.defaults[type]);else gen("value=null");
+                gen("while(r.pos<c2){")("var tag2=r.uint32()")("switch(tag2>>>3){")("case 1: k=r.%s(); break", field.keyType)("case 2:");
+                if (types.basic[type] === undefined) gen("value=types[%i].decode(r,r.uint32())", i); // can't be groups
+                else gen("value=r.%s()", type);
+                gen("break")("default:")("r.skipType(tag2&7)")("break")("}")("}");
+                if (types["long"][field.keyType] !== undefined) gen("%s[typeof k===\"object\"?util.longToHash(k):k]=value", ref);else gen("%s[k]=value", ref); // Repeated fields
+              } else if (field.repeated) {
+                gen("if(!(%s&&%s.length))", ref, ref)("%s=[]", ref); // Packable (always check for forward and backward compatiblity)
+
+                if (types.packed[type] !== undefined) gen("if((t&7)===2){")("var c2=r.uint32()+r.pos")("while(r.pos<c2)")("%s.push(r.%s())", ref, type)("}else"); // Non-packed
+
+                if (types.basic[type] === undefined) gen(field.resolvedType.group ? "%s.push(types[%i].decode(r))" : "%s.push(types[%i].decode(r,r.uint32()))", ref, i);else gen("%s.push(r.%s())", ref, type); // Non-repeated
+              } else if (types.basic[type] === undefined) gen(field.resolvedType.group ? "%s=types[%i].decode(r)" : "%s=types[%i].decode(r,r.uint32())", ref, i);else gen("%s=r.%s()", ref, type);
+
+              gen("break"); // Unknown fields
+            }
+
+            gen("default:")("r.skipType(t&7)")("break")("}")("}"); // Field presence
+
+            for (i = 0; i < mtype._fieldsArray.length; ++i) {
+              var rfield = mtype._fieldsArray[i];
+              if (rfield.required) gen("if(!m.hasOwnProperty(%j))", rfield.name)("throw util.ProtocolError(%j,{instance:m})", missing(rfield));
+            }
+
+            return gen("return m");
+            /* eslint-enable no-unexpected-multiline */
+          }
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/verifier.js", ['./cjs-loader.mjs', './util.js', './enum.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./enum": __cjsMetaURL$1,
+          "./util": __cjsMetaURL$2
+        }, _require);
+
+        (function () {
+          module.exports = verifier;
+
+          var Enum = require("./enum"),
+              util = require("./util");
+
+          function invalid(field, expected) {
+            return field.name + ": " + expected + (field.repeated && expected !== "array" ? "[]" : field.map && expected !== "object" ? "{k:" + field.keyType + "}" : "") + " expected";
+          }
+          /**
+           * Generates a partial value verifier.
+           * @param {Codegen} gen Codegen instance
+           * @param {Field} field Reflected field
+           * @param {number} fieldIndex Field index
+           * @param {string} ref Variable reference
+           * @returns {Codegen} Codegen instance
+           * @ignore
+           */
+
+
+          function genVerifyValue(gen, field, fieldIndex, ref) {
+            /* eslint-disable no-unexpected-multiline */
+            if (field.resolvedType) {
+              if (field.resolvedType instanceof Enum) {
+                gen("switch(%s){", ref)("default:")("return%j", invalid(field, "enum value"));
+
+                for (var keys = Object.keys(field.resolvedType.values), j = 0; j < keys.length; ++j) {
+                  gen("case %i:", field.resolvedType.values[keys[j]]);
+                }
+
+                gen("break")("}");
+              } else {
+                gen("{")("var e=types[%i].verify(%s);", fieldIndex, ref)("if(e)")("return%j+e", field.name + ".")("}");
+              }
+            } else {
+              switch (field.type) {
+                case "int32":
+                case "uint32":
+                case "sint32":
+                case "fixed32":
+                case "sfixed32":
+                  gen("if(!util.isInteger(%s))", ref)("return%j", invalid(field, "integer"));
+                  break;
+
+                case "int64":
+                case "uint64":
+                case "sint64":
+                case "fixed64":
+                case "sfixed64":
+                  gen("if(!util.isInteger(%s)&&!(%s&&util.isInteger(%s.low)&&util.isInteger(%s.high)))", ref, ref, ref, ref)("return%j", invalid(field, "integer|Long"));
+                  break;
+
+                case "float":
+                case "double":
+                  gen("if(typeof %s!==\"number\")", ref)("return%j", invalid(field, "number"));
+                  break;
+
+                case "bool":
+                  gen("if(typeof %s!==\"boolean\")", ref)("return%j", invalid(field, "boolean"));
+                  break;
+
+                case "string":
+                  gen("if(!util.isString(%s))", ref)("return%j", invalid(field, "string"));
+                  break;
+
+                case "bytes":
+                  gen("if(!(%s&&typeof %s.length===\"number\"||util.isString(%s)))", ref, ref, ref)("return%j", invalid(field, "buffer"));
+                  break;
+              }
+            }
+
+            return gen;
+            /* eslint-enable no-unexpected-multiline */
+          }
+          /**
+           * Generates a partial key verifier.
+           * @param {Codegen} gen Codegen instance
+           * @param {Field} field Reflected field
+           * @param {string} ref Variable reference
+           * @returns {Codegen} Codegen instance
+           * @ignore
+           */
+
+
+          function genVerifyKey(gen, field, ref) {
+            /* eslint-disable no-unexpected-multiline */
+            switch (field.keyType) {
+              case "int32":
+              case "uint32":
+              case "sint32":
+              case "fixed32":
+              case "sfixed32":
+                gen("if(!util.key32Re.test(%s))", ref)("return%j", invalid(field, "integer key"));
+                break;
+
+              case "int64":
+              case "uint64":
+              case "sint64":
+              case "fixed64":
+              case "sfixed64":
+                gen("if(!util.key64Re.test(%s))", ref) // see comment above: x is ok, d is not
+                ("return%j", invalid(field, "integer|Long key"));
+                break;
+
+              case "bool":
+                gen("if(!util.key2Re.test(%s))", ref)("return%j", invalid(field, "boolean key"));
+                break;
+            }
+
+            return gen;
+            /* eslint-enable no-unexpected-multiline */
+          }
+          /**
+           * Generates a verifier specific to the specified message type.
+           * @param {Type} mtype Message type
+           * @returns {Codegen} Codegen instance
+           */
+
+
+          function verifier(mtype) {
+            /* eslint-disable no-unexpected-multiline */
+            var gen = util.codegen(["m"], mtype.name + "$verify")("if(typeof m!==\"object\"||m===null)")("return%j", "object expected");
+            var oneofs = mtype.oneofsArray,
+                seenFirstField = {};
+            if (oneofs.length) gen("var p={}");
+
+            for (var i = 0; i <
+            /* initializes */
+            mtype.fieldsArray.length; ++i) {
+              var field = mtype._fieldsArray[i].resolve(),
+                  ref = "m" + util.safeProp(field.name);
+
+              if (field.optional) gen("if(%s!=null&&m.hasOwnProperty(%j)){", ref, field.name); // !== undefined && !== null
+              // map fields
+
+              if (field.map) {
+                gen("if(!util.isObject(%s))", ref)("return%j", invalid(field, "object"))("var k=Object.keys(%s)", ref)("for(var i=0;i<k.length;++i){");
+                genVerifyKey(gen, field, "k[i]");
+                genVerifyValue(gen, field, i, ref + "[k[i]]")("}"); // repeated fields
+              } else if (field.repeated) {
+                gen("if(!Array.isArray(%s))", ref)("return%j", invalid(field, "array"))("for(var i=0;i<%s.length;++i){", ref);
+                genVerifyValue(gen, field, i, ref + "[i]")("}"); // required or present fields
+              } else {
+                if (field.partOf) {
+                  var oneofProp = util.safeProp(field.partOf.name);
+                  if (seenFirstField[field.partOf.name] === 1) gen("if(p%s===1)", oneofProp)("return%j", field.partOf.name + ": multiple values");
+                  seenFirstField[field.partOf.name] = 1;
+                  gen("p%s=1", oneofProp);
+                }
+
+                genVerifyValue(gen, field, i, ref);
+              }
+
+              if (field.optional) gen("}");
+            }
+
+            return gen("return null");
+            /* eslint-enable no-unexpected-multiline */
+          }
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/converter.js", ['./cjs-loader.mjs', './util.js', './enum.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./enum": __cjsMetaURL$1,
+          "./util": __cjsMetaURL$2
+        }, _require);
+
+        (function () {
+          /**
+           * Runtime message from/to plain object converters.
+           * @namespace
+           */
+          var converter = exports$1;
+
+          var Enum = require("./enum"),
+              util = require("./util");
+          /**
+           * Generates a partial value fromObject conveter.
+           * @param {Codegen} gen Codegen instance
+           * @param {Field} field Reflected field
+           * @param {number} fieldIndex Field index
+           * @param {string} prop Property reference
+           * @returns {Codegen} Codegen instance
+           * @ignore
+           */
+
+
+          function genValuePartial_fromObject(gen, field, fieldIndex, prop) {
+            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
+            if (field.resolvedType) {
+              if (field.resolvedType instanceof Enum) {
+                gen("switch(d%s){", prop);
+
+                for (var values = field.resolvedType.values, keys = Object.keys(values), i = 0; i < keys.length; ++i) {
+                  if (field.repeated && values[keys[i]] === field.typeDefault) gen("default:");
+                  gen("case%j:", keys[i])("case %i:", values[keys[i]])("m%s=%j", prop, values[keys[i]])("break");
+                }
+
+                gen("}");
+              } else gen("if(typeof d%s!==\"object\")", prop)("throw TypeError(%j)", field.fullName + ": object expected")("m%s=types[%i].fromObject(d%s)", prop, fieldIndex, prop);
+            } else {
+              var isUnsigned = false;
+
+              switch (field.type) {
+                case "double":
+                case "float":
+                  gen("m%s=Number(d%s)", prop, prop); // also catches "NaN", "Infinity"
+
+                  break;
+
+                case "uint32":
+                case "fixed32":
+                  gen("m%s=d%s>>>0", prop, prop);
+                  break;
+
+                case "int32":
+                case "sint32":
+                case "sfixed32":
+                  gen("m%s=d%s|0", prop, prop);
+                  break;
+
+                case "uint64":
+                  isUnsigned = true;
+                // eslint-disable-line no-fallthrough
+
+                case "int64":
+                case "sint64":
+                case "fixed64":
+                case "sfixed64":
+                  gen("if(util.Long)")("(m%s=util.Long.fromValue(d%s)).unsigned=%j", prop, prop, isUnsigned)("else if(typeof d%s===\"string\")", prop)("m%s=parseInt(d%s,10)", prop, prop)("else if(typeof d%s===\"number\")", prop)("m%s=d%s", prop, prop)("else if(typeof d%s===\"object\")", prop)("m%s=new util.LongBits(d%s.low>>>0,d%s.high>>>0).toNumber(%s)", prop, prop, prop, isUnsigned ? "true" : "");
+                  break;
+
+                case "bytes":
+                  gen("if(typeof d%s===\"string\")", prop)("util.base64.decode(d%s,m%s=util.newBuffer(util.base64.length(d%s)),0)", prop, prop, prop)("else if(d%s.length)", prop)("m%s=d%s", prop, prop);
+                  break;
+
+                case "string":
+                  gen("m%s=String(d%s)", prop, prop);
+                  break;
+
+                case "bool":
+                  gen("m%s=Boolean(d%s)", prop, prop);
+                  break;
+
+                /* default: gen
+                    ("m%s=d%s", prop, prop);
+                    break; */
+              }
+            }
+
+            return gen;
+            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
+          }
+          /**
+           * Generates a plain object to runtime message converter specific to the specified message type.
+           * @param {Type} mtype Message type
+           * @returns {Codegen} Codegen instance
+           */
+
+
+          converter.fromObject = function fromObject(mtype) {
+            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
+            var fields = mtype.fieldsArray;
+            var gen = util.codegen(["d"], mtype.name + "$fromObject")("if(d instanceof this.ctor)")("return d");
+            if (!fields.length) return gen("return new this.ctor");
+            gen("var m=new this.ctor");
+
+            for (var i = 0; i < fields.length; ++i) {
+              var field = fields[i].resolve(),
+                  prop = util.safeProp(field.name); // Map fields
+
+              if (field.map) {
+                gen("if(d%s){", prop)("if(typeof d%s!==\"object\")", prop)("throw TypeError(%j)", field.fullName + ": object expected")("m%s={}", prop)("for(var ks=Object.keys(d%s),i=0;i<ks.length;++i){", prop);
+                genValuePartial_fromObject(gen, field,
+                /* not sorted */
+                i, prop + "[ks[i]]")("}")("}"); // Repeated fields
+              } else if (field.repeated) {
+                gen("if(d%s){", prop)("if(!Array.isArray(d%s))", prop)("throw TypeError(%j)", field.fullName + ": array expected")("m%s=[]", prop)("for(var i=0;i<d%s.length;++i){", prop);
+                genValuePartial_fromObject(gen, field,
+                /* not sorted */
+                i, prop + "[i]")("}")("}"); // Non-repeated fields
+              } else {
+                if (!(field.resolvedType instanceof Enum)) gen // no need to test for null/undefined if an enum (uses switch)
+                ("if(d%s!=null){", prop); // !== undefined && !== null
+
+                genValuePartial_fromObject(gen, field,
+                /* not sorted */
+                i, prop);
+                if (!(field.resolvedType instanceof Enum)) gen("}");
+              }
+            }
+
+            return gen("return m");
+            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
+          };
+          /**
+           * Generates a partial value toObject converter.
+           * @param {Codegen} gen Codegen instance
+           * @param {Field} field Reflected field
+           * @param {number} fieldIndex Field index
+           * @param {string} prop Property reference
+           * @returns {Codegen} Codegen instance
+           * @ignore
+           */
+
+
+          function genValuePartial_toObject(gen, field, fieldIndex, prop) {
+            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
+            if (field.resolvedType) {
+              if (field.resolvedType instanceof Enum) gen("d%s=o.enums===String?types[%i].values[m%s]:m%s", prop, fieldIndex, prop, prop);else gen("d%s=types[%i].toObject(m%s,o)", prop, fieldIndex, prop);
+            } else {
+              var isUnsigned = false;
+
+              switch (field.type) {
+                case "double":
+                case "float":
+                  gen("d%s=o.json&&!isFinite(m%s)?String(m%s):m%s", prop, prop, prop, prop);
+                  break;
+
+                case "uint64":
+                  isUnsigned = true;
+                // eslint-disable-line no-fallthrough
+
+                case "int64":
+                case "sint64":
+                case "fixed64":
+                case "sfixed64":
+                  gen("if(typeof m%s===\"number\")", prop)("d%s=o.longs===String?String(m%s):m%s", prop, prop, prop)("else") // Long-like
+                  ("d%s=o.longs===String?util.Long.prototype.toString.call(m%s):o.longs===Number?new util.LongBits(m%s.low>>>0,m%s.high>>>0).toNumber(%s):m%s", prop, prop, prop, prop, isUnsigned ? "true" : "", prop);
+                  break;
+
+                case "bytes":
+                  gen("d%s=o.bytes===String?util.base64.encode(m%s,0,m%s.length):o.bytes===Array?Array.prototype.slice.call(m%s):m%s", prop, prop, prop, prop, prop);
+                  break;
+
+                default:
+                  gen("d%s=m%s", prop, prop);
+                  break;
+              }
+            }
+
+            return gen;
+            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
+          }
+          /**
+           * Generates a runtime message to plain object converter specific to the specified message type.
+           * @param {Type} mtype Message type
+           * @returns {Codegen} Codegen instance
+           */
+
+
+          converter.toObject = function toObject(mtype) {
+            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
+            var fields = mtype.fieldsArray.slice().sort(util.compareFieldsById);
+            if (!fields.length) return util.codegen()("return {}");
+            var gen = util.codegen(["m", "o"], mtype.name + "$toObject")("if(!o)")("o={}")("var d={}");
+            var repeatedFields = [],
+                mapFields = [],
+                normalFields = [],
+                i = 0;
+
+            for (; i < fields.length; ++i) {
+              if (!fields[i].partOf) (fields[i].resolve().repeated ? repeatedFields : fields[i].map ? mapFields : normalFields).push(fields[i]);
+            }
+
+            if (repeatedFields.length) {
+              gen("if(o.arrays||o.defaults){");
+
+              for (i = 0; i < repeatedFields.length; ++i) {
+                gen("d%s=[]", util.safeProp(repeatedFields[i].name));
+              }
+
+              gen("}");
+            }
+
+            if (mapFields.length) {
+              gen("if(o.objects||o.defaults){");
+
+              for (i = 0; i < mapFields.length; ++i) {
+                gen("d%s={}", util.safeProp(mapFields[i].name));
+              }
+
+              gen("}");
+            }
+
+            if (normalFields.length) {
+              gen("if(o.defaults){");
+
+              for (i = 0; i < normalFields.length; ++i) {
+                var field = normalFields[i],
+                    prop = util.safeProp(field.name);
+                if (field.resolvedType instanceof Enum) gen("d%s=o.enums===String?%j:%j", prop, field.resolvedType.valuesById[field.typeDefault], field.typeDefault);else if (field["long"]) gen("if(util.Long){")("var n=new util.Long(%i,%i,%j)", field.typeDefault.low, field.typeDefault.high, field.typeDefault.unsigned)("d%s=o.longs===String?n.toString():o.longs===Number?n.toNumber():n", prop)("}else")("d%s=o.longs===String?%j:%i", prop, field.typeDefault.toString(), field.typeDefault.toNumber());else if (field.bytes) {
+                  var arrayDefault = "[" + Array.prototype.slice.call(field.typeDefault).join(",") + "]";
+                  gen("if(o.bytes===String)d%s=%j", prop, String.fromCharCode.apply(String, field.typeDefault))("else{")("d%s=%s", prop, arrayDefault)("if(o.bytes!==Array)d%s=util.newBuffer(d%s)", prop, prop)("}");
+                } else gen("d%s=%j", prop, field.typeDefault); // also messages (=null)
+              }
+
+              gen("}");
+            }
+
+            var hasKs2 = false;
+
+            for (i = 0; i < fields.length; ++i) {
+              var field = fields[i],
+                  index = mtype._fieldsArray.indexOf(field),
+                  prop = util.safeProp(field.name);
+
+              if (field.map) {
+                if (!hasKs2) {
+                  hasKs2 = true;
+                  gen("var ks2");
+                }
+
+                gen("if(m%s&&(ks2=Object.keys(m%s)).length){", prop, prop)("d%s={}", prop)("for(var j=0;j<ks2.length;++j){");
+                genValuePartial_toObject(gen, field,
+                /* sorted */
+                index, prop + "[ks2[j]]")("}");
+              } else if (field.repeated) {
+                gen("if(m%s&&m%s.length){", prop, prop)("d%s=[]", prop)("for(var j=0;j<m%s.length;++j){", prop);
+                genValuePartial_toObject(gen, field,
+                /* sorted */
+                index, prop + "[j]")("}");
+              } else {
+                gen("if(m%s!=null&&m.hasOwnProperty(%j)){", prop, field.name); // !== undefined && !== null
+
+                genValuePartial_toObject(gen, field,
+                /* sorted */
+                index, prop);
+                if (field.partOf) gen("if(o.oneofs)")("d%s=%j", util.safeProp(field.partOf.name), field.name);
+              }
+
+              gen("}");
+            }
+
+            return gen("return d");
+            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/encoder.js", ['./cjs-loader.mjs', './types.js', './util.js', './enum.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./enum": __cjsMetaURL$1,
+          "./types": __cjsMetaURL$2,
+          "./util": __cjsMetaURL$3
+        }, _require);
+
+        (function () {
+          module.exports = encoder;
+
+          var Enum = require("./enum"),
+              types = require("./types"),
+              util = require("./util");
+          /**
+           * Generates a partial message type encoder.
+           * @param {Codegen} gen Codegen instance
+           * @param {Field} field Reflected field
+           * @param {number} fieldIndex Field index
+           * @param {string} ref Variable reference
+           * @returns {Codegen} Codegen instance
+           * @ignore
+           */
+
+
+          function genTypePartial(gen, field, fieldIndex, ref) {
+            return field.resolvedType.group ? gen("types[%i].encode(%s,w.uint32(%i)).uint32(%i)", fieldIndex, ref, (field.id << 3 | 3) >>> 0, (field.id << 3 | 4) >>> 0) : gen("types[%i].encode(%s,w.uint32(%i).fork()).ldelim()", fieldIndex, ref, (field.id << 3 | 2) >>> 0);
+          }
+          /**
+           * Generates an encoder specific to the specified message type.
+           * @param {Type} mtype Message type
+           * @returns {Codegen} Codegen instance
+           */
+
+
+          function encoder(mtype) {
+            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
+            var gen = util.codegen(["m", "w"], mtype.name + "$encode")("if(!w)")("w=Writer.create()");
+            var i, ref; // "when a message is serialized its known fields should be written sequentially by field number"
+
+            var fields =
+            /* initializes */
+            mtype.fieldsArray.slice().sort(util.compareFieldsById);
+
+            for (var i = 0; i < fields.length; ++i) {
+              var field = fields[i].resolve(),
+                  index = mtype._fieldsArray.indexOf(field),
+                  type = field.resolvedType instanceof Enum ? "int32" : field.type,
+                  wireType = types.basic[type];
+
+              ref = "m" + util.safeProp(field.name); // Map fields
+
+              if (field.map) {
+                gen("if(%s!=null&&Object.hasOwnProperty.call(m,%j)){", ref, field.name) // !== undefined && !== null
+                ("for(var ks=Object.keys(%s),i=0;i<ks.length;++i){", ref)("w.uint32(%i).fork().uint32(%i).%s(ks[i])", (field.id << 3 | 2) >>> 0, 8 | types.mapKey[field.keyType], field.keyType);
+                if (wireType === undefined) gen("types[%i].encode(%s[ks[i]],w.uint32(18).fork()).ldelim().ldelim()", index, ref); // can't be groups
+                else gen(".uint32(%i).%s(%s[ks[i]]).ldelim()", 16 | wireType, type, ref);
+                gen("}")("}"); // Repeated fields
+              } else if (field.repeated) {
+                gen("if(%s!=null&&%s.length){", ref, ref); // !== undefined && !== null
+                // Packed repeated
+
+                if (field.packed && types.packed[type] !== undefined) {
+                  gen("w.uint32(%i).fork()", (field.id << 3 | 2) >>> 0)("for(var i=0;i<%s.length;++i)", ref)("w.%s(%s[i])", type, ref)("w.ldelim()"); // Non-packed
+                } else {
+                  gen("for(var i=0;i<%s.length;++i)", ref);
+                  if (wireType === undefined) genTypePartial(gen, field, index, ref + "[i]");else gen("w.uint32(%i).%s(%s[i])", (field.id << 3 | wireType) >>> 0, type, ref);
+                }
+
+                gen("}"); // Non-repeated
+              } else {
+                if (field.optional) gen("if(%s!=null&&Object.hasOwnProperty.call(m,%j))", ref, field.name); // !== undefined && !== null
+
+                if (wireType === undefined) genTypePartial(gen, field, index, ref);else gen("w.uint32(%i).%s(%s)", (field.id << 3 | wireType) >>> 0, type, ref);
+              }
+            }
+
+            return gen("return w");
+            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
+          }
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/index-minimal.js", ['./cjs-loader.mjs', './minimal.js', './writer.js', './writer_buffer.js', './reader.js', './reader_buffer.js', './rpc.js', './roots.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$5, __cjsMetaURL$1, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$6, __cjsMetaURL$7;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$5 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$4 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$6 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$7 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./writer": __cjsMetaURL$1,
+          "./writer_buffer": __cjsMetaURL$2,
+          "./reader": __cjsMetaURL$3,
+          "./reader_buffer": __cjsMetaURL$4,
+          "./util/minimal": __cjsMetaURL$5,
+          "./rpc": __cjsMetaURL$6,
+          "./roots": __cjsMetaURL$7
+        }, _require);
+
+        (function () {
+          var protobuf = exports$1;
+          /**
+           * Build type, one of `"full"`, `"light"` or `"minimal"`.
+           * @name build
+           * @type {string}
+           * @const
+           */
+
+          protobuf.build = "minimal"; // Serialization
+
+          protobuf.Writer = require("./writer");
+          protobuf.BufferWriter = require("./writer_buffer");
+          protobuf.Reader = require("./reader");
+          protobuf.BufferReader = require("./reader_buffer"); // Utility
+
+          protobuf.util = require("./util/minimal");
+          protobuf.rpc = require("./rpc");
+          protobuf.roots = require("./roots");
+          protobuf.configure = configure;
+          /* istanbul ignore next */
+
+          /**
+           * Reconfigures the library according to the environment.
+           * @returns {undefined}
+           */
+
+          function configure() {
+            protobuf.util._configure();
+
+            protobuf.Writer._configure(protobuf.BufferWriter);
+
+            protobuf.Reader._configure(protobuf.BufferReader);
+          } // Set up buffer utility according to the environment
+
+
+          configure();
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/object.js", ['./cjs-loader.mjs', './util.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./util": __cjsMetaURL$1
+        }, _require);
+
+        (function () {
+          module.exports = ReflectionObject;
+          ReflectionObject.className = "ReflectionObject";
+
+          var util = require("./util");
+
+          var Root; // cyclic
+
+          /**
+           * Constructs a new reflection object instance.
+           * @classdesc Base class of all reflection objects.
+           * @constructor
+           * @param {string} name Object name
+           * @param {Object.<string,*>} [options] Declared options
+           * @abstract
+           */
+
+          function ReflectionObject(name, options) {
+            if (!util.isString(name)) throw TypeError("name must be a string");
+            if (options && !util.isObject(options)) throw TypeError("options must be an object");
             /**
-             * Key type.
+             * Options.
+             * @type {Object.<string,*>|undefined}
+             */
+
+            this.options = options; // toJSON
+
+            /**
+             * Parsed Options.
+             * @type {Array.<Object.<string,*>>|undefined}
+             */
+
+            this.parsedOptions = null;
+            /**
+             * Unique name within its namespace.
              * @type {string}
              */
 
-            this.keyType = keyType; // toJSON, marker
-
+            this.name = name;
             /**
-             * Resolved key type if not a basic type.
-             * @type {ReflectionObject|null}
+             * Parent namespace.
+             * @type {Namespace|null}
              */
 
-            this.resolvedKeyType = null; // Overrides Field#map
+            this.parent = null;
+            /**
+             * Whether already resolved or not.
+             * @type {boolean}
+             */
 
-            this.map = true;
+            this.resolved = false;
+            /**
+             * Comment text, if any.
+             * @type {string|null}
+             */
+
+            this.comment = null;
+            /**
+             * Defining file name.
+             * @type {string|null}
+             */
+
+            this.filename = null;
+          }
+
+          Object.defineProperties(ReflectionObject.prototype, {
+            /**
+             * Reference to the root namespace.
+             * @name ReflectionObject#root
+             * @type {Root}
+             * @readonly
+             */
+            root: {
+              get: function get() {
+                var ptr = this;
+
+                while (ptr.parent !== null) {
+                  ptr = ptr.parent;
+                }
+
+                return ptr;
+              }
+            },
+
+            /**
+             * Full name including leading dot.
+             * @name ReflectionObject#fullName
+             * @type {string}
+             * @readonly
+             */
+            fullName: {
+              get: function get() {
+                var path = [this.name],
+                    ptr = this.parent;
+
+                while (ptr) {
+                  path.unshift(ptr.name);
+                  ptr = ptr.parent;
+                }
+
+                return path.join(".");
+              }
+            }
+          });
+          /**
+           * Converts this reflection object to its descriptor representation.
+           * @returns {Object.<string,*>} Descriptor
+           * @abstract
+           */
+
+          ReflectionObject.prototype.toJSON =
+          /* istanbul ignore next */
+          function toJSON() {
+            throw Error(); // not implemented, shouldn't happen
+          };
+          /**
+           * Called when this object is added to a parent.
+           * @param {ReflectionObject} parent Parent added to
+           * @returns {undefined}
+           */
+
+
+          ReflectionObject.prototype.onAdd = function onAdd(parent) {
+            if (this.parent && this.parent !== parent) this.parent.remove(this);
+            this.parent = parent;
+            this.resolved = false;
+            var root = parent.root;
+            if (root instanceof Root) root._handleAdd(this);
+          };
+          /**
+           * Called when this object is removed from a parent.
+           * @param {ReflectionObject} parent Parent removed from
+           * @returns {undefined}
+           */
+
+
+          ReflectionObject.prototype.onRemove = function onRemove(parent) {
+            var root = parent.root;
+            if (root instanceof Root) root._handleRemove(this);
+            this.parent = null;
+            this.resolved = false;
+          };
+          /**
+           * Resolves this objects type references.
+           * @returns {ReflectionObject} `this`
+           */
+
+
+          ReflectionObject.prototype.resolve = function resolve() {
+            if (this.resolved) return this;
+            if (this.root instanceof Root) this.resolved = true; // only if part of a root
+
+            return this;
+          };
+          /**
+           * Gets an option value.
+           * @param {string} name Option name
+           * @returns {*} Option value or `undefined` if not set
+           */
+
+
+          ReflectionObject.prototype.getOption = function getOption(name) {
+            if (this.options) return this.options[name];
+            return undefined;
+          };
+          /**
+           * Sets an option.
+           * @param {string} name Option name
+           * @param {*} value Option value
+           * @param {boolean} [ifNotSet] Sets the option only if it isn't currently set
+           * @returns {ReflectionObject} `this`
+           */
+
+
+          ReflectionObject.prototype.setOption = function setOption(name, value, ifNotSet) {
+            if (!ifNotSet || !this.options || this.options[name] === undefined) (this.options || (this.options = {}))[name] = value;
+            return this;
+          };
+          /**
+           * Sets a parsed option.
+           * @param {string} name parsed Option name
+           * @param {*} value Option value
+           * @param {string} propName dot '.' delimited full path of property within the option to set. if undefined\empty, will add a new option with that value
+           * @returns {ReflectionObject} `this`
+           */
+
+
+          ReflectionObject.prototype.setParsedOption = function setParsedOption(name, value, propName) {
+            if (!this.parsedOptions) {
+              this.parsedOptions = [];
+            }
+
+            var parsedOptions = this.parsedOptions;
+
+            if (propName) {
+              // If setting a sub property of an option then try to merge it
+              // with an existing option
+              var opt = parsedOptions.find(function (opt) {
+                return Object.prototype.hasOwnProperty.call(opt, name);
+              });
+
+              if (opt) {
+                // If we found an existing option - just merge the property value
+                var newValue = opt[name];
+                util.setProperty(newValue, propName, value);
+              } else {
+                // otherwise, create a new option, set it's property and add it to the list
+                opt = {};
+                opt[name] = util.setProperty({}, propName, value);
+                parsedOptions.push(opt);
+              }
+            } else {
+              // Always create a new option when setting the value of the option itself
+              var newOpt = {};
+              newOpt[name] = value;
+              parsedOptions.push(newOpt);
+            }
+
+            return this;
+          };
+          /**
+           * Sets multiple options.
+           * @param {Object.<string,*>} options Options to set
+           * @param {boolean} [ifNotSet] Sets an option only if it isn't currently set
+           * @returns {ReflectionObject} `this`
+           */
+
+
+          ReflectionObject.prototype.setOptions = function setOptions(options, ifNotSet) {
+            if (options) for (var keys = Object.keys(options), i = 0; i < keys.length; ++i) {
+              this.setOption(keys[i], options[keys[i]], ifNotSet);
+            }
+            return this;
+          };
+          /**
+           * Converts this instance to its string representation.
+           * @returns {string} Class name[, space, full name]
+           */
+
+
+          ReflectionObject.prototype.toString = function toString() {
+            var className = this.constructor.className,
+                fullName = this.fullName;
+            if (fullName.length) return className + " " + fullName;
+            return className;
+          }; // Sets up cyclic dependencies (called in index-light)
+
+
+          ReflectionObject._configure = function (Root_) {
+            Root = Root_;
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/namespace.js", ['./cjs-loader.mjs', './field.js', './oneof.js', './util.js', './object.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$4 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./object": __cjsMetaURL$1,
+          "./field": __cjsMetaURL$2,
+          "./oneof": __cjsMetaURL$3,
+          "./util": __cjsMetaURL$4
+        }, _require);
+
+        (function () {
+          module.exports = Namespace; // extends ReflectionObject
+
+          var ReflectionObject = require("./object");
+
+          ((Namespace.prototype = Object.create(ReflectionObject.prototype)).constructor = Namespace).className = "Namespace";
+
+          var Field = require("./field"),
+              OneOf = require("./oneof"),
+              util = require("./util");
+
+          var Type, // cyclic
+          Service, Enum;
+          /**
+           * Constructs a new namespace instance.
+           * @name Namespace
+           * @classdesc Reflected namespace.
+           * @extends NamespaceBase
+           * @constructor
+           * @param {string} name Namespace name
+           * @param {Object.<string,*>} [options] Declared options
+           */
+
+          /**
+           * Constructs a namespace from JSON.
+           * @memberof Namespace
+           * @function
+           * @param {string} name Namespace name
+           * @param {Object.<string,*>} json JSON object
+           * @returns {Namespace} Created namespace
+           * @throws {TypeError} If arguments are invalid
+           */
+
+          Namespace.fromJSON = function fromJSON(name, json) {
+            return new Namespace(name, json.options).addJSON(json.nested);
+          };
+          /**
+           * Converts an array of reflection objects to JSON.
+           * @memberof Namespace
+           * @param {ReflectionObject[]} array Object array
+           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
+           * @returns {Object.<string,*>|undefined} JSON object or `undefined` when array is empty
+           */
+
+
+          function arrayToJSON(array, toJSONOptions) {
+            if (!(array && array.length)) return undefined;
+            var obj = {};
+
+            for (var i = 0; i < array.length; ++i) {
+              obj[array[i].name] = array[i].toJSON(toJSONOptions);
+            }
+
+            return obj;
+          }
+
+          Namespace.arrayToJSON = arrayToJSON;
+          /**
+           * Tests if the specified id is reserved.
+           * @param {Array.<number[]|string>|undefined} reserved Array of reserved ranges and names
+           * @param {number} id Id to test
+           * @returns {boolean} `true` if reserved, otherwise `false`
+           */
+
+          Namespace.isReservedId = function isReservedId(reserved, id) {
+            if (reserved) for (var i = 0; i < reserved.length; ++i) {
+              if (typeof reserved[i] !== "string" && reserved[i][0] <= id && reserved[i][1] > id) return true;
+            }
+            return false;
+          };
+          /**
+           * Tests if the specified name is reserved.
+           * @param {Array.<number[]|string>|undefined} reserved Array of reserved ranges and names
+           * @param {string} name Name to test
+           * @returns {boolean} `true` if reserved, otherwise `false`
+           */
+
+
+          Namespace.isReservedName = function isReservedName(reserved, name) {
+            if (reserved) for (var i = 0; i < reserved.length; ++i) {
+              if (reserved[i] === name) return true;
+            }
+            return false;
+          };
+          /**
+           * Not an actual constructor. Use {@link Namespace} instead.
+           * @classdesc Base class of all reflection objects containing nested objects. This is not an actual class but here for the sake of having consistent type definitions.
+           * @exports NamespaceBase
+           * @extends ReflectionObject
+           * @abstract
+           * @constructor
+           * @param {string} name Namespace name
+           * @param {Object.<string,*>} [options] Declared options
+           * @see {@link Namespace}
+           */
+
+
+          function Namespace(name, options) {
+            ReflectionObject.call(this, name, options);
+            /**
+             * Nested objects by name.
+             * @type {Object.<string,ReflectionObject>|undefined}
+             */
+
+            this.nested = undefined; // toJSON
+
+            /**
+             * Cached nested objects as an array.
+             * @type {ReflectionObject[]|null}
+             * @private
+             */
+
+            this._nestedArray = null;
+          }
+
+          function clearCache(namespace) {
+            namespace._nestedArray = null;
+            return namespace;
           }
           /**
-           * Map field descriptor.
-           * @interface IMapField
-           * @extends {IField}
-           * @property {string} keyType Key type
+           * Nested objects of this namespace as an array for iteration.
+           * @name NamespaceBase#nestedArray
+           * @type {ReflectionObject[]}
+           * @readonly
+           */
+
+
+          Object.defineProperty(Namespace.prototype, "nestedArray", {
+            get: function get() {
+              return this._nestedArray || (this._nestedArray = util.toArray(this.nested));
+            }
+          });
+          /**
+           * Namespace descriptor.
+           * @interface INamespace
+           * @property {Object.<string,*>} [options] Namespace options
+           * @property {Object.<string,AnyNestedObject>} [nested] Nested object descriptors
            */
 
           /**
-           * Extension map field descriptor.
-           * @interface IExtensionMapField
-           * @extends IMapField
-           * @property {string} extend Extended type
+           * Any extension field descriptor.
+           * @typedef AnyExtensionField
+           * @type {IExtensionField|IExtensionMapField}
            */
 
           /**
-           * Constructs a map field from a map field descriptor.
-           * @param {string} name Field name
-           * @param {IMapField} json Map field descriptor
-           * @returns {MapField} Created map field
+           * Any nested object descriptor.
+           * @typedef AnyNestedObject
+           * @type {IEnum|IType|IService|AnyExtensionField|INamespace}
+           */
+          // ^ BEWARE: VSCode hangs forever when using more than 5 types (that's why AnyExtensionField exists in the first place)
+
+          /**
+           * Converts this namespace to a namespace descriptor.
+           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
+           * @returns {INamespace} Namespace descriptor
+           */
+
+          Namespace.prototype.toJSON = function toJSON(toJSONOptions) {
+            return util.toObject(["options", this.options, "nested", arrayToJSON(this.nestedArray, toJSONOptions)]);
+          };
+          /**
+           * Adds nested objects to this namespace from nested object descriptors.
+           * @param {Object.<string,AnyNestedObject>} nestedJson Any nested object descriptors
+           * @returns {Namespace} `this`
+           */
+
+
+          Namespace.prototype.addJSON = function addJSON(nestedJson) {
+            var ns = this;
+            /* istanbul ignore else */
+
+            if (nestedJson) {
+              for (var names = Object.keys(nestedJson), i = 0, nested; i < names.length; ++i) {
+                nested = nestedJson[names[i]];
+                ns.add( // most to least likely
+                (nested.fields !== undefined ? Type.fromJSON : nested.values !== undefined ? Enum.fromJSON : nested.methods !== undefined ? Service.fromJSON : nested.id !== undefined ? Field.fromJSON : Namespace.fromJSON)(names[i], nested));
+              }
+            }
+
+            return this;
+          };
+          /**
+           * Gets the nested object of the specified name.
+           * @param {string} name Nested object name
+           * @returns {ReflectionObject|null} The reflection object or `null` if it doesn't exist
+           */
+
+
+          Namespace.prototype.get = function get(name) {
+            return this.nested && this.nested[name] || null;
+          };
+          /**
+           * Gets the values of the nested {@link Enum|enum} of the specified name.
+           * This methods differs from {@link Namespace#get|get} in that it returns an enum's values directly and throws instead of returning `null`.
+           * @param {string} name Nested enum name
+           * @returns {Object.<string,number>} Enum values
+           * @throws {Error} If there is no such enum
+           */
+
+
+          Namespace.prototype.getEnum = function getEnum(name) {
+            if (this.nested && this.nested[name] instanceof Enum) return this.nested[name].values;
+            throw Error("no such enum: " + name);
+          };
+          /**
+           * Adds a nested object to this namespace.
+           * @param {ReflectionObject} object Nested object to add
+           * @returns {Namespace} `this`
+           * @throws {TypeError} If arguments are invalid
+           * @throws {Error} If there is already a nested object with this name
+           */
+
+
+          Namespace.prototype.add = function add(object) {
+            if (!(object instanceof Field && object.extend !== undefined || object instanceof Type || object instanceof Enum || object instanceof Service || object instanceof Namespace || object instanceof OneOf)) throw TypeError("object must be a valid nested object");
+            if (!this.nested) this.nested = {};else {
+              var prev = this.get(object.name);
+
+              if (prev) {
+                if (prev instanceof Namespace && object instanceof Namespace && !(prev instanceof Type || prev instanceof Service)) {
+                  // replace plain namespace but keep existing nested elements and options
+                  var nested = prev.nestedArray;
+
+                  for (var i = 0; i < nested.length; ++i) {
+                    object.add(nested[i]);
+                  }
+
+                  this.remove(prev);
+                  if (!this.nested) this.nested = {};
+                  object.setOptions(prev.options, true);
+                } else throw Error("duplicate name '" + object.name + "' in " + this);
+              }
+            }
+            this.nested[object.name] = object;
+            object.onAdd(this);
+            return clearCache(this);
+          };
+          /**
+           * Removes a nested object from this namespace.
+           * @param {ReflectionObject} object Nested object to remove
+           * @returns {Namespace} `this`
+           * @throws {TypeError} If arguments are invalid
+           * @throws {Error} If `object` is not a member of this namespace
+           */
+
+
+          Namespace.prototype.remove = function remove(object) {
+            if (!(object instanceof ReflectionObject)) throw TypeError("object must be a ReflectionObject");
+            if (object.parent !== this) throw Error(object + " is not a member of " + this);
+            delete this.nested[object.name];
+            if (!Object.keys(this.nested).length) this.nested = undefined;
+            object.onRemove(this);
+            return clearCache(this);
+          };
+          /**
+           * Defines additial namespaces within this one if not yet existing.
+           * @param {string|string[]} path Path to create
+           * @param {*} [json] Nested types to create from JSON
+           * @returns {Namespace} Pointer to the last namespace created or `this` if path is empty
+           */
+
+
+          Namespace.prototype.define = function define(path, json) {
+            if (util.isString(path)) path = path.split(".");else if (!Array.isArray(path)) throw TypeError("illegal path");
+            if (path && path.length && path[0] === "") throw Error("path must be relative");
+            var ptr = this;
+
+            while (path.length > 0) {
+              var part = path.shift();
+
+              if (ptr.nested && ptr.nested[part]) {
+                ptr = ptr.nested[part];
+                if (!(ptr instanceof Namespace)) throw Error("path conflicts with non-namespace objects");
+              } else ptr.add(ptr = new Namespace(part));
+            }
+
+            if (json) ptr.addJSON(json);
+            return ptr;
+          };
+          /**
+           * Resolves this namespace's and all its nested objects' type references. Useful to validate a reflection tree, but comes at a cost.
+           * @returns {Namespace} `this`
+           */
+
+
+          Namespace.prototype.resolveAll = function resolveAll() {
+            var nested = this.nestedArray,
+                i = 0;
+
+            while (i < nested.length) {
+              if (nested[i] instanceof Namespace) nested[i++].resolveAll();else nested[i++].resolve();
+            }
+
+            return this.resolve();
+          };
+          /**
+           * Recursively looks up the reflection object matching the specified path in the scope of this namespace.
+           * @param {string|string[]} path Path to look up
+           * @param {*|Array.<*>} filterTypes Filter types, any combination of the constructors of `protobuf.Type`, `protobuf.Enum`, `protobuf.Service` etc.
+           * @param {boolean} [parentAlreadyChecked=false] If known, whether the parent has already been checked
+           * @returns {ReflectionObject|null} Looked up object or `null` if none could be found
+           */
+
+
+          Namespace.prototype.lookup = function lookup(path, filterTypes, parentAlreadyChecked) {
+            /* istanbul ignore next */
+            if (typeof filterTypes === "boolean") {
+              parentAlreadyChecked = filterTypes;
+              filterTypes = undefined;
+            } else if (filterTypes && !Array.isArray(filterTypes)) filterTypes = [filterTypes];
+
+            if (util.isString(path) && path.length) {
+              if (path === ".") return this.root;
+              path = path.split(".");
+            } else if (!path.length) return this; // Start at root if path is absolute
+
+
+            if (path[0] === "") return this.root.lookup(path.slice(1), filterTypes); // Test if the first part matches any nested object, and if so, traverse if path contains more
+
+            var found = this.get(path[0]);
+
+            if (found) {
+              if (path.length === 1) {
+                if (!filterTypes || filterTypes.indexOf(found.constructor) > -1) return found;
+              } else if (found instanceof Namespace && (found = found.lookup(path.slice(1), filterTypes, true))) return found; // Otherwise try each nested namespace
+
+            } else for (var i = 0; i < this.nestedArray.length; ++i) {
+              if (this._nestedArray[i] instanceof Namespace && (found = this._nestedArray[i].lookup(path, filterTypes, true))) return found;
+            } // If there hasn't been a match, try again at the parent
+
+
+            if (this.parent === null || parentAlreadyChecked) return null;
+            return this.parent.lookup(path, filterTypes);
+          };
+          /**
+           * Looks up the reflection object at the specified path, relative to this namespace.
+           * @name NamespaceBase#lookup
+           * @function
+           * @param {string|string[]} path Path to look up
+           * @param {boolean} [parentAlreadyChecked=false] Whether the parent has already been checked
+           * @returns {ReflectionObject|null} Looked up object or `null` if none could be found
+           * @variation 2
+           */
+          // lookup(path: string, [parentAlreadyChecked: boolean])
+
+          /**
+           * Looks up the {@link Type|type} at the specified path, relative to this namespace.
+           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
+           * @param {string|string[]} path Path to look up
+           * @returns {Type} Looked up type
+           * @throws {Error} If `path` does not point to a type
+           */
+
+
+          Namespace.prototype.lookupType = function lookupType(path) {
+            var found = this.lookup(path, [Type]);
+            if (!found) throw Error("no such type: " + path);
+            return found;
+          };
+          /**
+           * Looks up the values of the {@link Enum|enum} at the specified path, relative to this namespace.
+           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
+           * @param {string|string[]} path Path to look up
+           * @returns {Enum} Looked up enum
+           * @throws {Error} If `path` does not point to an enum
+           */
+
+
+          Namespace.prototype.lookupEnum = function lookupEnum(path) {
+            var found = this.lookup(path, [Enum]);
+            if (!found) throw Error("no such Enum '" + path + "' in " + this);
+            return found;
+          };
+          /**
+           * Looks up the {@link Type|type} or {@link Enum|enum} at the specified path, relative to this namespace.
+           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
+           * @param {string|string[]} path Path to look up
+           * @returns {Type} Looked up type or enum
+           * @throws {Error} If `path` does not point to a type or enum
+           */
+
+
+          Namespace.prototype.lookupTypeOrEnum = function lookupTypeOrEnum(path) {
+            var found = this.lookup(path, [Type, Enum]);
+            if (!found) throw Error("no such Type or Enum '" + path + "' in " + this);
+            return found;
+          };
+          /**
+           * Looks up the {@link Service|service} at the specified path, relative to this namespace.
+           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
+           * @param {string|string[]} path Path to look up
+           * @returns {Service} Looked up service
+           * @throws {Error} If `path` does not point to a service
+           */
+
+
+          Namespace.prototype.lookupService = function lookupService(path) {
+            var found = this.lookup(path, [Service]);
+            if (!found) throw Error("no such Service '" + path + "' in " + this);
+            return found;
+          }; // Sets up cyclic dependencies (called in index-light)
+
+
+          Namespace._configure = function (Type_, Service_, Enum_) {
+            Type = Type_;
+            Service = Service_;
+            Enum = Enum_;
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/enum.js", ['./cjs-loader.mjs', './namespace.js', './util.js', './object.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./object": __cjsMetaURL$1,
+          "./namespace": __cjsMetaURL$2,
+          "./util": __cjsMetaURL$3
+        }, _require);
+
+        (function () {
+          module.exports = Enum; // extends ReflectionObject
+
+          var ReflectionObject = require("./object");
+
+          ((Enum.prototype = Object.create(ReflectionObject.prototype)).constructor = Enum).className = "Enum";
+
+          var Namespace = require("./namespace"),
+              util = require("./util");
+          /**
+           * Constructs a new enum instance.
+           * @classdesc Reflected enum.
+           * @extends ReflectionObject
+           * @constructor
+           * @param {string} name Unique name within its namespace
+           * @param {Object.<string,number>} [values] Enum values as an object, by name
+           * @param {Object.<string,*>} [options] Declared options
+           * @param {string} [comment] The comment for this enum
+           * @param {Object.<string,string>} [comments] The value comments for this enum
+           */
+
+
+          function Enum(name, values, options, comment, comments) {
+            ReflectionObject.call(this, name, options);
+            if (values && typeof values !== "object") throw TypeError("values must be an object");
+            /**
+             * Enum values by id.
+             * @type {Object.<number,string>}
+             */
+
+            this.valuesById = {};
+            /**
+             * Enum values by name.
+             * @type {Object.<string,number>}
+             */
+
+            this.values = Object.create(this.valuesById); // toJSON, marker
+
+            /**
+             * Enum comment text.
+             * @type {string|null}
+             */
+
+            this.comment = comment;
+            /**
+             * Value comment texts, if any.
+             * @type {Object.<string,string>}
+             */
+
+            this.comments = comments || {};
+            /**
+             * Reserved ranges, if any.
+             * @type {Array.<number[]|string>}
+             */
+
+            this.reserved = undefined; // toJSON
+            // Note that values inherit valuesById on their prototype which makes them a TypeScript-
+            // compatible enum. This is used by pbts to write actual enum definitions that work for
+            // static and reflection code alike instead of emitting generic object definitions.
+
+            if (values) for (var keys = Object.keys(values), i = 0; i < keys.length; ++i) {
+              if (typeof values[keys[i]] === "number") // use forward entries only
+                this.valuesById[this.values[keys[i]] = values[keys[i]]] = keys[i];
+            }
+          }
+          /**
+           * Enum descriptor.
+           * @interface IEnum
+           * @property {Object.<string,number>} values Enum values
+           * @property {Object.<string,*>} [options] Enum options
+           */
+
+          /**
+           * Constructs an enum from an enum descriptor.
+           * @param {string} name Enum name
+           * @param {IEnum} json Enum descriptor
+           * @returns {Enum} Created enum
            * @throws {TypeError} If arguments are invalid
            */
 
 
-          MapField.fromJSON = function fromJSON(name, json) {
-            return new MapField(name, json.id, json.keyType, json.type, json.options, json.comment);
+          Enum.fromJSON = function fromJSON(name, json) {
+            var enm = new Enum(name, json.values, json.options, json.comment, json.comments);
+            enm.reserved = json.reserved;
+            return enm;
           };
           /**
-           * Converts this map field to a map field descriptor.
+           * Converts this enum to an enum descriptor.
            * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {IMapField} Map field descriptor
+           * @returns {IEnum} Enum descriptor
            */
 
 
-          MapField.prototype.toJSON = function toJSON(toJSONOptions) {
+          Enum.prototype.toJSON = function toJSON(toJSONOptions) {
             var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
-            return util.toObject(["keyType", this.keyType, "type", this.type, "id", this.id, "extend", this.extend, "options", this.options, "comment", keepComments ? this.comment : undefined]);
+            return util.toObject(["options", this.options, "values", this.values, "reserved", this.reserved && this.reserved.length ? this.reserved : undefined, "comment", keepComments ? this.comment : undefined, "comments", keepComments ? this.comments : undefined]);
           };
           /**
-           * @override
+           * Adds a value to this enum.
+           * @param {string} name Value name
+           * @param {number} id Value id
+           * @param {string} [comment] Comment, if any
+           * @returns {Enum} `this`
+           * @throws {TypeError} If arguments are invalid
+           * @throws {Error} If there is already a value with this name or id
            */
 
 
-          MapField.prototype.resolve = function resolve() {
-            if (this.resolved) return this; // Besides a value type, map fields have a key type that may be "any scalar type except for floating point types and bytes"
+          Enum.prototype.add = function add(name, id, comment) {
+            // utilized by the parser but not by .fromJSON
+            if (!util.isString(name)) throw TypeError("name must be a string");
+            if (!util.isInteger(id)) throw TypeError("id must be an integer");
+            if (this.values[name] !== undefined) throw Error("duplicate name '" + name + "' in " + this);
+            if (this.isReservedId(id)) throw Error("id " + id + " is reserved in " + this);
+            if (this.isReservedName(name)) throw Error("name '" + name + "' is reserved in " + this);
 
-            if (types.mapKey[this.keyType] === undefined) throw Error("invalid key type: " + this.keyType);
-            return Field.prototype.resolve.call(this);
+            if (this.valuesById[id] !== undefined) {
+              if (!(this.options && this.options.allow_alias)) throw Error("duplicate id " + id + " in " + this);
+              this.values[name] = id;
+            } else this.valuesById[this.values[name] = id] = name;
+
+            this.comments[name] = comment || null;
+            return this;
           };
           /**
-           * Map field decorator (TypeScript).
-           * @name MapField.d
-           * @function
-           * @param {number} fieldId Field id
-           * @param {"int32"|"uint32"|"sint32"|"fixed32"|"sfixed32"|"int64"|"uint64"|"sint64"|"fixed64"|"sfixed64"|"bool"|"string"} fieldKeyType Field key type
-           * @param {"double"|"float"|"int32"|"uint32"|"sint32"|"fixed32"|"sfixed32"|"int64"|"uint64"|"sint64"|"fixed64"|"sfixed64"|"bool"|"string"|"bytes"|Object|Constructor<{}>} fieldValueType Field value type
-           * @returns {FieldDecorator} Decorator function
-           * @template T extends { [key: string]: number | Long | string | boolean | Uint8Array | Buffer | number[] | Message<{}> }
+           * Removes a value from this enum
+           * @param {string} name Value name
+           * @returns {Enum} `this`
+           * @throws {TypeError} If arguments are invalid
+           * @throws {Error} If `name` is not a name of this enum
            */
 
 
-          MapField.d = function decorateMapField(fieldId, fieldKeyType, fieldValueType) {
-            // submessage value: decorate the submessage and use its name as the type
-            if (typeof fieldValueType === "function") fieldValueType = util.decorateType(fieldValueType).name; // enum reference value: create a reflected copy of the enum and keep reuseing it
-            else if (fieldValueType && typeof fieldValueType === "object") fieldValueType = util.decorateEnum(fieldValueType).name;
-            return function mapFieldDecorator(prototype, fieldName) {
-              util.decorateType(prototype.constructor).add(new MapField(fieldName, fieldId, fieldKeyType, fieldValueType));
-            };
+          Enum.prototype.remove = function remove(name) {
+            if (!util.isString(name)) throw TypeError("name must be a string");
+            var val = this.values[name];
+            if (val == null) throw Error("name '" + name + "' does not exist in " + this);
+            delete this.valuesById[val];
+            delete this.values[name];
+            delete this.comments[name];
+            return this;
+          };
+          /**
+           * Tests if the specified id is reserved.
+           * @param {number} id Id to test
+           * @returns {boolean} `true` if reserved, otherwise `false`
+           */
+
+
+          Enum.prototype.isReservedId = function isReservedId(id) {
+            return Namespace.isReservedId(this.reserved, id);
+          };
+          /**
+           * Tests if the specified name is reserved.
+           * @param {string} name Name to test
+           * @returns {boolean} `true` if reserved, otherwise `false`
+           */
+
+
+          Enum.prototype.isReservedName = function isReservedName(name) {
+            return Namespace.isReservedName(this.reserved, name);
           };
         })();
 
@@ -2837,591 +4412,6 @@ System.register("chunks:///_virtual/root.js", ['./cjs-loader.mjs', './field.js',
             Type = Type_;
             parse = parse_;
             common = common_;
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/field.js", ['./cjs-loader.mjs', './types.js', './util.js', './object.js', './enum.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$1, __cjsMetaURL$2;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$4 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./object": __cjsMetaURL$1,
-          "./enum": __cjsMetaURL$2,
-          "./types": __cjsMetaURL$3,
-          "./util": __cjsMetaURL$4
-        }, _require);
-
-        (function () {
-          module.exports = Field; // extends ReflectionObject
-
-          var ReflectionObject = require("./object");
-
-          ((Field.prototype = Object.create(ReflectionObject.prototype)).constructor = Field).className = "Field";
-
-          var Enum = require("./enum"),
-              types = require("./types"),
-              util = require("./util");
-
-          var Type; // cyclic
-
-          var ruleRe = /^required|optional|repeated$/;
-          /**
-           * Constructs a new message field instance. Note that {@link MapField|map fields} have their own class.
-           * @name Field
-           * @classdesc Reflected message field.
-           * @extends FieldBase
-           * @constructor
-           * @param {string} name Unique name within its namespace
-           * @param {number} id Unique id within its namespace
-           * @param {string} type Value type
-           * @param {string|Object.<string,*>} [rule="optional"] Field rule
-           * @param {string|Object.<string,*>} [extend] Extended type if different from parent
-           * @param {Object.<string,*>} [options] Declared options
-           */
-
-          /**
-           * Constructs a field from a field descriptor.
-           * @param {string} name Field name
-           * @param {IField} json Field descriptor
-           * @returns {Field} Created field
-           * @throws {TypeError} If arguments are invalid
-           */
-
-          Field.fromJSON = function fromJSON(name, json) {
-            return new Field(name, json.id, json.type, json.rule, json.extend, json.options, json.comment);
-          };
-          /**
-           * Not an actual constructor. Use {@link Field} instead.
-           * @classdesc Base class of all reflected message fields. This is not an actual class but here for the sake of having consistent type definitions.
-           * @exports FieldBase
-           * @extends ReflectionObject
-           * @constructor
-           * @param {string} name Unique name within its namespace
-           * @param {number} id Unique id within its namespace
-           * @param {string} type Value type
-           * @param {string|Object.<string,*>} [rule="optional"] Field rule
-           * @param {string|Object.<string,*>} [extend] Extended type if different from parent
-           * @param {Object.<string,*>} [options] Declared options
-           * @param {string} [comment] Comment associated with this field
-           */
-
-
-          function Field(name, id, type, rule, extend, options, comment) {
-            if (util.isObject(rule)) {
-              comment = extend;
-              options = rule;
-              rule = extend = undefined;
-            } else if (util.isObject(extend)) {
-              comment = options;
-              options = extend;
-              extend = undefined;
-            }
-
-            ReflectionObject.call(this, name, options);
-            if (!util.isInteger(id) || id < 0) throw TypeError("id must be a non-negative integer");
-            if (!util.isString(type)) throw TypeError("type must be a string");
-            if (rule !== undefined && !ruleRe.test(rule = rule.toString().toLowerCase())) throw TypeError("rule must be a string rule");
-            if (extend !== undefined && !util.isString(extend)) throw TypeError("extend must be a string");
-
-            if (rule === "proto3_optional") {
-              rule = "optional";
-            }
-            /**
-             * Field rule, if any.
-             * @type {string|undefined}
-             */
-
-
-            this.rule = rule && rule !== "optional" ? rule : undefined; // toJSON
-
-            /**
-             * Field type.
-             * @type {string}
-             */
-
-            this.type = type; // toJSON
-
-            /**
-             * Unique field id.
-             * @type {number}
-             */
-
-            this.id = id; // toJSON, marker
-
-            /**
-             * Extended type if different from parent.
-             * @type {string|undefined}
-             */
-
-            this.extend = extend || undefined; // toJSON
-
-            /**
-             * Whether this field is required.
-             * @type {boolean}
-             */
-
-            this.required = rule === "required";
-            /**
-             * Whether this field is optional.
-             * @type {boolean}
-             */
-
-            this.optional = !this.required;
-            /**
-             * Whether this field is repeated.
-             * @type {boolean}
-             */
-
-            this.repeated = rule === "repeated";
-            /**
-             * Whether this field is a map or not.
-             * @type {boolean}
-             */
-
-            this.map = false;
-            /**
-             * Message this field belongs to.
-             * @type {Type|null}
-             */
-
-            this.message = null;
-            /**
-             * OneOf this field belongs to, if any,
-             * @type {OneOf|null}
-             */
-
-            this.partOf = null;
-            /**
-             * The field type's default value.
-             * @type {*}
-             */
-
-            this.typeDefault = null;
-            /**
-             * The field's default value on prototypes.
-             * @type {*}
-             */
-
-            this.defaultValue = null;
-            /**
-             * Whether this field's value should be treated as a long.
-             * @type {boolean}
-             */
-
-            this["long"] = util.Long ? types["long"][type] !== undefined :
-            /* istanbul ignore next */
-            false;
-            /**
-             * Whether this field's value is a buffer.
-             * @type {boolean}
-             */
-
-            this.bytes = type === "bytes";
-            /**
-             * Resolved type if not a basic type.
-             * @type {Type|Enum|null}
-             */
-
-            this.resolvedType = null;
-            /**
-             * Sister-field within the extended type if a declaring extension field.
-             * @type {Field|null}
-             */
-
-            this.extensionField = null;
-            /**
-             * Sister-field within the declaring namespace if an extended field.
-             * @type {Field|null}
-             */
-
-            this.declaringField = null;
-            /**
-             * Internally remembers whether this field is packed.
-             * @type {boolean|null}
-             * @private
-             */
-
-            this._packed = null;
-            /**
-             * Comment for this field.
-             * @type {string|null}
-             */
-
-            this.comment = comment;
-          }
-          /**
-           * Determines whether this field is packed. Only relevant when repeated and working with proto2.
-           * @name Field#packed
-           * @type {boolean}
-           * @readonly
-           */
-
-
-          Object.defineProperty(Field.prototype, "packed", {
-            get: function get() {
-              // defaults to packed=true if not explicity set to false
-              if (this._packed === null) this._packed = this.getOption("packed") !== false;
-              return this._packed;
-            }
-          });
-          /**
-           * @override
-           */
-
-          Field.prototype.setOption = function setOption(name, value, ifNotSet) {
-            if (name === "packed") // clear cached before setting
-              this._packed = null;
-            return ReflectionObject.prototype.setOption.call(this, name, value, ifNotSet);
-          };
-          /**
-           * Field descriptor.
-           * @interface IField
-           * @property {string} [rule="optional"] Field rule
-           * @property {string} type Field type
-           * @property {number} id Field id
-           * @property {Object.<string,*>} [options] Field options
-           */
-
-          /**
-           * Extension field descriptor.
-           * @interface IExtensionField
-           * @extends IField
-           * @property {string} extend Extended type
-           */
-
-          /**
-           * Converts this field to a field descriptor.
-           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {IField} Field descriptor
-           */
-
-
-          Field.prototype.toJSON = function toJSON(toJSONOptions) {
-            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
-            return util.toObject(["rule", this.rule !== "optional" && this.rule || undefined, "type", this.type, "id", this.id, "extend", this.extend, "options", this.options, "comment", keepComments ? this.comment : undefined]);
-          };
-          /**
-           * Resolves this field's type references.
-           * @returns {Field} `this`
-           * @throws {Error} If any reference cannot be resolved
-           */
-
-
-          Field.prototype.resolve = function resolve() {
-            if (this.resolved) return this;
-
-            if ((this.typeDefault = types.defaults[this.type]) === undefined) {
-              // if not a basic type, resolve it
-              this.resolvedType = (this.declaringField ? this.declaringField.parent : this.parent).lookupTypeOrEnum(this.type);
-              if (this.resolvedType instanceof Type) this.typeDefault = null;else // instanceof Enum
-                this.typeDefault = this.resolvedType.values[Object.keys(this.resolvedType.values)[0]]; // first defined
-            } // use explicitly set default value if present
-
-
-            if (this.options && this.options["default"] != null) {
-              this.typeDefault = this.options["default"];
-              if (this.resolvedType instanceof Enum && typeof this.typeDefault === "string") this.typeDefault = this.resolvedType.values[this.typeDefault];
-            } // remove unnecessary options
-
-
-            if (this.options) {
-              if (this.options.packed === true || this.options.packed !== undefined && this.resolvedType && !(this.resolvedType instanceof Enum)) delete this.options.packed;
-              if (!Object.keys(this.options).length) this.options = undefined;
-            } // convert to internal data type if necesssary
-
-
-            if (this["long"]) {
-              this.typeDefault = util.Long.fromNumber(this.typeDefault, this.type.charAt(0) === "u");
-              /* istanbul ignore else */
-
-              if (Object.freeze) Object.freeze(this.typeDefault); // long instances are meant to be immutable anyway (i.e. use small int cache that even requires it)
-            } else if (this.bytes && typeof this.typeDefault === "string") {
-              var buf;
-              if (util.base64.test(this.typeDefault)) util.base64.decode(this.typeDefault, buf = util.newBuffer(util.base64.length(this.typeDefault)), 0);else util.utf8.write(this.typeDefault, buf = util.newBuffer(util.utf8.length(this.typeDefault)), 0);
-              this.typeDefault = buf;
-            } // take special care of maps and repeated fields
-
-
-            if (this.map) this.defaultValue = util.emptyObject;else if (this.repeated) this.defaultValue = util.emptyArray;else this.defaultValue = this.typeDefault; // ensure proper value on prototype
-
-            if (this.parent instanceof Type) this.parent.ctor.prototype[this.name] = this.defaultValue;
-            return ReflectionObject.prototype.resolve.call(this);
-          };
-          /**
-           * Decorator function as returned by {@link Field.d} and {@link MapField.d} (TypeScript).
-           * @typedef FieldDecorator
-           * @type {function}
-           * @param {Object} prototype Target prototype
-           * @param {string} fieldName Field name
-           * @returns {undefined}
-           */
-
-          /**
-           * Field decorator (TypeScript).
-           * @name Field.d
-           * @function
-           * @param {number} fieldId Field id
-           * @param {"double"|"float"|"int32"|"uint32"|"sint32"|"fixed32"|"sfixed32"|"int64"|"uint64"|"sint64"|"fixed64"|"sfixed64"|"string"|"bool"|"bytes"|Object} fieldType Field type
-           * @param {"optional"|"required"|"repeated"} [fieldRule="optional"] Field rule
-           * @param {T} [defaultValue] Default value
-           * @returns {FieldDecorator} Decorator function
-           * @template T extends number | number[] | Long | Long[] | string | string[] | boolean | boolean[] | Uint8Array | Uint8Array[] | Buffer | Buffer[]
-           */
-
-
-          Field.d = function decorateField(fieldId, fieldType, fieldRule, defaultValue) {
-            // submessage: decorate the submessage and use its name as the type
-            if (typeof fieldType === "function") fieldType = util.decorateType(fieldType).name; // enum reference: create a reflected copy of the enum and keep reuseing it
-            else if (fieldType && typeof fieldType === "object") fieldType = util.decorateEnum(fieldType).name;
-            return function fieldDecorator(prototype, fieldName) {
-              util.decorateType(prototype.constructor).add(new Field(fieldName, fieldId, fieldType, fieldRule, {
-                "default": defaultValue
-              }));
-            };
-          };
-          /**
-           * Field decorator (TypeScript).
-           * @name Field.d
-           * @function
-           * @param {number} fieldId Field id
-           * @param {Constructor<T>|string} fieldType Field type
-           * @param {"optional"|"required"|"repeated"} [fieldRule="optional"] Field rule
-           * @returns {FieldDecorator} Decorator function
-           * @template T extends Message<T>
-           * @variation 2
-           */
-          // like Field.d but without a default value
-          // Sets up cyclic dependencies (called in index-light)
-
-
-          Field._configure = function configure(Type_) {
-            Type = Type_;
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/enum.js", ['./cjs-loader.mjs', './namespace.js', './util.js', './object.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./object": __cjsMetaURL$1,
-          "./namespace": __cjsMetaURL$2,
-          "./util": __cjsMetaURL$3
-        }, _require);
-
-        (function () {
-          module.exports = Enum; // extends ReflectionObject
-
-          var ReflectionObject = require("./object");
-
-          ((Enum.prototype = Object.create(ReflectionObject.prototype)).constructor = Enum).className = "Enum";
-
-          var Namespace = require("./namespace"),
-              util = require("./util");
-          /**
-           * Constructs a new enum instance.
-           * @classdesc Reflected enum.
-           * @extends ReflectionObject
-           * @constructor
-           * @param {string} name Unique name within its namespace
-           * @param {Object.<string,number>} [values] Enum values as an object, by name
-           * @param {Object.<string,*>} [options] Declared options
-           * @param {string} [comment] The comment for this enum
-           * @param {Object.<string,string>} [comments] The value comments for this enum
-           */
-
-
-          function Enum(name, values, options, comment, comments) {
-            ReflectionObject.call(this, name, options);
-            if (values && typeof values !== "object") throw TypeError("values must be an object");
-            /**
-             * Enum values by id.
-             * @type {Object.<number,string>}
-             */
-
-            this.valuesById = {};
-            /**
-             * Enum values by name.
-             * @type {Object.<string,number>}
-             */
-
-            this.values = Object.create(this.valuesById); // toJSON, marker
-
-            /**
-             * Enum comment text.
-             * @type {string|null}
-             */
-
-            this.comment = comment;
-            /**
-             * Value comment texts, if any.
-             * @type {Object.<string,string>}
-             */
-
-            this.comments = comments || {};
-            /**
-             * Reserved ranges, if any.
-             * @type {Array.<number[]|string>}
-             */
-
-            this.reserved = undefined; // toJSON
-            // Note that values inherit valuesById on their prototype which makes them a TypeScript-
-            // compatible enum. This is used by pbts to write actual enum definitions that work for
-            // static and reflection code alike instead of emitting generic object definitions.
-
-            if (values) for (var keys = Object.keys(values), i = 0; i < keys.length; ++i) {
-              if (typeof values[keys[i]] === "number") // use forward entries only
-                this.valuesById[this.values[keys[i]] = values[keys[i]]] = keys[i];
-            }
-          }
-          /**
-           * Enum descriptor.
-           * @interface IEnum
-           * @property {Object.<string,number>} values Enum values
-           * @property {Object.<string,*>} [options] Enum options
-           */
-
-          /**
-           * Constructs an enum from an enum descriptor.
-           * @param {string} name Enum name
-           * @param {IEnum} json Enum descriptor
-           * @returns {Enum} Created enum
-           * @throws {TypeError} If arguments are invalid
-           */
-
-
-          Enum.fromJSON = function fromJSON(name, json) {
-            var enm = new Enum(name, json.values, json.options, json.comment, json.comments);
-            enm.reserved = json.reserved;
-            return enm;
-          };
-          /**
-           * Converts this enum to an enum descriptor.
-           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {IEnum} Enum descriptor
-           */
-
-
-          Enum.prototype.toJSON = function toJSON(toJSONOptions) {
-            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
-            return util.toObject(["options", this.options, "values", this.values, "reserved", this.reserved && this.reserved.length ? this.reserved : undefined, "comment", keepComments ? this.comment : undefined, "comments", keepComments ? this.comments : undefined]);
-          };
-          /**
-           * Adds a value to this enum.
-           * @param {string} name Value name
-           * @param {number} id Value id
-           * @param {string} [comment] Comment, if any
-           * @returns {Enum} `this`
-           * @throws {TypeError} If arguments are invalid
-           * @throws {Error} If there is already a value with this name or id
-           */
-
-
-          Enum.prototype.add = function add(name, id, comment) {
-            // utilized by the parser but not by .fromJSON
-            if (!util.isString(name)) throw TypeError("name must be a string");
-            if (!util.isInteger(id)) throw TypeError("id must be an integer");
-            if (this.values[name] !== undefined) throw Error("duplicate name '" + name + "' in " + this);
-            if (this.isReservedId(id)) throw Error("id " + id + " is reserved in " + this);
-            if (this.isReservedName(name)) throw Error("name '" + name + "' is reserved in " + this);
-
-            if (this.valuesById[id] !== undefined) {
-              if (!(this.options && this.options.allow_alias)) throw Error("duplicate id " + id + " in " + this);
-              this.values[name] = id;
-            } else this.valuesById[this.values[name] = id] = name;
-
-            this.comments[name] = comment || null;
-            return this;
-          };
-          /**
-           * Removes a value from this enum
-           * @param {string} name Value name
-           * @returns {Enum} `this`
-           * @throws {TypeError} If arguments are invalid
-           * @throws {Error} If `name` is not a name of this enum
-           */
-
-
-          Enum.prototype.remove = function remove(name) {
-            if (!util.isString(name)) throw TypeError("name must be a string");
-            var val = this.values[name];
-            if (val == null) throw Error("name '" + name + "' does not exist in " + this);
-            delete this.valuesById[val];
-            delete this.values[name];
-            delete this.comments[name];
-            return this;
-          };
-          /**
-           * Tests if the specified id is reserved.
-           * @param {number} id Id to test
-           * @returns {boolean} `true` if reserved, otherwise `false`
-           */
-
-
-          Enum.prototype.isReservedId = function isReservedId(id) {
-            return Namespace.isReservedId(this.reserved, id);
-          };
-          /**
-           * Tests if the specified name is reserved.
-           * @param {string} name Name to test
-           * @returns {boolean} `true` if reserved, otherwise `false`
-           */
-
-
-          Enum.prototype.isReservedName = function isReservedName(name) {
-            return Namespace.isReservedName(this.reserved, name);
           };
         })();
 
@@ -4095,6 +5085,1316 @@ System.register("chunks:///_virtual/type.js", ['./cjs-loader.mjs', './writer.js'
   };
 });
 
+System.register("chunks:///_virtual/mapfield.js", ['./cjs-loader.mjs', './types.js', './field.js', './util.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1, __cjsMetaURL$3;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./field": __cjsMetaURL$1,
+          "./types": __cjsMetaURL$2,
+          "./util": __cjsMetaURL$3
+        }, _require);
+
+        (function () {
+          module.exports = MapField; // extends Field
+
+          var Field = require("./field");
+
+          ((MapField.prototype = Object.create(Field.prototype)).constructor = MapField).className = "MapField";
+
+          var types = require("./types"),
+              util = require("./util");
+          /**
+           * Constructs a new map field instance.
+           * @classdesc Reflected map field.
+           * @extends FieldBase
+           * @constructor
+           * @param {string} name Unique name within its namespace
+           * @param {number} id Unique id within its namespace
+           * @param {string} keyType Key type
+           * @param {string} type Value type
+           * @param {Object.<string,*>} [options] Declared options
+           * @param {string} [comment] Comment associated with this field
+           */
+
+
+          function MapField(name, id, keyType, type, options, comment) {
+            Field.call(this, name, id, type, undefined, undefined, options, comment);
+            /* istanbul ignore if */
+
+            if (!util.isString(keyType)) throw TypeError("keyType must be a string");
+            /**
+             * Key type.
+             * @type {string}
+             */
+
+            this.keyType = keyType; // toJSON, marker
+
+            /**
+             * Resolved key type if not a basic type.
+             * @type {ReflectionObject|null}
+             */
+
+            this.resolvedKeyType = null; // Overrides Field#map
+
+            this.map = true;
+          }
+          /**
+           * Map field descriptor.
+           * @interface IMapField
+           * @extends {IField}
+           * @property {string} keyType Key type
+           */
+
+          /**
+           * Extension map field descriptor.
+           * @interface IExtensionMapField
+           * @extends IMapField
+           * @property {string} extend Extended type
+           */
+
+          /**
+           * Constructs a map field from a map field descriptor.
+           * @param {string} name Field name
+           * @param {IMapField} json Map field descriptor
+           * @returns {MapField} Created map field
+           * @throws {TypeError} If arguments are invalid
+           */
+
+
+          MapField.fromJSON = function fromJSON(name, json) {
+            return new MapField(name, json.id, json.keyType, json.type, json.options, json.comment);
+          };
+          /**
+           * Converts this map field to a map field descriptor.
+           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
+           * @returns {IMapField} Map field descriptor
+           */
+
+
+          MapField.prototype.toJSON = function toJSON(toJSONOptions) {
+            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
+            return util.toObject(["keyType", this.keyType, "type", this.type, "id", this.id, "extend", this.extend, "options", this.options, "comment", keepComments ? this.comment : undefined]);
+          };
+          /**
+           * @override
+           */
+
+
+          MapField.prototype.resolve = function resolve() {
+            if (this.resolved) return this; // Besides a value type, map fields have a key type that may be "any scalar type except for floating point types and bytes"
+
+            if (types.mapKey[this.keyType] === undefined) throw Error("invalid key type: " + this.keyType);
+            return Field.prototype.resolve.call(this);
+          };
+          /**
+           * Map field decorator (TypeScript).
+           * @name MapField.d
+           * @function
+           * @param {number} fieldId Field id
+           * @param {"int32"|"uint32"|"sint32"|"fixed32"|"sfixed32"|"int64"|"uint64"|"sint64"|"fixed64"|"sfixed64"|"bool"|"string"} fieldKeyType Field key type
+           * @param {"double"|"float"|"int32"|"uint32"|"sint32"|"fixed32"|"sfixed32"|"int64"|"uint64"|"sint64"|"fixed64"|"sfixed64"|"bool"|"string"|"bytes"|Object|Constructor<{}>} fieldValueType Field value type
+           * @returns {FieldDecorator} Decorator function
+           * @template T extends { [key: string]: number | Long | string | boolean | Uint8Array | Buffer | number[] | Message<{}> }
+           */
+
+
+          MapField.d = function decorateMapField(fieldId, fieldKeyType, fieldValueType) {
+            // submessage value: decorate the submessage and use its name as the type
+            if (typeof fieldValueType === "function") fieldValueType = util.decorateType(fieldValueType).name; // enum reference value: create a reflected copy of the enum and keep reuseing it
+            else if (fieldValueType && typeof fieldValueType === "object") fieldValueType = util.decorateEnum(fieldValueType).name;
+            return function mapFieldDecorator(prototype, fieldName) {
+              util.decorateType(prototype.constructor).add(new MapField(fieldName, fieldId, fieldKeyType, fieldValueType));
+            };
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/oneof.js", ['./cjs-loader.mjs', './field.js', './util.js', './object.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./object": __cjsMetaURL$1,
+          "./field": __cjsMetaURL$2,
+          "./util": __cjsMetaURL$3
+        }, _require);
+
+        (function () {
+          module.exports = OneOf; // extends ReflectionObject
+
+          var ReflectionObject = require("./object");
+
+          ((OneOf.prototype = Object.create(ReflectionObject.prototype)).constructor = OneOf).className = "OneOf";
+
+          var Field = require("./field"),
+              util = require("./util");
+          /**
+           * Constructs a new oneof instance.
+           * @classdesc Reflected oneof.
+           * @extends ReflectionObject
+           * @constructor
+           * @param {string} name Oneof name
+           * @param {string[]|Object.<string,*>} [fieldNames] Field names
+           * @param {Object.<string,*>} [options] Declared options
+           * @param {string} [comment] Comment associated with this field
+           */
+
+
+          function OneOf(name, fieldNames, options, comment) {
+            if (!Array.isArray(fieldNames)) {
+              options = fieldNames;
+              fieldNames = undefined;
+            }
+
+            ReflectionObject.call(this, name, options);
+            /* istanbul ignore if */
+
+            if (!(fieldNames === undefined || Array.isArray(fieldNames))) throw TypeError("fieldNames must be an Array");
+            /**
+             * Field names that belong to this oneof.
+             * @type {string[]}
+             */
+
+            this.oneof = fieldNames || []; // toJSON, marker
+
+            /**
+             * Fields that belong to this oneof as an array for iteration.
+             * @type {Field[]}
+             * @readonly
+             */
+
+            this.fieldsArray = []; // declared readonly for conformance, possibly not yet added to parent
+
+            /**
+             * Comment for this field.
+             * @type {string|null}
+             */
+
+            this.comment = comment;
+          }
+          /**
+           * Oneof descriptor.
+           * @interface IOneOf
+           * @property {Array.<string>} oneof Oneof field names
+           * @property {Object.<string,*>} [options] Oneof options
+           */
+
+          /**
+           * Constructs a oneof from a oneof descriptor.
+           * @param {string} name Oneof name
+           * @param {IOneOf} json Oneof descriptor
+           * @returns {OneOf} Created oneof
+           * @throws {TypeError} If arguments are invalid
+           */
+
+
+          OneOf.fromJSON = function fromJSON(name, json) {
+            return new OneOf(name, json.oneof, json.options, json.comment);
+          };
+          /**
+           * Converts this oneof to a oneof descriptor.
+           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
+           * @returns {IOneOf} Oneof descriptor
+           */
+
+
+          OneOf.prototype.toJSON = function toJSON(toJSONOptions) {
+            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
+            return util.toObject(["options", this.options, "oneof", this.oneof, "comment", keepComments ? this.comment : undefined]);
+          };
+          /**
+           * Adds the fields of the specified oneof to the parent if not already done so.
+           * @param {OneOf} oneof The oneof
+           * @returns {undefined}
+           * @inner
+           * @ignore
+           */
+
+
+          function addFieldsToParent(oneof) {
+            if (oneof.parent) for (var i = 0; i < oneof.fieldsArray.length; ++i) {
+              if (!oneof.fieldsArray[i].parent) oneof.parent.add(oneof.fieldsArray[i]);
+            }
+          }
+          /**
+           * Adds a field to this oneof and removes it from its current parent, if any.
+           * @param {Field} field Field to add
+           * @returns {OneOf} `this`
+           */
+
+
+          OneOf.prototype.add = function add(field) {
+            /* istanbul ignore if */
+            if (!(field instanceof Field)) throw TypeError("field must be a Field");
+            if (field.parent && field.parent !== this.parent) field.parent.remove(field);
+            this.oneof.push(field.name);
+            this.fieldsArray.push(field);
+            field.partOf = this; // field.parent remains null
+
+            addFieldsToParent(this);
+            return this;
+          };
+          /**
+           * Removes a field from this oneof and puts it back to the oneof's parent.
+           * @param {Field} field Field to remove
+           * @returns {OneOf} `this`
+           */
+
+
+          OneOf.prototype.remove = function remove(field) {
+            /* istanbul ignore if */
+            if (!(field instanceof Field)) throw TypeError("field must be a Field");
+            var index = this.fieldsArray.indexOf(field);
+            /* istanbul ignore if */
+
+            if (index < 0) throw Error(field + " is not a member of " + this);
+            this.fieldsArray.splice(index, 1);
+            index = this.oneof.indexOf(field.name);
+            /* istanbul ignore else */
+
+            if (index > -1) // theoretical
+              this.oneof.splice(index, 1);
+            field.partOf = null;
+            return this;
+          };
+          /**
+           * @override
+           */
+
+
+          OneOf.prototype.onAdd = function onAdd(parent) {
+            ReflectionObject.prototype.onAdd.call(this, parent);
+            var self = this; // Collect present fields
+
+            for (var i = 0; i < this.oneof.length; ++i) {
+              var field = parent.get(this.oneof[i]);
+
+              if (field && !field.partOf) {
+                field.partOf = self;
+                self.fieldsArray.push(field);
+              }
+            } // Add not yet present fields
+
+
+            addFieldsToParent(this);
+          };
+          /**
+           * @override
+           */
+
+
+          OneOf.prototype.onRemove = function onRemove(parent) {
+            for (var i = 0, field; i < this.fieldsArray.length; ++i) {
+              if ((field = this.fieldsArray[i]).parent) field.parent.remove(field);
+            }
+
+            ReflectionObject.prototype.onRemove.call(this, parent);
+          };
+          /**
+           * Decorator function as returned by {@link OneOf.d} (TypeScript).
+           * @typedef OneOfDecorator
+           * @type {function}
+           * @param {Object} prototype Target prototype
+           * @param {string} oneofName OneOf name
+           * @returns {undefined}
+           */
+
+          /**
+           * OneOf decorator (TypeScript).
+           * @function
+           * @param {...string} fieldNames Field names
+           * @returns {OneOfDecorator} Decorator function
+           * @template T extends string
+           */
+
+
+          OneOf.d = function decorateOneOf() {
+            var fieldNames = new Array(arguments.length),
+                index = 0;
+
+            while (index < arguments.length) {
+              fieldNames[index] = arguments[index++];
+            }
+
+            return function oneOfDecorator(prototype, oneofName) {
+              util.decorateType(prototype.constructor).add(new OneOf(oneofName, fieldNames));
+              Object.defineProperty(prototype, oneofName, {
+                get: util.oneOfGetter(fieldNames),
+                set: util.oneOfSetter(fieldNames)
+              });
+            };
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/field.js", ['./cjs-loader.mjs', './types.js', './util.js', './object.js', './enum.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$1, __cjsMetaURL$2;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$4 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./object": __cjsMetaURL$1,
+          "./enum": __cjsMetaURL$2,
+          "./types": __cjsMetaURL$3,
+          "./util": __cjsMetaURL$4
+        }, _require);
+
+        (function () {
+          module.exports = Field; // extends ReflectionObject
+
+          var ReflectionObject = require("./object");
+
+          ((Field.prototype = Object.create(ReflectionObject.prototype)).constructor = Field).className = "Field";
+
+          var Enum = require("./enum"),
+              types = require("./types"),
+              util = require("./util");
+
+          var Type; // cyclic
+
+          var ruleRe = /^required|optional|repeated$/;
+          /**
+           * Constructs a new message field instance. Note that {@link MapField|map fields} have their own class.
+           * @name Field
+           * @classdesc Reflected message field.
+           * @extends FieldBase
+           * @constructor
+           * @param {string} name Unique name within its namespace
+           * @param {number} id Unique id within its namespace
+           * @param {string} type Value type
+           * @param {string|Object.<string,*>} [rule="optional"] Field rule
+           * @param {string|Object.<string,*>} [extend] Extended type if different from parent
+           * @param {Object.<string,*>} [options] Declared options
+           */
+
+          /**
+           * Constructs a field from a field descriptor.
+           * @param {string} name Field name
+           * @param {IField} json Field descriptor
+           * @returns {Field} Created field
+           * @throws {TypeError} If arguments are invalid
+           */
+
+          Field.fromJSON = function fromJSON(name, json) {
+            return new Field(name, json.id, json.type, json.rule, json.extend, json.options, json.comment);
+          };
+          /**
+           * Not an actual constructor. Use {@link Field} instead.
+           * @classdesc Base class of all reflected message fields. This is not an actual class but here for the sake of having consistent type definitions.
+           * @exports FieldBase
+           * @extends ReflectionObject
+           * @constructor
+           * @param {string} name Unique name within its namespace
+           * @param {number} id Unique id within its namespace
+           * @param {string} type Value type
+           * @param {string|Object.<string,*>} [rule="optional"] Field rule
+           * @param {string|Object.<string,*>} [extend] Extended type if different from parent
+           * @param {Object.<string,*>} [options] Declared options
+           * @param {string} [comment] Comment associated with this field
+           */
+
+
+          function Field(name, id, type, rule, extend, options, comment) {
+            if (util.isObject(rule)) {
+              comment = extend;
+              options = rule;
+              rule = extend = undefined;
+            } else if (util.isObject(extend)) {
+              comment = options;
+              options = extend;
+              extend = undefined;
+            }
+
+            ReflectionObject.call(this, name, options);
+            if (!util.isInteger(id) || id < 0) throw TypeError("id must be a non-negative integer");
+            if (!util.isString(type)) throw TypeError("type must be a string");
+            if (rule !== undefined && !ruleRe.test(rule = rule.toString().toLowerCase())) throw TypeError("rule must be a string rule");
+            if (extend !== undefined && !util.isString(extend)) throw TypeError("extend must be a string");
+
+            if (rule === "proto3_optional") {
+              rule = "optional";
+            }
+            /**
+             * Field rule, if any.
+             * @type {string|undefined}
+             */
+
+
+            this.rule = rule && rule !== "optional" ? rule : undefined; // toJSON
+
+            /**
+             * Field type.
+             * @type {string}
+             */
+
+            this.type = type; // toJSON
+
+            /**
+             * Unique field id.
+             * @type {number}
+             */
+
+            this.id = id; // toJSON, marker
+
+            /**
+             * Extended type if different from parent.
+             * @type {string|undefined}
+             */
+
+            this.extend = extend || undefined; // toJSON
+
+            /**
+             * Whether this field is required.
+             * @type {boolean}
+             */
+
+            this.required = rule === "required";
+            /**
+             * Whether this field is optional.
+             * @type {boolean}
+             */
+
+            this.optional = !this.required;
+            /**
+             * Whether this field is repeated.
+             * @type {boolean}
+             */
+
+            this.repeated = rule === "repeated";
+            /**
+             * Whether this field is a map or not.
+             * @type {boolean}
+             */
+
+            this.map = false;
+            /**
+             * Message this field belongs to.
+             * @type {Type|null}
+             */
+
+            this.message = null;
+            /**
+             * OneOf this field belongs to, if any,
+             * @type {OneOf|null}
+             */
+
+            this.partOf = null;
+            /**
+             * The field type's default value.
+             * @type {*}
+             */
+
+            this.typeDefault = null;
+            /**
+             * The field's default value on prototypes.
+             * @type {*}
+             */
+
+            this.defaultValue = null;
+            /**
+             * Whether this field's value should be treated as a long.
+             * @type {boolean}
+             */
+
+            this["long"] = util.Long ? types["long"][type] !== undefined :
+            /* istanbul ignore next */
+            false;
+            /**
+             * Whether this field's value is a buffer.
+             * @type {boolean}
+             */
+
+            this.bytes = type === "bytes";
+            /**
+             * Resolved type if not a basic type.
+             * @type {Type|Enum|null}
+             */
+
+            this.resolvedType = null;
+            /**
+             * Sister-field within the extended type if a declaring extension field.
+             * @type {Field|null}
+             */
+
+            this.extensionField = null;
+            /**
+             * Sister-field within the declaring namespace if an extended field.
+             * @type {Field|null}
+             */
+
+            this.declaringField = null;
+            /**
+             * Internally remembers whether this field is packed.
+             * @type {boolean|null}
+             * @private
+             */
+
+            this._packed = null;
+            /**
+             * Comment for this field.
+             * @type {string|null}
+             */
+
+            this.comment = comment;
+          }
+          /**
+           * Determines whether this field is packed. Only relevant when repeated and working with proto2.
+           * @name Field#packed
+           * @type {boolean}
+           * @readonly
+           */
+
+
+          Object.defineProperty(Field.prototype, "packed", {
+            get: function get() {
+              // defaults to packed=true if not explicity set to false
+              if (this._packed === null) this._packed = this.getOption("packed") !== false;
+              return this._packed;
+            }
+          });
+          /**
+           * @override
+           */
+
+          Field.prototype.setOption = function setOption(name, value, ifNotSet) {
+            if (name === "packed") // clear cached before setting
+              this._packed = null;
+            return ReflectionObject.prototype.setOption.call(this, name, value, ifNotSet);
+          };
+          /**
+           * Field descriptor.
+           * @interface IField
+           * @property {string} [rule="optional"] Field rule
+           * @property {string} type Field type
+           * @property {number} id Field id
+           * @property {Object.<string,*>} [options] Field options
+           */
+
+          /**
+           * Extension field descriptor.
+           * @interface IExtensionField
+           * @extends IField
+           * @property {string} extend Extended type
+           */
+
+          /**
+           * Converts this field to a field descriptor.
+           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
+           * @returns {IField} Field descriptor
+           */
+
+
+          Field.prototype.toJSON = function toJSON(toJSONOptions) {
+            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
+            return util.toObject(["rule", this.rule !== "optional" && this.rule || undefined, "type", this.type, "id", this.id, "extend", this.extend, "options", this.options, "comment", keepComments ? this.comment : undefined]);
+          };
+          /**
+           * Resolves this field's type references.
+           * @returns {Field} `this`
+           * @throws {Error} If any reference cannot be resolved
+           */
+
+
+          Field.prototype.resolve = function resolve() {
+            if (this.resolved) return this;
+
+            if ((this.typeDefault = types.defaults[this.type]) === undefined) {
+              // if not a basic type, resolve it
+              this.resolvedType = (this.declaringField ? this.declaringField.parent : this.parent).lookupTypeOrEnum(this.type);
+              if (this.resolvedType instanceof Type) this.typeDefault = null;else // instanceof Enum
+                this.typeDefault = this.resolvedType.values[Object.keys(this.resolvedType.values)[0]]; // first defined
+            } // use explicitly set default value if present
+
+
+            if (this.options && this.options["default"] != null) {
+              this.typeDefault = this.options["default"];
+              if (this.resolvedType instanceof Enum && typeof this.typeDefault === "string") this.typeDefault = this.resolvedType.values[this.typeDefault];
+            } // remove unnecessary options
+
+
+            if (this.options) {
+              if (this.options.packed === true || this.options.packed !== undefined && this.resolvedType && !(this.resolvedType instanceof Enum)) delete this.options.packed;
+              if (!Object.keys(this.options).length) this.options = undefined;
+            } // convert to internal data type if necesssary
+
+
+            if (this["long"]) {
+              this.typeDefault = util.Long.fromNumber(this.typeDefault, this.type.charAt(0) === "u");
+              /* istanbul ignore else */
+
+              if (Object.freeze) Object.freeze(this.typeDefault); // long instances are meant to be immutable anyway (i.e. use small int cache that even requires it)
+            } else if (this.bytes && typeof this.typeDefault === "string") {
+              var buf;
+              if (util.base64.test(this.typeDefault)) util.base64.decode(this.typeDefault, buf = util.newBuffer(util.base64.length(this.typeDefault)), 0);else util.utf8.write(this.typeDefault, buf = util.newBuffer(util.utf8.length(this.typeDefault)), 0);
+              this.typeDefault = buf;
+            } // take special care of maps and repeated fields
+
+
+            if (this.map) this.defaultValue = util.emptyObject;else if (this.repeated) this.defaultValue = util.emptyArray;else this.defaultValue = this.typeDefault; // ensure proper value on prototype
+
+            if (this.parent instanceof Type) this.parent.ctor.prototype[this.name] = this.defaultValue;
+            return ReflectionObject.prototype.resolve.call(this);
+          };
+          /**
+           * Decorator function as returned by {@link Field.d} and {@link MapField.d} (TypeScript).
+           * @typedef FieldDecorator
+           * @type {function}
+           * @param {Object} prototype Target prototype
+           * @param {string} fieldName Field name
+           * @returns {undefined}
+           */
+
+          /**
+           * Field decorator (TypeScript).
+           * @name Field.d
+           * @function
+           * @param {number} fieldId Field id
+           * @param {"double"|"float"|"int32"|"uint32"|"sint32"|"fixed32"|"sfixed32"|"int64"|"uint64"|"sint64"|"fixed64"|"sfixed64"|"string"|"bool"|"bytes"|Object} fieldType Field type
+           * @param {"optional"|"required"|"repeated"} [fieldRule="optional"] Field rule
+           * @param {T} [defaultValue] Default value
+           * @returns {FieldDecorator} Decorator function
+           * @template T extends number | number[] | Long | Long[] | string | string[] | boolean | boolean[] | Uint8Array | Uint8Array[] | Buffer | Buffer[]
+           */
+
+
+          Field.d = function decorateField(fieldId, fieldType, fieldRule, defaultValue) {
+            // submessage: decorate the submessage and use its name as the type
+            if (typeof fieldType === "function") fieldType = util.decorateType(fieldType).name; // enum reference: create a reflected copy of the enum and keep reuseing it
+            else if (fieldType && typeof fieldType === "object") fieldType = util.decorateEnum(fieldType).name;
+            return function fieldDecorator(prototype, fieldName) {
+              util.decorateType(prototype.constructor).add(new Field(fieldName, fieldId, fieldType, fieldRule, {
+                "default": defaultValue
+              }));
+            };
+          };
+          /**
+           * Field decorator (TypeScript).
+           * @name Field.d
+           * @function
+           * @param {number} fieldId Field id
+           * @param {Constructor<T>|string} fieldType Field type
+           * @param {"optional"|"required"|"repeated"} [fieldRule="optional"] Field rule
+           * @returns {FieldDecorator} Decorator function
+           * @template T extends Message<T>
+           * @variation 2
+           */
+          // like Field.d but without a default value
+          // Sets up cyclic dependencies (called in index-light)
+
+
+          Field._configure = function configure(Type_) {
+            Type = Type_;
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/method.js", ['./cjs-loader.mjs', './util.js', './object.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./object": __cjsMetaURL$1,
+          "./util": __cjsMetaURL$2
+        }, _require);
+
+        (function () {
+          module.exports = Method; // extends ReflectionObject
+
+          var ReflectionObject = require("./object");
+
+          ((Method.prototype = Object.create(ReflectionObject.prototype)).constructor = Method).className = "Method";
+
+          var util = require("./util");
+          /**
+           * Constructs a new service method instance.
+           * @classdesc Reflected service method.
+           * @extends ReflectionObject
+           * @constructor
+           * @param {string} name Method name
+           * @param {string|undefined} type Method type, usually `"rpc"`
+           * @param {string} requestType Request message type
+           * @param {string} responseType Response message type
+           * @param {boolean|Object.<string,*>} [requestStream] Whether the request is streamed
+           * @param {boolean|Object.<string,*>} [responseStream] Whether the response is streamed
+           * @param {Object.<string,*>} [options] Declared options
+           * @param {string} [comment] The comment for this method
+           * @param {Object.<string,*>} [parsedOptions] Declared options, properly parsed into an object
+           */
+
+
+          function Method(name, type, requestType, responseType, requestStream, responseStream, options, comment, parsedOptions) {
+            /* istanbul ignore next */
+            if (util.isObject(requestStream)) {
+              options = requestStream;
+              requestStream = responseStream = undefined;
+            } else if (util.isObject(responseStream)) {
+              options = responseStream;
+              responseStream = undefined;
+            }
+            /* istanbul ignore if */
+
+
+            if (!(type === undefined || util.isString(type))) throw TypeError("type must be a string");
+            /* istanbul ignore if */
+
+            if (!util.isString(requestType)) throw TypeError("requestType must be a string");
+            /* istanbul ignore if */
+
+            if (!util.isString(responseType)) throw TypeError("responseType must be a string");
+            ReflectionObject.call(this, name, options);
+            /**
+             * Method type.
+             * @type {string}
+             */
+
+            this.type = type || "rpc"; // toJSON
+
+            /**
+             * Request type.
+             * @type {string}
+             */
+
+            this.requestType = requestType; // toJSON, marker
+
+            /**
+             * Whether requests are streamed or not.
+             * @type {boolean|undefined}
+             */
+
+            this.requestStream = requestStream ? true : undefined; // toJSON
+
+            /**
+             * Response type.
+             * @type {string}
+             */
+
+            this.responseType = responseType; // toJSON
+
+            /**
+             * Whether responses are streamed or not.
+             * @type {boolean|undefined}
+             */
+
+            this.responseStream = responseStream ? true : undefined; // toJSON
+
+            /**
+             * Resolved request type.
+             * @type {Type|null}
+             */
+
+            this.resolvedRequestType = null;
+            /**
+             * Resolved response type.
+             * @type {Type|null}
+             */
+
+            this.resolvedResponseType = null;
+            /**
+             * Comment for this method
+             * @type {string|null}
+             */
+
+            this.comment = comment;
+            /**
+             * Options properly parsed into an object
+             */
+
+            this.parsedOptions = parsedOptions;
+          }
+          /**
+           * Method descriptor.
+           * @interface IMethod
+           * @property {string} [type="rpc"] Method type
+           * @property {string} requestType Request type
+           * @property {string} responseType Response type
+           * @property {boolean} [requestStream=false] Whether requests are streamed
+           * @property {boolean} [responseStream=false] Whether responses are streamed
+           * @property {Object.<string,*>} [options] Method options
+           * @property {string} comment Method comments
+           * @property {Object.<string,*>} [parsedOptions] Method options properly parsed into an object
+           */
+
+          /**
+           * Constructs a method from a method descriptor.
+           * @param {string} name Method name
+           * @param {IMethod} json Method descriptor
+           * @returns {Method} Created method
+           * @throws {TypeError} If arguments are invalid
+           */
+
+
+          Method.fromJSON = function fromJSON(name, json) {
+            return new Method(name, json.type, json.requestType, json.responseType, json.requestStream, json.responseStream, json.options, json.comment, json.parsedOptions);
+          };
+          /**
+           * Converts this method to a method descriptor.
+           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
+           * @returns {IMethod} Method descriptor
+           */
+
+
+          Method.prototype.toJSON = function toJSON(toJSONOptions) {
+            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
+            return util.toObject(["type", this.type !== "rpc" &&
+            /* istanbul ignore next */
+            this.type || undefined, "requestType", this.requestType, "requestStream", this.requestStream, "responseType", this.responseType, "responseStream", this.responseStream, "options", this.options, "comment", keepComments ? this.comment : undefined, "parsedOptions", this.parsedOptions]);
+          };
+          /**
+           * @override
+           */
+
+
+          Method.prototype.resolve = function resolve() {
+            /* istanbul ignore if */
+            if (this.resolved) return this;
+            this.resolvedRequestType = this.parent.lookupType(this.requestType);
+            this.resolvedResponseType = this.parent.lookupType(this.responseType);
+            return ReflectionObject.prototype.resolve.call(this);
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/service.js", ['./cjs-loader.mjs', './rpc.js', './namespace.js', './method.js', './util.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$4, __cjsMetaURL$1, __cjsMetaURL$2, __cjsMetaURL$3;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$4 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$3 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./namespace": __cjsMetaURL$1,
+          "./method": __cjsMetaURL$2,
+          "./util": __cjsMetaURL$3,
+          "./rpc": __cjsMetaURL$4
+        }, _require);
+
+        (function () {
+          module.exports = Service; // extends Namespace
+
+          var Namespace = require("./namespace");
+
+          ((Service.prototype = Object.create(Namespace.prototype)).constructor = Service).className = "Service";
+
+          var Method = require("./method"),
+              util = require("./util"),
+              rpc = require("./rpc");
+          /**
+           * Constructs a new service instance.
+           * @classdesc Reflected service.
+           * @extends NamespaceBase
+           * @constructor
+           * @param {string} name Service name
+           * @param {Object.<string,*>} [options] Service options
+           * @throws {TypeError} If arguments are invalid
+           */
+
+
+          function Service(name, options) {
+            Namespace.call(this, name, options);
+            /**
+             * Service methods.
+             * @type {Object.<string,Method>}
+             */
+
+            this.methods = {}; // toJSON, marker
+
+            /**
+             * Cached methods as an array.
+             * @type {Method[]|null}
+             * @private
+             */
+
+            this._methodsArray = null;
+          }
+          /**
+           * Service descriptor.
+           * @interface IService
+           * @extends INamespace
+           * @property {Object.<string,IMethod>} methods Method descriptors
+           */
+
+          /**
+           * Constructs a service from a service descriptor.
+           * @param {string} name Service name
+           * @param {IService} json Service descriptor
+           * @returns {Service} Created service
+           * @throws {TypeError} If arguments are invalid
+           */
+
+
+          Service.fromJSON = function fromJSON(name, json) {
+            var service = new Service(name, json.options);
+            /* istanbul ignore else */
+
+            if (json.methods) for (var names = Object.keys(json.methods), i = 0; i < names.length; ++i) {
+              service.add(Method.fromJSON(names[i], json.methods[names[i]]));
+            }
+            if (json.nested) service.addJSON(json.nested);
+            service.comment = json.comment;
+            return service;
+          };
+          /**
+           * Converts this service to a service descriptor.
+           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
+           * @returns {IService} Service descriptor
+           */
+
+
+          Service.prototype.toJSON = function toJSON(toJSONOptions) {
+            var inherited = Namespace.prototype.toJSON.call(this, toJSONOptions);
+            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
+            return util.toObject(["options", inherited && inherited.options || undefined, "methods", Namespace.arrayToJSON(this.methodsArray, toJSONOptions) ||
+            /* istanbul ignore next */
+            {}, "nested", inherited && inherited.nested || undefined, "comment", keepComments ? this.comment : undefined]);
+          };
+          /**
+           * Methods of this service as an array for iteration.
+           * @name Service#methodsArray
+           * @type {Method[]}
+           * @readonly
+           */
+
+
+          Object.defineProperty(Service.prototype, "methodsArray", {
+            get: function get() {
+              return this._methodsArray || (this._methodsArray = util.toArray(this.methods));
+            }
+          });
+
+          function clearCache(service) {
+            service._methodsArray = null;
+            return service;
+          }
+          /**
+           * @override
+           */
+
+
+          Service.prototype.get = function get(name) {
+            return this.methods[name] || Namespace.prototype.get.call(this, name);
+          };
+          /**
+           * @override
+           */
+
+
+          Service.prototype.resolveAll = function resolveAll() {
+            var methods = this.methodsArray;
+
+            for (var i = 0; i < methods.length; ++i) {
+              methods[i].resolve();
+            }
+
+            return Namespace.prototype.resolve.call(this);
+          };
+          /**
+           * @override
+           */
+
+
+          Service.prototype.add = function add(object) {
+            /* istanbul ignore if */
+            if (this.get(object.name)) throw Error("duplicate name '" + object.name + "' in " + this);
+
+            if (object instanceof Method) {
+              this.methods[object.name] = object;
+              object.parent = this;
+              return clearCache(this);
+            }
+
+            return Namespace.prototype.add.call(this, object);
+          };
+          /**
+           * @override
+           */
+
+
+          Service.prototype.remove = function remove(object) {
+            if (object instanceof Method) {
+              /* istanbul ignore if */
+              if (this.methods[object.name] !== object) throw Error(object + " is not a member of " + this);
+              delete this.methods[object.name];
+              object.parent = null;
+              return clearCache(this);
+            }
+
+            return Namespace.prototype.remove.call(this, object);
+          };
+          /**
+           * Creates a runtime service using the specified rpc implementation.
+           * @param {RPCImpl} rpcImpl RPC implementation
+           * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+           * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+           * @returns {rpc.Service} RPC service. Useful where requests and/or responses are streamed.
+           */
+
+
+          Service.prototype.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+            var rpcService = new rpc.Service(rpcImpl, requestDelimited, responseDelimited);
+
+            for (var i = 0, method; i <
+            /* initializes */
+            this.methodsArray.length; ++i) {
+              var methodName = util.lcFirst((method = this._methodsArray[i]).resolve().name).replace(/[^$\w_]/g, "");
+              rpcService[methodName] = util.codegen(["r", "c"], util.isReserved(methodName) ? methodName + "_" : methodName)("return this.rpcCall(m,q,s,r,c)")({
+                m: method,
+                q: method.resolvedRequestType.ctor,
+                s: method.resolvedResponseType.ctor
+              });
+            }
+
+            return rpcService;
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/wrappers.js", ['./cjs-loader.mjs', './message.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./message": __cjsMetaURL$1
+        }, _require);
+
+        (function () {
+          /**
+           * Wrappers for common types.
+           * @type {Object.<string,IWrapper>}
+           * @const
+           */
+          var wrappers = exports$1;
+
+          var Message = require("./message");
+          /**
+           * From object converter part of an {@link IWrapper}.
+           * @typedef WrapperFromObjectConverter
+           * @type {function}
+           * @param {Object.<string,*>} object Plain object
+           * @returns {Message<{}>} Message instance
+           * @this Type
+           */
+
+          /**
+           * To object converter part of an {@link IWrapper}.
+           * @typedef WrapperToObjectConverter
+           * @type {function}
+           * @param {Message<{}>} message Message instance
+           * @param {IConversionOptions} [options] Conversion options
+           * @returns {Object.<string,*>} Plain object
+           * @this Type
+           */
+
+          /**
+           * Common type wrapper part of {@link wrappers}.
+           * @interface IWrapper
+           * @property {WrapperFromObjectConverter} [fromObject] From object converter
+           * @property {WrapperToObjectConverter} [toObject] To object converter
+           */
+          // Custom wrapper for Any
+
+
+          wrappers[".google.protobuf.Any"] = {
+            fromObject: function fromObject(object) {
+              // unwrap value type if mapped
+              if (object && object["@type"]) {
+                // Only use fully qualified type name after the last '/'
+                var name = object["@type"].substring(object["@type"].lastIndexOf("/") + 1);
+                var type = this.lookup(name);
+                /* istanbul ignore else */
+
+                if (type) {
+                  // type_url does not accept leading "."
+                  var type_url = object["@type"].charAt(0) === "." ? object["@type"].substr(1) : object["@type"]; // type_url prefix is optional, but path seperator is required
+
+                  if (type_url.indexOf("/") === -1) {
+                    type_url = "/" + type_url;
+                  }
+
+                  return this.create({
+                    type_url: type_url,
+                    value: type.encode(type.fromObject(object)).finish()
+                  });
+                }
+              }
+
+              return this.fromObject(object);
+            },
+            toObject: function toObject(message, options) {
+              // Default prefix
+              var googleApi = "type.googleapis.com/";
+              var prefix = "";
+              var name = ""; // decode value if requested and unmapped
+
+              if (options && options.json && message.type_url && message.value) {
+                // Only use fully qualified type name after the last '/'
+                name = message.type_url.substring(message.type_url.lastIndexOf("/") + 1); // Separate the prefix used
+
+                prefix = message.type_url.substring(0, message.type_url.lastIndexOf("/") + 1);
+                var type = this.lookup(name);
+                /* istanbul ignore else */
+
+                if (type) message = type.decode(message.value);
+              } // wrap value if unmapped
+
+
+              if (!(message instanceof this.ctor) && message instanceof Message) {
+                var object = message.$type.toObject(message, options);
+                var messageName = message.$type.fullName[0] === "." ? message.$type.fullName.substr(1) : message.$type.fullName; // Default to type.googleapis.com prefix if no prefix is used
+
+                if (prefix === "") {
+                  prefix = googleApi;
+                }
+
+                name = prefix + messageName;
+                object["@type"] = name;
+                return object;
+              }
+
+              return this.toObject(message, options);
+            }
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
 System.register("chunks:///_virtual/types.js", ['./cjs-loader.mjs', './util.js'], function (exports, module) {
   'use strict';
 
@@ -4382,22 +6682,16 @@ System.register("chunks:///_virtual/types.js", ['./cjs-loader.mjs', './util.js']
   };
 });
 
-System.register("chunks:///_virtual/service.js", ['./cjs-loader.mjs', './rpc.js', './namespace.js', './method.js', './util.js'], function (exports, module) {
+System.register("chunks:///_virtual/message.js", ['./cjs-loader.mjs', './minimal.js'], function (exports, module) {
   'use strict';
 
-  var loader, __cjsMetaURL$4, __cjsMetaURL$1, __cjsMetaURL$2, __cjsMetaURL$3;
+  var loader, __cjsMetaURL$1;
 
   return {
     setters: [function (module) {
       loader = module.default;
     }, function (module) {
-      __cjsMetaURL$4 = module.__cjsMetaURL;
-    }, function (module) {
       __cjsMetaURL$1 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
     }],
     execute: function () {
       exports('default', void 0);
@@ -4406,189 +6700,158 @@ System.register("chunks:///_virtual/service.js", ['./cjs-loader.mjs', './rpc.js'
 
       loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
         var require = loader.createRequireWithReqMap({
-          "./namespace": __cjsMetaURL$1,
-          "./method": __cjsMetaURL$2,
-          "./util": __cjsMetaURL$3,
-          "./rpc": __cjsMetaURL$4
+          "./util/minimal": __cjsMetaURL$1
         }, _require);
 
         (function () {
-          module.exports = Service; // extends Namespace
+          module.exports = Message;
 
-          var Namespace = require("./namespace");
-
-          ((Service.prototype = Object.create(Namespace.prototype)).constructor = Service).className = "Service";
-
-          var Method = require("./method"),
-              util = require("./util"),
-              rpc = require("./rpc");
+          var util = require("./util/minimal");
           /**
-           * Constructs a new service instance.
-           * @classdesc Reflected service.
-           * @extends NamespaceBase
+           * Constructs a new message instance.
+           * @classdesc Abstract runtime message.
            * @constructor
-           * @param {string} name Service name
-           * @param {Object.<string,*>} [options] Service options
-           * @throws {TypeError} If arguments are invalid
+           * @param {Properties<T>} [properties] Properties to set
+           * @template T extends object = object
            */
 
 
-          function Service(name, options) {
-            Namespace.call(this, name, options);
-            /**
-             * Service methods.
-             * @type {Object.<string,Method>}
-             */
-
-            this.methods = {}; // toJSON, marker
-
-            /**
-             * Cached methods as an array.
-             * @type {Method[]|null}
-             * @private
-             */
-
-            this._methodsArray = null;
+          function Message(properties) {
+            // not used internally
+            if (properties) for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i) {
+              this[keys[i]] = properties[keys[i]];
+            }
           }
           /**
-           * Service descriptor.
-           * @interface IService
-           * @extends INamespace
-           * @property {Object.<string,IMethod>} methods Method descriptors
-           */
-
-          /**
-           * Constructs a service from a service descriptor.
-           * @param {string} name Service name
-           * @param {IService} json Service descriptor
-           * @returns {Service} Created service
-           * @throws {TypeError} If arguments are invalid
-           */
-
-
-          Service.fromJSON = function fromJSON(name, json) {
-            var service = new Service(name, json.options);
-            /* istanbul ignore else */
-
-            if (json.methods) for (var names = Object.keys(json.methods), i = 0; i < names.length; ++i) {
-              service.add(Method.fromJSON(names[i], json.methods[names[i]]));
-            }
-            if (json.nested) service.addJSON(json.nested);
-            service.comment = json.comment;
-            return service;
-          };
-          /**
-           * Converts this service to a service descriptor.
-           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {IService} Service descriptor
-           */
-
-
-          Service.prototype.toJSON = function toJSON(toJSONOptions) {
-            var inherited = Namespace.prototype.toJSON.call(this, toJSONOptions);
-            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
-            return util.toObject(["options", inherited && inherited.options || undefined, "methods", Namespace.arrayToJSON(this.methodsArray, toJSONOptions) ||
-            /* istanbul ignore next */
-            {}, "nested", inherited && inherited.nested || undefined, "comment", keepComments ? this.comment : undefined]);
-          };
-          /**
-           * Methods of this service as an array for iteration.
-           * @name Service#methodsArray
-           * @type {Method[]}
+           * Reference to the reflected type.
+           * @name Message.$type
+           * @type {Type}
            * @readonly
            */
 
-
-          Object.defineProperty(Service.prototype, "methodsArray", {
-            get: function get() {
-              return this._methodsArray || (this._methodsArray = util.toArray(this.methods));
-            }
-          });
-
-          function clearCache(service) {
-            service._methodsArray = null;
-            return service;
-          }
           /**
-           * @override
+           * Reference to the reflected type.
+           * @name Message#$type
+           * @type {Type}
+           * @readonly
+           */
+
+          /*eslint-disable valid-jsdoc*/
+
+          /**
+           * Creates a new message of this type using the specified properties.
+           * @param {Object.<string,*>} [properties] Properties to set
+           * @returns {Message<T>} Message instance
+           * @template T extends Message<T>
+           * @this Constructor<T>
            */
 
 
-          Service.prototype.get = function get(name) {
-            return this.methods[name] || Namespace.prototype.get.call(this, name);
+          Message.create = function create(properties) {
+            return this.$type.create(properties);
           };
           /**
-           * @override
+           * Encodes a message of this type.
+           * @param {T|Object.<string,*>} message Message to encode
+           * @param {Writer} [writer] Writer to use
+           * @returns {Writer} Writer
+           * @template T extends Message<T>
+           * @this Constructor<T>
            */
 
 
-          Service.prototype.resolveAll = function resolveAll() {
-            var methods = this.methodsArray;
-
-            for (var i = 0; i < methods.length; ++i) {
-              methods[i].resolve();
-            }
-
-            return Namespace.prototype.resolve.call(this);
+          Message.encode = function encode(message, writer) {
+            return this.$type.encode(message, writer);
           };
           /**
-           * @override
+           * Encodes a message of this type preceeded by its length as a varint.
+           * @param {T|Object.<string,*>} message Message to encode
+           * @param {Writer} [writer] Writer to use
+           * @returns {Writer} Writer
+           * @template T extends Message<T>
+           * @this Constructor<T>
            */
 
 
-          Service.prototype.add = function add(object) {
-            /* istanbul ignore if */
-            if (this.get(object.name)) throw Error("duplicate name '" + object.name + "' in " + this);
-
-            if (object instanceof Method) {
-              this.methods[object.name] = object;
-              object.parent = this;
-              return clearCache(this);
-            }
-
-            return Namespace.prototype.add.call(this, object);
+          Message.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.$type.encodeDelimited(message, writer);
           };
           /**
-           * @override
+           * Decodes a message of this type.
+           * @name Message.decode
+           * @function
+           * @param {Reader|Uint8Array} reader Reader or buffer to decode
+           * @returns {T} Decoded message
+           * @template T extends Message<T>
+           * @this Constructor<T>
            */
 
 
-          Service.prototype.remove = function remove(object) {
-            if (object instanceof Method) {
-              /* istanbul ignore if */
-              if (this.methods[object.name] !== object) throw Error(object + " is not a member of " + this);
-              delete this.methods[object.name];
-              object.parent = null;
-              return clearCache(this);
-            }
-
-            return Namespace.prototype.remove.call(this, object);
+          Message.decode = function decode(reader) {
+            return this.$type.decode(reader);
           };
           /**
-           * Creates a runtime service using the specified rpc implementation.
-           * @param {RPCImpl} rpcImpl RPC implementation
-           * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
-           * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
-           * @returns {rpc.Service} RPC service. Useful where requests and/or responses are streamed.
+           * Decodes a message of this type preceeded by its length as a varint.
+           * @name Message.decodeDelimited
+           * @function
+           * @param {Reader|Uint8Array} reader Reader or buffer to decode
+           * @returns {T} Decoded message
+           * @template T extends Message<T>
+           * @this Constructor<T>
            */
 
 
-          Service.prototype.create = function create(rpcImpl, requestDelimited, responseDelimited) {
-            var rpcService = new rpc.Service(rpcImpl, requestDelimited, responseDelimited);
-
-            for (var i = 0, method; i <
-            /* initializes */
-            this.methodsArray.length; ++i) {
-              var methodName = util.lcFirst((method = this._methodsArray[i]).resolve().name).replace(/[^$\w_]/g, "");
-              rpcService[methodName] = util.codegen(["r", "c"], util.isReserved(methodName) ? methodName + "_" : methodName)("return this.rpcCall(m,q,s,r,c)")({
-                m: method,
-                q: method.resolvedRequestType.ctor,
-                s: method.resolvedResponseType.ctor
-              });
-            }
-
-            return rpcService;
+          Message.decodeDelimited = function decodeDelimited(reader) {
+            return this.$type.decodeDelimited(reader);
           };
+          /**
+           * Verifies a message of this type.
+           * @name Message.verify
+           * @function
+           * @param {Object.<string,*>} message Plain object to verify
+           * @returns {string|null} `null` if valid, otherwise the reason why it is not
+           */
+
+
+          Message.verify = function verify(message) {
+            return this.$type.verify(message);
+          };
+          /**
+           * Creates a new message of this type from a plain object. Also converts values to their respective internal types.
+           * @param {Object.<string,*>} object Plain object
+           * @returns {T} Message instance
+           * @template T extends Message<T>
+           * @this Constructor<T>
+           */
+
+
+          Message.fromObject = function fromObject(object) {
+            return this.$type.fromObject(object);
+          };
+          /**
+           * Creates a plain object from a message of this type. Also converts values to other types if specified.
+           * @param {T} message Message instance
+           * @param {IConversionOptions} [options] Conversion options
+           * @returns {Object.<string,*>} Plain object
+           * @template T extends Message<T>
+           * @this Constructor<T>
+           */
+
+
+          Message.toObject = function toObject(message, options) {
+            return this.$type.toObject(message, options);
+          };
+          /**
+           * Converts this message to JSON.
+           * @returns {Object.<string,*>} JSON object
+           */
+
+
+          Message.prototype.toJSON = function toJSON() {
+            return this.$type.toObject(this, util.toJSONOptions);
+          };
+          /*eslint-enable valid-jsdoc*/
+
         })();
 
         _cjsExports = exports('default', module.exports);
@@ -4599,195 +6862,7 @@ System.register("chunks:///_virtual/service.js", ['./cjs-loader.mjs', './rpc.js'
   };
 });
 
-System.register("chunks:///_virtual/method.js", ['./cjs-loader.mjs', './util.js', './object.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./object": __cjsMetaURL$1,
-          "./util": __cjsMetaURL$2
-        }, _require);
-
-        (function () {
-          module.exports = Method; // extends ReflectionObject
-
-          var ReflectionObject = require("./object");
-
-          ((Method.prototype = Object.create(ReflectionObject.prototype)).constructor = Method).className = "Method";
-
-          var util = require("./util");
-          /**
-           * Constructs a new service method instance.
-           * @classdesc Reflected service method.
-           * @extends ReflectionObject
-           * @constructor
-           * @param {string} name Method name
-           * @param {string|undefined} type Method type, usually `"rpc"`
-           * @param {string} requestType Request message type
-           * @param {string} responseType Response message type
-           * @param {boolean|Object.<string,*>} [requestStream] Whether the request is streamed
-           * @param {boolean|Object.<string,*>} [responseStream] Whether the response is streamed
-           * @param {Object.<string,*>} [options] Declared options
-           * @param {string} [comment] The comment for this method
-           * @param {Object.<string,*>} [parsedOptions] Declared options, properly parsed into an object
-           */
-
-
-          function Method(name, type, requestType, responseType, requestStream, responseStream, options, comment, parsedOptions) {
-            /* istanbul ignore next */
-            if (util.isObject(requestStream)) {
-              options = requestStream;
-              requestStream = responseStream = undefined;
-            } else if (util.isObject(responseStream)) {
-              options = responseStream;
-              responseStream = undefined;
-            }
-            /* istanbul ignore if */
-
-
-            if (!(type === undefined || util.isString(type))) throw TypeError("type must be a string");
-            /* istanbul ignore if */
-
-            if (!util.isString(requestType)) throw TypeError("requestType must be a string");
-            /* istanbul ignore if */
-
-            if (!util.isString(responseType)) throw TypeError("responseType must be a string");
-            ReflectionObject.call(this, name, options);
-            /**
-             * Method type.
-             * @type {string}
-             */
-
-            this.type = type || "rpc"; // toJSON
-
-            /**
-             * Request type.
-             * @type {string}
-             */
-
-            this.requestType = requestType; // toJSON, marker
-
-            /**
-             * Whether requests are streamed or not.
-             * @type {boolean|undefined}
-             */
-
-            this.requestStream = requestStream ? true : undefined; // toJSON
-
-            /**
-             * Response type.
-             * @type {string}
-             */
-
-            this.responseType = responseType; // toJSON
-
-            /**
-             * Whether responses are streamed or not.
-             * @type {boolean|undefined}
-             */
-
-            this.responseStream = responseStream ? true : undefined; // toJSON
-
-            /**
-             * Resolved request type.
-             * @type {Type|null}
-             */
-
-            this.resolvedRequestType = null;
-            /**
-             * Resolved response type.
-             * @type {Type|null}
-             */
-
-            this.resolvedResponseType = null;
-            /**
-             * Comment for this method
-             * @type {string|null}
-             */
-
-            this.comment = comment;
-            /**
-             * Options properly parsed into an object
-             */
-
-            this.parsedOptions = parsedOptions;
-          }
-          /**
-           * Method descriptor.
-           * @interface IMethod
-           * @property {string} [type="rpc"] Method type
-           * @property {string} requestType Request type
-           * @property {string} responseType Response type
-           * @property {boolean} [requestStream=false] Whether requests are streamed
-           * @property {boolean} [responseStream=false] Whether responses are streamed
-           * @property {Object.<string,*>} [options] Method options
-           * @property {string} comment Method comments
-           * @property {Object.<string,*>} [parsedOptions] Method options properly parsed into an object
-           */
-
-          /**
-           * Constructs a method from a method descriptor.
-           * @param {string} name Method name
-           * @param {IMethod} json Method descriptor
-           * @returns {Method} Created method
-           * @throws {TypeError} If arguments are invalid
-           */
-
-
-          Method.fromJSON = function fromJSON(name, json) {
-            return new Method(name, json.type, json.requestType, json.responseType, json.requestStream, json.responseStream, json.options, json.comment, json.parsedOptions);
-          };
-          /**
-           * Converts this method to a method descriptor.
-           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {IMethod} Method descriptor
-           */
-
-
-          Method.prototype.toJSON = function toJSON(toJSONOptions) {
-            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
-            return util.toObject(["type", this.type !== "rpc" &&
-            /* istanbul ignore next */
-            this.type || undefined, "requestType", this.requestType, "requestStream", this.requestStream, "responseType", this.responseType, "responseStream", this.responseStream, "options", this.options, "comment", keepComments ? this.comment : undefined, "parsedOptions", this.parsedOptions]);
-          };
-          /**
-           * @override
-           */
-
-
-          Method.prototype.resolve = function resolve() {
-            /* istanbul ignore if */
-            if (this.resolved) return this;
-            this.resolvedRequestType = this.parent.lookupType(this.requestType);
-            this.resolvedResponseType = this.parent.lookupType(this.responseType);
-            return ReflectionObject.prototype.resolve.call(this);
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/util.js", ['./cjs-loader.mjs', './minimal.js', './roots.js', './index3.js', './index4.js', './index5.js', './type.js', './root.js', './enum.js'], function (exports, module) {
+System.register("chunks:///_virtual/util.js", ['./cjs-loader.mjs', './minimal.js', './roots.js', './index4.js', './index5.js', './index3.js', './type.js', './root.js', './enum.js'], function (exports, module) {
   'use strict';
 
   var loader, __cjsMetaURL$1, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$5, __cjsMetaURL$6, __cjsMetaURL$8, __cjsMetaURL$7;
@@ -5049,2081 +7124,6 @@ System.register("chunks:///_virtual/util.js", ['./cjs-loader.mjs', './minimal.js
               return roots["decorated"] || (roots["decorated"] = new (require("./root"))());
             }
           });
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/encoder.js", ['./cjs-loader.mjs', './types.js', './util.js', './enum.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./enum": __cjsMetaURL$1,
-          "./types": __cjsMetaURL$2,
-          "./util": __cjsMetaURL$3
-        }, _require);
-
-        (function () {
-          module.exports = encoder;
-
-          var Enum = require("./enum"),
-              types = require("./types"),
-              util = require("./util");
-          /**
-           * Generates a partial message type encoder.
-           * @param {Codegen} gen Codegen instance
-           * @param {Field} field Reflected field
-           * @param {number} fieldIndex Field index
-           * @param {string} ref Variable reference
-           * @returns {Codegen} Codegen instance
-           * @ignore
-           */
-
-
-          function genTypePartial(gen, field, fieldIndex, ref) {
-            return field.resolvedType.group ? gen("types[%i].encode(%s,w.uint32(%i)).uint32(%i)", fieldIndex, ref, (field.id << 3 | 3) >>> 0, (field.id << 3 | 4) >>> 0) : gen("types[%i].encode(%s,w.uint32(%i).fork()).ldelim()", fieldIndex, ref, (field.id << 3 | 2) >>> 0);
-          }
-          /**
-           * Generates an encoder specific to the specified message type.
-           * @param {Type} mtype Message type
-           * @returns {Codegen} Codegen instance
-           */
-
-
-          function encoder(mtype) {
-            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
-            var gen = util.codegen(["m", "w"], mtype.name + "$encode")("if(!w)")("w=Writer.create()");
-            var i, ref; // "when a message is serialized its known fields should be written sequentially by field number"
-
-            var fields =
-            /* initializes */
-            mtype.fieldsArray.slice().sort(util.compareFieldsById);
-
-            for (var i = 0; i < fields.length; ++i) {
-              var field = fields[i].resolve(),
-                  index = mtype._fieldsArray.indexOf(field),
-                  type = field.resolvedType instanceof Enum ? "int32" : field.type,
-                  wireType = types.basic[type];
-
-              ref = "m" + util.safeProp(field.name); // Map fields
-
-              if (field.map) {
-                gen("if(%s!=null&&Object.hasOwnProperty.call(m,%j)){", ref, field.name) // !== undefined && !== null
-                ("for(var ks=Object.keys(%s),i=0;i<ks.length;++i){", ref)("w.uint32(%i).fork().uint32(%i).%s(ks[i])", (field.id << 3 | 2) >>> 0, 8 | types.mapKey[field.keyType], field.keyType);
-                if (wireType === undefined) gen("types[%i].encode(%s[ks[i]],w.uint32(18).fork()).ldelim().ldelim()", index, ref); // can't be groups
-                else gen(".uint32(%i).%s(%s[ks[i]]).ldelim()", 16 | wireType, type, ref);
-                gen("}")("}"); // Repeated fields
-              } else if (field.repeated) {
-                gen("if(%s!=null&&%s.length){", ref, ref); // !== undefined && !== null
-                // Packed repeated
-
-                if (field.packed && types.packed[type] !== undefined) {
-                  gen("w.uint32(%i).fork()", (field.id << 3 | 2) >>> 0)("for(var i=0;i<%s.length;++i)", ref)("w.%s(%s[i])", type, ref)("w.ldelim()"); // Non-packed
-                } else {
-                  gen("for(var i=0;i<%s.length;++i)", ref);
-                  if (wireType === undefined) genTypePartial(gen, field, index, ref + "[i]");else gen("w.uint32(%i).%s(%s[i])", (field.id << 3 | wireType) >>> 0, type, ref);
-                }
-
-                gen("}"); // Non-repeated
-              } else {
-                if (field.optional) gen("if(%s!=null&&Object.hasOwnProperty.call(m,%j))", ref, field.name); // !== undefined && !== null
-
-                if (wireType === undefined) genTypePartial(gen, field, index, ref);else gen("w.uint32(%i).%s(%s)", (field.id << 3 | wireType) >>> 0, type, ref);
-              }
-            }
-
-            return gen("return w");
-            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
-          }
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/verifier.js", ['./cjs-loader.mjs', './util.js', './enum.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./enum": __cjsMetaURL$1,
-          "./util": __cjsMetaURL$2
-        }, _require);
-
-        (function () {
-          module.exports = verifier;
-
-          var Enum = require("./enum"),
-              util = require("./util");
-
-          function invalid(field, expected) {
-            return field.name + ": " + expected + (field.repeated && expected !== "array" ? "[]" : field.map && expected !== "object" ? "{k:" + field.keyType + "}" : "") + " expected";
-          }
-          /**
-           * Generates a partial value verifier.
-           * @param {Codegen} gen Codegen instance
-           * @param {Field} field Reflected field
-           * @param {number} fieldIndex Field index
-           * @param {string} ref Variable reference
-           * @returns {Codegen} Codegen instance
-           * @ignore
-           */
-
-
-          function genVerifyValue(gen, field, fieldIndex, ref) {
-            /* eslint-disable no-unexpected-multiline */
-            if (field.resolvedType) {
-              if (field.resolvedType instanceof Enum) {
-                gen("switch(%s){", ref)("default:")("return%j", invalid(field, "enum value"));
-
-                for (var keys = Object.keys(field.resolvedType.values), j = 0; j < keys.length; ++j) {
-                  gen("case %i:", field.resolvedType.values[keys[j]]);
-                }
-
-                gen("break")("}");
-              } else {
-                gen("{")("var e=types[%i].verify(%s);", fieldIndex, ref)("if(e)")("return%j+e", field.name + ".")("}");
-              }
-            } else {
-              switch (field.type) {
-                case "int32":
-                case "uint32":
-                case "sint32":
-                case "fixed32":
-                case "sfixed32":
-                  gen("if(!util.isInteger(%s))", ref)("return%j", invalid(field, "integer"));
-                  break;
-
-                case "int64":
-                case "uint64":
-                case "sint64":
-                case "fixed64":
-                case "sfixed64":
-                  gen("if(!util.isInteger(%s)&&!(%s&&util.isInteger(%s.low)&&util.isInteger(%s.high)))", ref, ref, ref, ref)("return%j", invalid(field, "integer|Long"));
-                  break;
-
-                case "float":
-                case "double":
-                  gen("if(typeof %s!==\"number\")", ref)("return%j", invalid(field, "number"));
-                  break;
-
-                case "bool":
-                  gen("if(typeof %s!==\"boolean\")", ref)("return%j", invalid(field, "boolean"));
-                  break;
-
-                case "string":
-                  gen("if(!util.isString(%s))", ref)("return%j", invalid(field, "string"));
-                  break;
-
-                case "bytes":
-                  gen("if(!(%s&&typeof %s.length===\"number\"||util.isString(%s)))", ref, ref, ref)("return%j", invalid(field, "buffer"));
-                  break;
-              }
-            }
-
-            return gen;
-            /* eslint-enable no-unexpected-multiline */
-          }
-          /**
-           * Generates a partial key verifier.
-           * @param {Codegen} gen Codegen instance
-           * @param {Field} field Reflected field
-           * @param {string} ref Variable reference
-           * @returns {Codegen} Codegen instance
-           * @ignore
-           */
-
-
-          function genVerifyKey(gen, field, ref) {
-            /* eslint-disable no-unexpected-multiline */
-            switch (field.keyType) {
-              case "int32":
-              case "uint32":
-              case "sint32":
-              case "fixed32":
-              case "sfixed32":
-                gen("if(!util.key32Re.test(%s))", ref)("return%j", invalid(field, "integer key"));
-                break;
-
-              case "int64":
-              case "uint64":
-              case "sint64":
-              case "fixed64":
-              case "sfixed64":
-                gen("if(!util.key64Re.test(%s))", ref) // see comment above: x is ok, d is not
-                ("return%j", invalid(field, "integer|Long key"));
-                break;
-
-              case "bool":
-                gen("if(!util.key2Re.test(%s))", ref)("return%j", invalid(field, "boolean key"));
-                break;
-            }
-
-            return gen;
-            /* eslint-enable no-unexpected-multiline */
-          }
-          /**
-           * Generates a verifier specific to the specified message type.
-           * @param {Type} mtype Message type
-           * @returns {Codegen} Codegen instance
-           */
-
-
-          function verifier(mtype) {
-            /* eslint-disable no-unexpected-multiline */
-            var gen = util.codegen(["m"], mtype.name + "$verify")("if(typeof m!==\"object\"||m===null)")("return%j", "object expected");
-            var oneofs = mtype.oneofsArray,
-                seenFirstField = {};
-            if (oneofs.length) gen("var p={}");
-
-            for (var i = 0; i <
-            /* initializes */
-            mtype.fieldsArray.length; ++i) {
-              var field = mtype._fieldsArray[i].resolve(),
-                  ref = "m" + util.safeProp(field.name);
-
-              if (field.optional) gen("if(%s!=null&&m.hasOwnProperty(%j)){", ref, field.name); // !== undefined && !== null
-              // map fields
-
-              if (field.map) {
-                gen("if(!util.isObject(%s))", ref)("return%j", invalid(field, "object"))("var k=Object.keys(%s)", ref)("for(var i=0;i<k.length;++i){");
-                genVerifyKey(gen, field, "k[i]");
-                genVerifyValue(gen, field, i, ref + "[k[i]]")("}"); // repeated fields
-              } else if (field.repeated) {
-                gen("if(!Array.isArray(%s))", ref)("return%j", invalid(field, "array"))("for(var i=0;i<%s.length;++i){", ref);
-                genVerifyValue(gen, field, i, ref + "[i]")("}"); // required or present fields
-              } else {
-                if (field.partOf) {
-                  var oneofProp = util.safeProp(field.partOf.name);
-                  if (seenFirstField[field.partOf.name] === 1) gen("if(p%s===1)", oneofProp)("return%j", field.partOf.name + ": multiple values");
-                  seenFirstField[field.partOf.name] = 1;
-                  gen("p%s=1", oneofProp);
-                }
-
-                genVerifyValue(gen, field, i, ref);
-              }
-
-              if (field.optional) gen("}");
-            }
-
-            return gen("return null");
-            /* eslint-enable no-unexpected-multiline */
-          }
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/oneof.js", ['./cjs-loader.mjs', './field.js', './util.js', './object.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./object": __cjsMetaURL$1,
-          "./field": __cjsMetaURL$2,
-          "./util": __cjsMetaURL$3
-        }, _require);
-
-        (function () {
-          module.exports = OneOf; // extends ReflectionObject
-
-          var ReflectionObject = require("./object");
-
-          ((OneOf.prototype = Object.create(ReflectionObject.prototype)).constructor = OneOf).className = "OneOf";
-
-          var Field = require("./field"),
-              util = require("./util");
-          /**
-           * Constructs a new oneof instance.
-           * @classdesc Reflected oneof.
-           * @extends ReflectionObject
-           * @constructor
-           * @param {string} name Oneof name
-           * @param {string[]|Object.<string,*>} [fieldNames] Field names
-           * @param {Object.<string,*>} [options] Declared options
-           * @param {string} [comment] Comment associated with this field
-           */
-
-
-          function OneOf(name, fieldNames, options, comment) {
-            if (!Array.isArray(fieldNames)) {
-              options = fieldNames;
-              fieldNames = undefined;
-            }
-
-            ReflectionObject.call(this, name, options);
-            /* istanbul ignore if */
-
-            if (!(fieldNames === undefined || Array.isArray(fieldNames))) throw TypeError("fieldNames must be an Array");
-            /**
-             * Field names that belong to this oneof.
-             * @type {string[]}
-             */
-
-            this.oneof = fieldNames || []; // toJSON, marker
-
-            /**
-             * Fields that belong to this oneof as an array for iteration.
-             * @type {Field[]}
-             * @readonly
-             */
-
-            this.fieldsArray = []; // declared readonly for conformance, possibly not yet added to parent
-
-            /**
-             * Comment for this field.
-             * @type {string|null}
-             */
-
-            this.comment = comment;
-          }
-          /**
-           * Oneof descriptor.
-           * @interface IOneOf
-           * @property {Array.<string>} oneof Oneof field names
-           * @property {Object.<string,*>} [options] Oneof options
-           */
-
-          /**
-           * Constructs a oneof from a oneof descriptor.
-           * @param {string} name Oneof name
-           * @param {IOneOf} json Oneof descriptor
-           * @returns {OneOf} Created oneof
-           * @throws {TypeError} If arguments are invalid
-           */
-
-
-          OneOf.fromJSON = function fromJSON(name, json) {
-            return new OneOf(name, json.oneof, json.options, json.comment);
-          };
-          /**
-           * Converts this oneof to a oneof descriptor.
-           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {IOneOf} Oneof descriptor
-           */
-
-
-          OneOf.prototype.toJSON = function toJSON(toJSONOptions) {
-            var keepComments = toJSONOptions ? Boolean(toJSONOptions.keepComments) : false;
-            return util.toObject(["options", this.options, "oneof", this.oneof, "comment", keepComments ? this.comment : undefined]);
-          };
-          /**
-           * Adds the fields of the specified oneof to the parent if not already done so.
-           * @param {OneOf} oneof The oneof
-           * @returns {undefined}
-           * @inner
-           * @ignore
-           */
-
-
-          function addFieldsToParent(oneof) {
-            if (oneof.parent) for (var i = 0; i < oneof.fieldsArray.length; ++i) {
-              if (!oneof.fieldsArray[i].parent) oneof.parent.add(oneof.fieldsArray[i]);
-            }
-          }
-          /**
-           * Adds a field to this oneof and removes it from its current parent, if any.
-           * @param {Field} field Field to add
-           * @returns {OneOf} `this`
-           */
-
-
-          OneOf.prototype.add = function add(field) {
-            /* istanbul ignore if */
-            if (!(field instanceof Field)) throw TypeError("field must be a Field");
-            if (field.parent && field.parent !== this.parent) field.parent.remove(field);
-            this.oneof.push(field.name);
-            this.fieldsArray.push(field);
-            field.partOf = this; // field.parent remains null
-
-            addFieldsToParent(this);
-            return this;
-          };
-          /**
-           * Removes a field from this oneof and puts it back to the oneof's parent.
-           * @param {Field} field Field to remove
-           * @returns {OneOf} `this`
-           */
-
-
-          OneOf.prototype.remove = function remove(field) {
-            /* istanbul ignore if */
-            if (!(field instanceof Field)) throw TypeError("field must be a Field");
-            var index = this.fieldsArray.indexOf(field);
-            /* istanbul ignore if */
-
-            if (index < 0) throw Error(field + " is not a member of " + this);
-            this.fieldsArray.splice(index, 1);
-            index = this.oneof.indexOf(field.name);
-            /* istanbul ignore else */
-
-            if (index > -1) // theoretical
-              this.oneof.splice(index, 1);
-            field.partOf = null;
-            return this;
-          };
-          /**
-           * @override
-           */
-
-
-          OneOf.prototype.onAdd = function onAdd(parent) {
-            ReflectionObject.prototype.onAdd.call(this, parent);
-            var self = this; // Collect present fields
-
-            for (var i = 0; i < this.oneof.length; ++i) {
-              var field = parent.get(this.oneof[i]);
-
-              if (field && !field.partOf) {
-                field.partOf = self;
-                self.fieldsArray.push(field);
-              }
-            } // Add not yet present fields
-
-
-            addFieldsToParent(this);
-          };
-          /**
-           * @override
-           */
-
-
-          OneOf.prototype.onRemove = function onRemove(parent) {
-            for (var i = 0, field; i < this.fieldsArray.length; ++i) {
-              if ((field = this.fieldsArray[i]).parent) field.parent.remove(field);
-            }
-
-            ReflectionObject.prototype.onRemove.call(this, parent);
-          };
-          /**
-           * Decorator function as returned by {@link OneOf.d} (TypeScript).
-           * @typedef OneOfDecorator
-           * @type {function}
-           * @param {Object} prototype Target prototype
-           * @param {string} oneofName OneOf name
-           * @returns {undefined}
-           */
-
-          /**
-           * OneOf decorator (TypeScript).
-           * @function
-           * @param {...string} fieldNames Field names
-           * @returns {OneOfDecorator} Decorator function
-           * @template T extends string
-           */
-
-
-          OneOf.d = function decorateOneOf() {
-            var fieldNames = new Array(arguments.length),
-                index = 0;
-
-            while (index < arguments.length) {
-              fieldNames[index] = arguments[index++];
-            }
-
-            return function oneOfDecorator(prototype, oneofName) {
-              util.decorateType(prototype.constructor).add(new OneOf(oneofName, fieldNames));
-              Object.defineProperty(prototype, oneofName, {
-                get: util.oneOfGetter(fieldNames),
-                set: util.oneOfSetter(fieldNames)
-              });
-            };
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/decoder.js", ['./cjs-loader.mjs', './types.js', './util.js', './enum.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./enum": __cjsMetaURL$1,
-          "./types": __cjsMetaURL$2,
-          "./util": __cjsMetaURL$3
-        }, _require);
-
-        (function () {
-          module.exports = decoder;
-
-          var Enum = require("./enum"),
-              types = require("./types"),
-              util = require("./util");
-
-          function missing(field) {
-            return "missing required '" + field.name + "'";
-          }
-          /**
-           * Generates a decoder specific to the specified message type.
-           * @param {Type} mtype Message type
-           * @returns {Codegen} Codegen instance
-           */
-
-
-          function decoder(mtype) {
-            /* eslint-disable no-unexpected-multiline */
-            var gen = util.codegen(["r", "l"], mtype.name + "$decode")("if(!(r instanceof Reader))")("r=Reader.create(r)")("var c=l===undefined?r.len:r.pos+l,m=new this.ctor" + (mtype.fieldsArray.filter(function (field) {
-              return field.map;
-            }).length ? ",k,value" : ""))("while(r.pos<c){")("var t=r.uint32()");
-            if (mtype.group) gen("if((t&7)===4)")("break");
-            gen("switch(t>>>3){");
-            var i = 0;
-
-            for (; i <
-            /* initializes */
-            mtype.fieldsArray.length; ++i) {
-              var field = mtype._fieldsArray[i].resolve(),
-                  type = field.resolvedType instanceof Enum ? "int32" : field.type,
-                  ref = "m" + util.safeProp(field.name);
-
-              gen("case %i:", field.id); // Map fields
-
-              if (field.map) {
-                gen("if(%s===util.emptyObject)", ref)("%s={}", ref)("var c2 = r.uint32()+r.pos");
-                if (types.defaults[field.keyType] !== undefined) gen("k=%j", types.defaults[field.keyType]);else gen("k=null");
-                if (types.defaults[type] !== undefined) gen("value=%j", types.defaults[type]);else gen("value=null");
-                gen("while(r.pos<c2){")("var tag2=r.uint32()")("switch(tag2>>>3){")("case 1: k=r.%s(); break", field.keyType)("case 2:");
-                if (types.basic[type] === undefined) gen("value=types[%i].decode(r,r.uint32())", i); // can't be groups
-                else gen("value=r.%s()", type);
-                gen("break")("default:")("r.skipType(tag2&7)")("break")("}")("}");
-                if (types["long"][field.keyType] !== undefined) gen("%s[typeof k===\"object\"?util.longToHash(k):k]=value", ref);else gen("%s[k]=value", ref); // Repeated fields
-              } else if (field.repeated) {
-                gen("if(!(%s&&%s.length))", ref, ref)("%s=[]", ref); // Packable (always check for forward and backward compatiblity)
-
-                if (types.packed[type] !== undefined) gen("if((t&7)===2){")("var c2=r.uint32()+r.pos")("while(r.pos<c2)")("%s.push(r.%s())", ref, type)("}else"); // Non-packed
-
-                if (types.basic[type] === undefined) gen(field.resolvedType.group ? "%s.push(types[%i].decode(r))" : "%s.push(types[%i].decode(r,r.uint32()))", ref, i);else gen("%s.push(r.%s())", ref, type); // Non-repeated
-              } else if (types.basic[type] === undefined) gen(field.resolvedType.group ? "%s=types[%i].decode(r)" : "%s=types[%i].decode(r,r.uint32())", ref, i);else gen("%s=r.%s()", ref, type);
-
-              gen("break"); // Unknown fields
-            }
-
-            gen("default:")("r.skipType(t&7)")("break")("}")("}"); // Field presence
-
-            for (i = 0; i < mtype._fieldsArray.length; ++i) {
-              var rfield = mtype._fieldsArray[i];
-              if (rfield.required) gen("if(!m.hasOwnProperty(%j))", rfield.name)("throw util.ProtocolError(%j,{instance:m})", missing(rfield));
-            }
-
-            return gen("return m");
-            /* eslint-enable no-unexpected-multiline */
-          }
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/converter.js", ['./cjs-loader.mjs', './util.js', './enum.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./enum": __cjsMetaURL$1,
-          "./util": __cjsMetaURL$2
-        }, _require);
-
-        (function () {
-          /**
-           * Runtime message from/to plain object converters.
-           * @namespace
-           */
-          var converter = exports$1;
-
-          var Enum = require("./enum"),
-              util = require("./util");
-          /**
-           * Generates a partial value fromObject conveter.
-           * @param {Codegen} gen Codegen instance
-           * @param {Field} field Reflected field
-           * @param {number} fieldIndex Field index
-           * @param {string} prop Property reference
-           * @returns {Codegen} Codegen instance
-           * @ignore
-           */
-
-
-          function genValuePartial_fromObject(gen, field, fieldIndex, prop) {
-            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
-            if (field.resolvedType) {
-              if (field.resolvedType instanceof Enum) {
-                gen("switch(d%s){", prop);
-
-                for (var values = field.resolvedType.values, keys = Object.keys(values), i = 0; i < keys.length; ++i) {
-                  if (field.repeated && values[keys[i]] === field.typeDefault) gen("default:");
-                  gen("case%j:", keys[i])("case %i:", values[keys[i]])("m%s=%j", prop, values[keys[i]])("break");
-                }
-
-                gen("}");
-              } else gen("if(typeof d%s!==\"object\")", prop)("throw TypeError(%j)", field.fullName + ": object expected")("m%s=types[%i].fromObject(d%s)", prop, fieldIndex, prop);
-            } else {
-              var isUnsigned = false;
-
-              switch (field.type) {
-                case "double":
-                case "float":
-                  gen("m%s=Number(d%s)", prop, prop); // also catches "NaN", "Infinity"
-
-                  break;
-
-                case "uint32":
-                case "fixed32":
-                  gen("m%s=d%s>>>0", prop, prop);
-                  break;
-
-                case "int32":
-                case "sint32":
-                case "sfixed32":
-                  gen("m%s=d%s|0", prop, prop);
-                  break;
-
-                case "uint64":
-                  isUnsigned = true;
-                // eslint-disable-line no-fallthrough
-
-                case "int64":
-                case "sint64":
-                case "fixed64":
-                case "sfixed64":
-                  gen("if(util.Long)")("(m%s=util.Long.fromValue(d%s)).unsigned=%j", prop, prop, isUnsigned)("else if(typeof d%s===\"string\")", prop)("m%s=parseInt(d%s,10)", prop, prop)("else if(typeof d%s===\"number\")", prop)("m%s=d%s", prop, prop)("else if(typeof d%s===\"object\")", prop)("m%s=new util.LongBits(d%s.low>>>0,d%s.high>>>0).toNumber(%s)", prop, prop, prop, isUnsigned ? "true" : "");
-                  break;
-
-                case "bytes":
-                  gen("if(typeof d%s===\"string\")", prop)("util.base64.decode(d%s,m%s=util.newBuffer(util.base64.length(d%s)),0)", prop, prop, prop)("else if(d%s.length)", prop)("m%s=d%s", prop, prop);
-                  break;
-
-                case "string":
-                  gen("m%s=String(d%s)", prop, prop);
-                  break;
-
-                case "bool":
-                  gen("m%s=Boolean(d%s)", prop, prop);
-                  break;
-
-                /* default: gen
-                    ("m%s=d%s", prop, prop);
-                    break; */
-              }
-            }
-
-            return gen;
-            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
-          }
-          /**
-           * Generates a plain object to runtime message converter specific to the specified message type.
-           * @param {Type} mtype Message type
-           * @returns {Codegen} Codegen instance
-           */
-
-
-          converter.fromObject = function fromObject(mtype) {
-            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
-            var fields = mtype.fieldsArray;
-            var gen = util.codegen(["d"], mtype.name + "$fromObject")("if(d instanceof this.ctor)")("return d");
-            if (!fields.length) return gen("return new this.ctor");
-            gen("var m=new this.ctor");
-
-            for (var i = 0; i < fields.length; ++i) {
-              var field = fields[i].resolve(),
-                  prop = util.safeProp(field.name); // Map fields
-
-              if (field.map) {
-                gen("if(d%s){", prop)("if(typeof d%s!==\"object\")", prop)("throw TypeError(%j)", field.fullName + ": object expected")("m%s={}", prop)("for(var ks=Object.keys(d%s),i=0;i<ks.length;++i){", prop);
-                genValuePartial_fromObject(gen, field,
-                /* not sorted */
-                i, prop + "[ks[i]]")("}")("}"); // Repeated fields
-              } else if (field.repeated) {
-                gen("if(d%s){", prop)("if(!Array.isArray(d%s))", prop)("throw TypeError(%j)", field.fullName + ": array expected")("m%s=[]", prop)("for(var i=0;i<d%s.length;++i){", prop);
-                genValuePartial_fromObject(gen, field,
-                /* not sorted */
-                i, prop + "[i]")("}")("}"); // Non-repeated fields
-              } else {
-                if (!(field.resolvedType instanceof Enum)) gen // no need to test for null/undefined if an enum (uses switch)
-                ("if(d%s!=null){", prop); // !== undefined && !== null
-
-                genValuePartial_fromObject(gen, field,
-                /* not sorted */
-                i, prop);
-                if (!(field.resolvedType instanceof Enum)) gen("}");
-              }
-            }
-
-            return gen("return m");
-            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
-          };
-          /**
-           * Generates a partial value toObject converter.
-           * @param {Codegen} gen Codegen instance
-           * @param {Field} field Reflected field
-           * @param {number} fieldIndex Field index
-           * @param {string} prop Property reference
-           * @returns {Codegen} Codegen instance
-           * @ignore
-           */
-
-
-          function genValuePartial_toObject(gen, field, fieldIndex, prop) {
-            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
-            if (field.resolvedType) {
-              if (field.resolvedType instanceof Enum) gen("d%s=o.enums===String?types[%i].values[m%s]:m%s", prop, fieldIndex, prop, prop);else gen("d%s=types[%i].toObject(m%s,o)", prop, fieldIndex, prop);
-            } else {
-              var isUnsigned = false;
-
-              switch (field.type) {
-                case "double":
-                case "float":
-                  gen("d%s=o.json&&!isFinite(m%s)?String(m%s):m%s", prop, prop, prop, prop);
-                  break;
-
-                case "uint64":
-                  isUnsigned = true;
-                // eslint-disable-line no-fallthrough
-
-                case "int64":
-                case "sint64":
-                case "fixed64":
-                case "sfixed64":
-                  gen("if(typeof m%s===\"number\")", prop)("d%s=o.longs===String?String(m%s):m%s", prop, prop, prop)("else") // Long-like
-                  ("d%s=o.longs===String?util.Long.prototype.toString.call(m%s):o.longs===Number?new util.LongBits(m%s.low>>>0,m%s.high>>>0).toNumber(%s):m%s", prop, prop, prop, prop, isUnsigned ? "true" : "", prop);
-                  break;
-
-                case "bytes":
-                  gen("d%s=o.bytes===String?util.base64.encode(m%s,0,m%s.length):o.bytes===Array?Array.prototype.slice.call(m%s):m%s", prop, prop, prop, prop, prop);
-                  break;
-
-                default:
-                  gen("d%s=m%s", prop, prop);
-                  break;
-              }
-            }
-
-            return gen;
-            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
-          }
-          /**
-           * Generates a runtime message to plain object converter specific to the specified message type.
-           * @param {Type} mtype Message type
-           * @returns {Codegen} Codegen instance
-           */
-
-
-          converter.toObject = function toObject(mtype) {
-            /* eslint-disable no-unexpected-multiline, block-scoped-var, no-redeclare */
-            var fields = mtype.fieldsArray.slice().sort(util.compareFieldsById);
-            if (!fields.length) return util.codegen()("return {}");
-            var gen = util.codegen(["m", "o"], mtype.name + "$toObject")("if(!o)")("o={}")("var d={}");
-            var repeatedFields = [],
-                mapFields = [],
-                normalFields = [],
-                i = 0;
-
-            for (; i < fields.length; ++i) {
-              if (!fields[i].partOf) (fields[i].resolve().repeated ? repeatedFields : fields[i].map ? mapFields : normalFields).push(fields[i]);
-            }
-
-            if (repeatedFields.length) {
-              gen("if(o.arrays||o.defaults){");
-
-              for (i = 0; i < repeatedFields.length; ++i) {
-                gen("d%s=[]", util.safeProp(repeatedFields[i].name));
-              }
-
-              gen("}");
-            }
-
-            if (mapFields.length) {
-              gen("if(o.objects||o.defaults){");
-
-              for (i = 0; i < mapFields.length; ++i) {
-                gen("d%s={}", util.safeProp(mapFields[i].name));
-              }
-
-              gen("}");
-            }
-
-            if (normalFields.length) {
-              gen("if(o.defaults){");
-
-              for (i = 0; i < normalFields.length; ++i) {
-                var field = normalFields[i],
-                    prop = util.safeProp(field.name);
-                if (field.resolvedType instanceof Enum) gen("d%s=o.enums===String?%j:%j", prop, field.resolvedType.valuesById[field.typeDefault], field.typeDefault);else if (field["long"]) gen("if(util.Long){")("var n=new util.Long(%i,%i,%j)", field.typeDefault.low, field.typeDefault.high, field.typeDefault.unsigned)("d%s=o.longs===String?n.toString():o.longs===Number?n.toNumber():n", prop)("}else")("d%s=o.longs===String?%j:%i", prop, field.typeDefault.toString(), field.typeDefault.toNumber());else if (field.bytes) {
-                  var arrayDefault = "[" + Array.prototype.slice.call(field.typeDefault).join(",") + "]";
-                  gen("if(o.bytes===String)d%s=%j", prop, String.fromCharCode.apply(String, field.typeDefault))("else{")("d%s=%s", prop, arrayDefault)("if(o.bytes!==Array)d%s=util.newBuffer(d%s)", prop, prop)("}");
-                } else gen("d%s=%j", prop, field.typeDefault); // also messages (=null)
-              }
-
-              gen("}");
-            }
-
-            var hasKs2 = false;
-
-            for (i = 0; i < fields.length; ++i) {
-              var field = fields[i],
-                  index = mtype._fieldsArray.indexOf(field),
-                  prop = util.safeProp(field.name);
-
-              if (field.map) {
-                if (!hasKs2) {
-                  hasKs2 = true;
-                  gen("var ks2");
-                }
-
-                gen("if(m%s&&(ks2=Object.keys(m%s)).length){", prop, prop)("d%s={}", prop)("for(var j=0;j<ks2.length;++j){");
-                genValuePartial_toObject(gen, field,
-                /* sorted */
-                index, prop + "[ks2[j]]")("}");
-              } else if (field.repeated) {
-                gen("if(m%s&&m%s.length){", prop, prop)("d%s=[]", prop)("for(var j=0;j<m%s.length;++j){", prop);
-                genValuePartial_toObject(gen, field,
-                /* sorted */
-                index, prop + "[j]")("}");
-              } else {
-                gen("if(m%s!=null&&m.hasOwnProperty(%j)){", prop, field.name); // !== undefined && !== null
-
-                genValuePartial_toObject(gen, field,
-                /* sorted */
-                index, prop);
-                if (field.partOf) gen("if(o.oneofs)")("d%s=%j", util.safeProp(field.partOf.name), field.name);
-              }
-
-              gen("}");
-            }
-
-            return gen("return d");
-            /* eslint-enable no-unexpected-multiline, block-scoped-var, no-redeclare */
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/object.js", ['./cjs-loader.mjs', './util.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./util": __cjsMetaURL$1
-        }, _require);
-
-        (function () {
-          module.exports = ReflectionObject;
-          ReflectionObject.className = "ReflectionObject";
-
-          var util = require("./util");
-
-          var Root; // cyclic
-
-          /**
-           * Constructs a new reflection object instance.
-           * @classdesc Base class of all reflection objects.
-           * @constructor
-           * @param {string} name Object name
-           * @param {Object.<string,*>} [options] Declared options
-           * @abstract
-           */
-
-          function ReflectionObject(name, options) {
-            if (!util.isString(name)) throw TypeError("name must be a string");
-            if (options && !util.isObject(options)) throw TypeError("options must be an object");
-            /**
-             * Options.
-             * @type {Object.<string,*>|undefined}
-             */
-
-            this.options = options; // toJSON
-
-            /**
-             * Parsed Options.
-             * @type {Array.<Object.<string,*>>|undefined}
-             */
-
-            this.parsedOptions = null;
-            /**
-             * Unique name within its namespace.
-             * @type {string}
-             */
-
-            this.name = name;
-            /**
-             * Parent namespace.
-             * @type {Namespace|null}
-             */
-
-            this.parent = null;
-            /**
-             * Whether already resolved or not.
-             * @type {boolean}
-             */
-
-            this.resolved = false;
-            /**
-             * Comment text, if any.
-             * @type {string|null}
-             */
-
-            this.comment = null;
-            /**
-             * Defining file name.
-             * @type {string|null}
-             */
-
-            this.filename = null;
-          }
-
-          Object.defineProperties(ReflectionObject.prototype, {
-            /**
-             * Reference to the root namespace.
-             * @name ReflectionObject#root
-             * @type {Root}
-             * @readonly
-             */
-            root: {
-              get: function get() {
-                var ptr = this;
-
-                while (ptr.parent !== null) {
-                  ptr = ptr.parent;
-                }
-
-                return ptr;
-              }
-            },
-
-            /**
-             * Full name including leading dot.
-             * @name ReflectionObject#fullName
-             * @type {string}
-             * @readonly
-             */
-            fullName: {
-              get: function get() {
-                var path = [this.name],
-                    ptr = this.parent;
-
-                while (ptr) {
-                  path.unshift(ptr.name);
-                  ptr = ptr.parent;
-                }
-
-                return path.join(".");
-              }
-            }
-          });
-          /**
-           * Converts this reflection object to its descriptor representation.
-           * @returns {Object.<string,*>} Descriptor
-           * @abstract
-           */
-
-          ReflectionObject.prototype.toJSON =
-          /* istanbul ignore next */
-          function toJSON() {
-            throw Error(); // not implemented, shouldn't happen
-          };
-          /**
-           * Called when this object is added to a parent.
-           * @param {ReflectionObject} parent Parent added to
-           * @returns {undefined}
-           */
-
-
-          ReflectionObject.prototype.onAdd = function onAdd(parent) {
-            if (this.parent && this.parent !== parent) this.parent.remove(this);
-            this.parent = parent;
-            this.resolved = false;
-            var root = parent.root;
-            if (root instanceof Root) root._handleAdd(this);
-          };
-          /**
-           * Called when this object is removed from a parent.
-           * @param {ReflectionObject} parent Parent removed from
-           * @returns {undefined}
-           */
-
-
-          ReflectionObject.prototype.onRemove = function onRemove(parent) {
-            var root = parent.root;
-            if (root instanceof Root) root._handleRemove(this);
-            this.parent = null;
-            this.resolved = false;
-          };
-          /**
-           * Resolves this objects type references.
-           * @returns {ReflectionObject} `this`
-           */
-
-
-          ReflectionObject.prototype.resolve = function resolve() {
-            if (this.resolved) return this;
-            if (this.root instanceof Root) this.resolved = true; // only if part of a root
-
-            return this;
-          };
-          /**
-           * Gets an option value.
-           * @param {string} name Option name
-           * @returns {*} Option value or `undefined` if not set
-           */
-
-
-          ReflectionObject.prototype.getOption = function getOption(name) {
-            if (this.options) return this.options[name];
-            return undefined;
-          };
-          /**
-           * Sets an option.
-           * @param {string} name Option name
-           * @param {*} value Option value
-           * @param {boolean} [ifNotSet] Sets the option only if it isn't currently set
-           * @returns {ReflectionObject} `this`
-           */
-
-
-          ReflectionObject.prototype.setOption = function setOption(name, value, ifNotSet) {
-            if (!ifNotSet || !this.options || this.options[name] === undefined) (this.options || (this.options = {}))[name] = value;
-            return this;
-          };
-          /**
-           * Sets a parsed option.
-           * @param {string} name parsed Option name
-           * @param {*} value Option value
-           * @param {string} propName dot '.' delimited full path of property within the option to set. if undefined\empty, will add a new option with that value
-           * @returns {ReflectionObject} `this`
-           */
-
-
-          ReflectionObject.prototype.setParsedOption = function setParsedOption(name, value, propName) {
-            if (!this.parsedOptions) {
-              this.parsedOptions = [];
-            }
-
-            var parsedOptions = this.parsedOptions;
-
-            if (propName) {
-              // If setting a sub property of an option then try to merge it
-              // with an existing option
-              var opt = parsedOptions.find(function (opt) {
-                return Object.prototype.hasOwnProperty.call(opt, name);
-              });
-
-              if (opt) {
-                // If we found an existing option - just merge the property value
-                var newValue = opt[name];
-                util.setProperty(newValue, propName, value);
-              } else {
-                // otherwise, create a new option, set it's property and add it to the list
-                opt = {};
-                opt[name] = util.setProperty({}, propName, value);
-                parsedOptions.push(opt);
-              }
-            } else {
-              // Always create a new option when setting the value of the option itself
-              var newOpt = {};
-              newOpt[name] = value;
-              parsedOptions.push(newOpt);
-            }
-
-            return this;
-          };
-          /**
-           * Sets multiple options.
-           * @param {Object.<string,*>} options Options to set
-           * @param {boolean} [ifNotSet] Sets an option only if it isn't currently set
-           * @returns {ReflectionObject} `this`
-           */
-
-
-          ReflectionObject.prototype.setOptions = function setOptions(options, ifNotSet) {
-            if (options) for (var keys = Object.keys(options), i = 0; i < keys.length; ++i) {
-              this.setOption(keys[i], options[keys[i]], ifNotSet);
-            }
-            return this;
-          };
-          /**
-           * Converts this instance to its string representation.
-           * @returns {string} Class name[, space, full name]
-           */
-
-
-          ReflectionObject.prototype.toString = function toString() {
-            var className = this.constructor.className,
-                fullName = this.fullName;
-            if (fullName.length) return className + " " + fullName;
-            return className;
-          }; // Sets up cyclic dependencies (called in index-light)
-
-
-          ReflectionObject._configure = function (Root_) {
-            Root = Root_;
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/index-minimal.js", ['./cjs-loader.mjs', './minimal.js', './writer.js', './writer_buffer.js', './reader.js', './reader_buffer.js', './rpc.js', './roots.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$5, __cjsMetaURL$1, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$6, __cjsMetaURL$7;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$5 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$4 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$6 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$7 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./writer": __cjsMetaURL$1,
-          "./writer_buffer": __cjsMetaURL$2,
-          "./reader": __cjsMetaURL$3,
-          "./reader_buffer": __cjsMetaURL$4,
-          "./util/minimal": __cjsMetaURL$5,
-          "./rpc": __cjsMetaURL$6,
-          "./roots": __cjsMetaURL$7
-        }, _require);
-
-        (function () {
-          var protobuf = exports$1;
-          /**
-           * Build type, one of `"full"`, `"light"` or `"minimal"`.
-           * @name build
-           * @type {string}
-           * @const
-           */
-
-          protobuf.build = "minimal"; // Serialization
-
-          protobuf.Writer = require("./writer");
-          protobuf.BufferWriter = require("./writer_buffer");
-          protobuf.Reader = require("./reader");
-          protobuf.BufferReader = require("./reader_buffer"); // Utility
-
-          protobuf.util = require("./util/minimal");
-          protobuf.rpc = require("./rpc");
-          protobuf.roots = require("./roots");
-          protobuf.configure = configure;
-          /* istanbul ignore next */
-
-          /**
-           * Reconfigures the library according to the environment.
-           * @returns {undefined}
-           */
-
-          function configure() {
-            protobuf.util._configure();
-
-            protobuf.Writer._configure(protobuf.BufferWriter);
-
-            protobuf.Reader._configure(protobuf.BufferReader);
-          } // Set up buffer utility according to the environment
-
-
-          configure();
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/namespace.js", ['./cjs-loader.mjs', './field.js', './oneof.js', './util.js', './object.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$3 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$4 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./object": __cjsMetaURL$1,
-          "./field": __cjsMetaURL$2,
-          "./oneof": __cjsMetaURL$3,
-          "./util": __cjsMetaURL$4
-        }, _require);
-
-        (function () {
-          module.exports = Namespace; // extends ReflectionObject
-
-          var ReflectionObject = require("./object");
-
-          ((Namespace.prototype = Object.create(ReflectionObject.prototype)).constructor = Namespace).className = "Namespace";
-
-          var Field = require("./field"),
-              OneOf = require("./oneof"),
-              util = require("./util");
-
-          var Type, // cyclic
-          Service, Enum;
-          /**
-           * Constructs a new namespace instance.
-           * @name Namespace
-           * @classdesc Reflected namespace.
-           * @extends NamespaceBase
-           * @constructor
-           * @param {string} name Namespace name
-           * @param {Object.<string,*>} [options] Declared options
-           */
-
-          /**
-           * Constructs a namespace from JSON.
-           * @memberof Namespace
-           * @function
-           * @param {string} name Namespace name
-           * @param {Object.<string,*>} json JSON object
-           * @returns {Namespace} Created namespace
-           * @throws {TypeError} If arguments are invalid
-           */
-
-          Namespace.fromJSON = function fromJSON(name, json) {
-            return new Namespace(name, json.options).addJSON(json.nested);
-          };
-          /**
-           * Converts an array of reflection objects to JSON.
-           * @memberof Namespace
-           * @param {ReflectionObject[]} array Object array
-           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {Object.<string,*>|undefined} JSON object or `undefined` when array is empty
-           */
-
-
-          function arrayToJSON(array, toJSONOptions) {
-            if (!(array && array.length)) return undefined;
-            var obj = {};
-
-            for (var i = 0; i < array.length; ++i) {
-              obj[array[i].name] = array[i].toJSON(toJSONOptions);
-            }
-
-            return obj;
-          }
-
-          Namespace.arrayToJSON = arrayToJSON;
-          /**
-           * Tests if the specified id is reserved.
-           * @param {Array.<number[]|string>|undefined} reserved Array of reserved ranges and names
-           * @param {number} id Id to test
-           * @returns {boolean} `true` if reserved, otherwise `false`
-           */
-
-          Namespace.isReservedId = function isReservedId(reserved, id) {
-            if (reserved) for (var i = 0; i < reserved.length; ++i) {
-              if (typeof reserved[i] !== "string" && reserved[i][0] <= id && reserved[i][1] > id) return true;
-            }
-            return false;
-          };
-          /**
-           * Tests if the specified name is reserved.
-           * @param {Array.<number[]|string>|undefined} reserved Array of reserved ranges and names
-           * @param {string} name Name to test
-           * @returns {boolean} `true` if reserved, otherwise `false`
-           */
-
-
-          Namespace.isReservedName = function isReservedName(reserved, name) {
-            if (reserved) for (var i = 0; i < reserved.length; ++i) {
-              if (reserved[i] === name) return true;
-            }
-            return false;
-          };
-          /**
-           * Not an actual constructor. Use {@link Namespace} instead.
-           * @classdesc Base class of all reflection objects containing nested objects. This is not an actual class but here for the sake of having consistent type definitions.
-           * @exports NamespaceBase
-           * @extends ReflectionObject
-           * @abstract
-           * @constructor
-           * @param {string} name Namespace name
-           * @param {Object.<string,*>} [options] Declared options
-           * @see {@link Namespace}
-           */
-
-
-          function Namespace(name, options) {
-            ReflectionObject.call(this, name, options);
-            /**
-             * Nested objects by name.
-             * @type {Object.<string,ReflectionObject>|undefined}
-             */
-
-            this.nested = undefined; // toJSON
-
-            /**
-             * Cached nested objects as an array.
-             * @type {ReflectionObject[]|null}
-             * @private
-             */
-
-            this._nestedArray = null;
-          }
-
-          function clearCache(namespace) {
-            namespace._nestedArray = null;
-            return namespace;
-          }
-          /**
-           * Nested objects of this namespace as an array for iteration.
-           * @name NamespaceBase#nestedArray
-           * @type {ReflectionObject[]}
-           * @readonly
-           */
-
-
-          Object.defineProperty(Namespace.prototype, "nestedArray", {
-            get: function get() {
-              return this._nestedArray || (this._nestedArray = util.toArray(this.nested));
-            }
-          });
-          /**
-           * Namespace descriptor.
-           * @interface INamespace
-           * @property {Object.<string,*>} [options] Namespace options
-           * @property {Object.<string,AnyNestedObject>} [nested] Nested object descriptors
-           */
-
-          /**
-           * Any extension field descriptor.
-           * @typedef AnyExtensionField
-           * @type {IExtensionField|IExtensionMapField}
-           */
-
-          /**
-           * Any nested object descriptor.
-           * @typedef AnyNestedObject
-           * @type {IEnum|IType|IService|AnyExtensionField|INamespace}
-           */
-          // ^ BEWARE: VSCode hangs forever when using more than 5 types (that's why AnyExtensionField exists in the first place)
-
-          /**
-           * Converts this namespace to a namespace descriptor.
-           * @param {IToJSONOptions} [toJSONOptions] JSON conversion options
-           * @returns {INamespace} Namespace descriptor
-           */
-
-          Namespace.prototype.toJSON = function toJSON(toJSONOptions) {
-            return util.toObject(["options", this.options, "nested", arrayToJSON(this.nestedArray, toJSONOptions)]);
-          };
-          /**
-           * Adds nested objects to this namespace from nested object descriptors.
-           * @param {Object.<string,AnyNestedObject>} nestedJson Any nested object descriptors
-           * @returns {Namespace} `this`
-           */
-
-
-          Namespace.prototype.addJSON = function addJSON(nestedJson) {
-            var ns = this;
-            /* istanbul ignore else */
-
-            if (nestedJson) {
-              for (var names = Object.keys(nestedJson), i = 0, nested; i < names.length; ++i) {
-                nested = nestedJson[names[i]];
-                ns.add( // most to least likely
-                (nested.fields !== undefined ? Type.fromJSON : nested.values !== undefined ? Enum.fromJSON : nested.methods !== undefined ? Service.fromJSON : nested.id !== undefined ? Field.fromJSON : Namespace.fromJSON)(names[i], nested));
-              }
-            }
-
-            return this;
-          };
-          /**
-           * Gets the nested object of the specified name.
-           * @param {string} name Nested object name
-           * @returns {ReflectionObject|null} The reflection object or `null` if it doesn't exist
-           */
-
-
-          Namespace.prototype.get = function get(name) {
-            return this.nested && this.nested[name] || null;
-          };
-          /**
-           * Gets the values of the nested {@link Enum|enum} of the specified name.
-           * This methods differs from {@link Namespace#get|get} in that it returns an enum's values directly and throws instead of returning `null`.
-           * @param {string} name Nested enum name
-           * @returns {Object.<string,number>} Enum values
-           * @throws {Error} If there is no such enum
-           */
-
-
-          Namespace.prototype.getEnum = function getEnum(name) {
-            if (this.nested && this.nested[name] instanceof Enum) return this.nested[name].values;
-            throw Error("no such enum: " + name);
-          };
-          /**
-           * Adds a nested object to this namespace.
-           * @param {ReflectionObject} object Nested object to add
-           * @returns {Namespace} `this`
-           * @throws {TypeError} If arguments are invalid
-           * @throws {Error} If there is already a nested object with this name
-           */
-
-
-          Namespace.prototype.add = function add(object) {
-            if (!(object instanceof Field && object.extend !== undefined || object instanceof Type || object instanceof Enum || object instanceof Service || object instanceof Namespace || object instanceof OneOf)) throw TypeError("object must be a valid nested object");
-            if (!this.nested) this.nested = {};else {
-              var prev = this.get(object.name);
-
-              if (prev) {
-                if (prev instanceof Namespace && object instanceof Namespace && !(prev instanceof Type || prev instanceof Service)) {
-                  // replace plain namespace but keep existing nested elements and options
-                  var nested = prev.nestedArray;
-
-                  for (var i = 0; i < nested.length; ++i) {
-                    object.add(nested[i]);
-                  }
-
-                  this.remove(prev);
-                  if (!this.nested) this.nested = {};
-                  object.setOptions(prev.options, true);
-                } else throw Error("duplicate name '" + object.name + "' in " + this);
-              }
-            }
-            this.nested[object.name] = object;
-            object.onAdd(this);
-            return clearCache(this);
-          };
-          /**
-           * Removes a nested object from this namespace.
-           * @param {ReflectionObject} object Nested object to remove
-           * @returns {Namespace} `this`
-           * @throws {TypeError} If arguments are invalid
-           * @throws {Error} If `object` is not a member of this namespace
-           */
-
-
-          Namespace.prototype.remove = function remove(object) {
-            if (!(object instanceof ReflectionObject)) throw TypeError("object must be a ReflectionObject");
-            if (object.parent !== this) throw Error(object + " is not a member of " + this);
-            delete this.nested[object.name];
-            if (!Object.keys(this.nested).length) this.nested = undefined;
-            object.onRemove(this);
-            return clearCache(this);
-          };
-          /**
-           * Defines additial namespaces within this one if not yet existing.
-           * @param {string|string[]} path Path to create
-           * @param {*} [json] Nested types to create from JSON
-           * @returns {Namespace} Pointer to the last namespace created or `this` if path is empty
-           */
-
-
-          Namespace.prototype.define = function define(path, json) {
-            if (util.isString(path)) path = path.split(".");else if (!Array.isArray(path)) throw TypeError("illegal path");
-            if (path && path.length && path[0] === "") throw Error("path must be relative");
-            var ptr = this;
-
-            while (path.length > 0) {
-              var part = path.shift();
-
-              if (ptr.nested && ptr.nested[part]) {
-                ptr = ptr.nested[part];
-                if (!(ptr instanceof Namespace)) throw Error("path conflicts with non-namespace objects");
-              } else ptr.add(ptr = new Namespace(part));
-            }
-
-            if (json) ptr.addJSON(json);
-            return ptr;
-          };
-          /**
-           * Resolves this namespace's and all its nested objects' type references. Useful to validate a reflection tree, but comes at a cost.
-           * @returns {Namespace} `this`
-           */
-
-
-          Namespace.prototype.resolveAll = function resolveAll() {
-            var nested = this.nestedArray,
-                i = 0;
-
-            while (i < nested.length) {
-              if (nested[i] instanceof Namespace) nested[i++].resolveAll();else nested[i++].resolve();
-            }
-
-            return this.resolve();
-          };
-          /**
-           * Recursively looks up the reflection object matching the specified path in the scope of this namespace.
-           * @param {string|string[]} path Path to look up
-           * @param {*|Array.<*>} filterTypes Filter types, any combination of the constructors of `protobuf.Type`, `protobuf.Enum`, `protobuf.Service` etc.
-           * @param {boolean} [parentAlreadyChecked=false] If known, whether the parent has already been checked
-           * @returns {ReflectionObject|null} Looked up object or `null` if none could be found
-           */
-
-
-          Namespace.prototype.lookup = function lookup(path, filterTypes, parentAlreadyChecked) {
-            /* istanbul ignore next */
-            if (typeof filterTypes === "boolean") {
-              parentAlreadyChecked = filterTypes;
-              filterTypes = undefined;
-            } else if (filterTypes && !Array.isArray(filterTypes)) filterTypes = [filterTypes];
-
-            if (util.isString(path) && path.length) {
-              if (path === ".") return this.root;
-              path = path.split(".");
-            } else if (!path.length) return this; // Start at root if path is absolute
-
-
-            if (path[0] === "") return this.root.lookup(path.slice(1), filterTypes); // Test if the first part matches any nested object, and if so, traverse if path contains more
-
-            var found = this.get(path[0]);
-
-            if (found) {
-              if (path.length === 1) {
-                if (!filterTypes || filterTypes.indexOf(found.constructor) > -1) return found;
-              } else if (found instanceof Namespace && (found = found.lookup(path.slice(1), filterTypes, true))) return found; // Otherwise try each nested namespace
-
-            } else for (var i = 0; i < this.nestedArray.length; ++i) {
-              if (this._nestedArray[i] instanceof Namespace && (found = this._nestedArray[i].lookup(path, filterTypes, true))) return found;
-            } // If there hasn't been a match, try again at the parent
-
-
-            if (this.parent === null || parentAlreadyChecked) return null;
-            return this.parent.lookup(path, filterTypes);
-          };
-          /**
-           * Looks up the reflection object at the specified path, relative to this namespace.
-           * @name NamespaceBase#lookup
-           * @function
-           * @param {string|string[]} path Path to look up
-           * @param {boolean} [parentAlreadyChecked=false] Whether the parent has already been checked
-           * @returns {ReflectionObject|null} Looked up object or `null` if none could be found
-           * @variation 2
-           */
-          // lookup(path: string, [parentAlreadyChecked: boolean])
-
-          /**
-           * Looks up the {@link Type|type} at the specified path, relative to this namespace.
-           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
-           * @param {string|string[]} path Path to look up
-           * @returns {Type} Looked up type
-           * @throws {Error} If `path` does not point to a type
-           */
-
-
-          Namespace.prototype.lookupType = function lookupType(path) {
-            var found = this.lookup(path, [Type]);
-            if (!found) throw Error("no such type: " + path);
-            return found;
-          };
-          /**
-           * Looks up the values of the {@link Enum|enum} at the specified path, relative to this namespace.
-           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
-           * @param {string|string[]} path Path to look up
-           * @returns {Enum} Looked up enum
-           * @throws {Error} If `path` does not point to an enum
-           */
-
-
-          Namespace.prototype.lookupEnum = function lookupEnum(path) {
-            var found = this.lookup(path, [Enum]);
-            if (!found) throw Error("no such Enum '" + path + "' in " + this);
-            return found;
-          };
-          /**
-           * Looks up the {@link Type|type} or {@link Enum|enum} at the specified path, relative to this namespace.
-           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
-           * @param {string|string[]} path Path to look up
-           * @returns {Type} Looked up type or enum
-           * @throws {Error} If `path` does not point to a type or enum
-           */
-
-
-          Namespace.prototype.lookupTypeOrEnum = function lookupTypeOrEnum(path) {
-            var found = this.lookup(path, [Type, Enum]);
-            if (!found) throw Error("no such Type or Enum '" + path + "' in " + this);
-            return found;
-          };
-          /**
-           * Looks up the {@link Service|service} at the specified path, relative to this namespace.
-           * Besides its signature, this methods differs from {@link Namespace#lookup|lookup} in that it throws instead of returning `null`.
-           * @param {string|string[]} path Path to look up
-           * @returns {Service} Looked up service
-           * @throws {Error} If `path` does not point to a service
-           */
-
-
-          Namespace.prototype.lookupService = function lookupService(path) {
-            var found = this.lookup(path, [Service]);
-            if (!found) throw Error("no such Service '" + path + "' in " + this);
-            return found;
-          }; // Sets up cyclic dependencies (called in index-light)
-
-
-          Namespace._configure = function (Type_, Service_, Enum_) {
-            Type = Type_;
-            Service = Service_;
-            Enum = Enum_;
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/message.js", ['./cjs-loader.mjs', './minimal.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./util/minimal": __cjsMetaURL$1
-        }, _require);
-
-        (function () {
-          module.exports = Message;
-
-          var util = require("./util/minimal");
-          /**
-           * Constructs a new message instance.
-           * @classdesc Abstract runtime message.
-           * @constructor
-           * @param {Properties<T>} [properties] Properties to set
-           * @template T extends object = object
-           */
-
-
-          function Message(properties) {
-            // not used internally
-            if (properties) for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i) {
-              this[keys[i]] = properties[keys[i]];
-            }
-          }
-          /**
-           * Reference to the reflected type.
-           * @name Message.$type
-           * @type {Type}
-           * @readonly
-           */
-
-          /**
-           * Reference to the reflected type.
-           * @name Message#$type
-           * @type {Type}
-           * @readonly
-           */
-
-          /*eslint-disable valid-jsdoc*/
-
-          /**
-           * Creates a new message of this type using the specified properties.
-           * @param {Object.<string,*>} [properties] Properties to set
-           * @returns {Message<T>} Message instance
-           * @template T extends Message<T>
-           * @this Constructor<T>
-           */
-
-
-          Message.create = function create(properties) {
-            return this.$type.create(properties);
-          };
-          /**
-           * Encodes a message of this type.
-           * @param {T|Object.<string,*>} message Message to encode
-           * @param {Writer} [writer] Writer to use
-           * @returns {Writer} Writer
-           * @template T extends Message<T>
-           * @this Constructor<T>
-           */
-
-
-          Message.encode = function encode(message, writer) {
-            return this.$type.encode(message, writer);
-          };
-          /**
-           * Encodes a message of this type preceeded by its length as a varint.
-           * @param {T|Object.<string,*>} message Message to encode
-           * @param {Writer} [writer] Writer to use
-           * @returns {Writer} Writer
-           * @template T extends Message<T>
-           * @this Constructor<T>
-           */
-
-
-          Message.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.$type.encodeDelimited(message, writer);
-          };
-          /**
-           * Decodes a message of this type.
-           * @name Message.decode
-           * @function
-           * @param {Reader|Uint8Array} reader Reader or buffer to decode
-           * @returns {T} Decoded message
-           * @template T extends Message<T>
-           * @this Constructor<T>
-           */
-
-
-          Message.decode = function decode(reader) {
-            return this.$type.decode(reader);
-          };
-          /**
-           * Decodes a message of this type preceeded by its length as a varint.
-           * @name Message.decodeDelimited
-           * @function
-           * @param {Reader|Uint8Array} reader Reader or buffer to decode
-           * @returns {T} Decoded message
-           * @template T extends Message<T>
-           * @this Constructor<T>
-           */
-
-
-          Message.decodeDelimited = function decodeDelimited(reader) {
-            return this.$type.decodeDelimited(reader);
-          };
-          /**
-           * Verifies a message of this type.
-           * @name Message.verify
-           * @function
-           * @param {Object.<string,*>} message Plain object to verify
-           * @returns {string|null} `null` if valid, otherwise the reason why it is not
-           */
-
-
-          Message.verify = function verify(message) {
-            return this.$type.verify(message);
-          };
-          /**
-           * Creates a new message of this type from a plain object. Also converts values to their respective internal types.
-           * @param {Object.<string,*>} object Plain object
-           * @returns {T} Message instance
-           * @template T extends Message<T>
-           * @this Constructor<T>
-           */
-
-
-          Message.fromObject = function fromObject(object) {
-            return this.$type.fromObject(object);
-          };
-          /**
-           * Creates a plain object from a message of this type. Also converts values to other types if specified.
-           * @param {T} message Message instance
-           * @param {IConversionOptions} [options] Conversion options
-           * @returns {Object.<string,*>} Plain object
-           * @template T extends Message<T>
-           * @this Constructor<T>
-           */
-
-
-          Message.toObject = function toObject(message, options) {
-            return this.$type.toObject(message, options);
-          };
-          /**
-           * Converts this message to JSON.
-           * @returns {Object.<string,*>} JSON object
-           */
-
-
-          Message.prototype.toJSON = function toJSON() {
-            return this.$type.toObject(this, util.toJSONOptions);
-          };
-          /*eslint-enable valid-jsdoc*/
-
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/wrappers.js", ['./cjs-loader.mjs', './message.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./message": __cjsMetaURL$1
-        }, _require);
-
-        (function () {
-          /**
-           * Wrappers for common types.
-           * @type {Object.<string,IWrapper>}
-           * @const
-           */
-          var wrappers = exports$1;
-
-          var Message = require("./message");
-          /**
-           * From object converter part of an {@link IWrapper}.
-           * @typedef WrapperFromObjectConverter
-           * @type {function}
-           * @param {Object.<string,*>} object Plain object
-           * @returns {Message<{}>} Message instance
-           * @this Type
-           */
-
-          /**
-           * To object converter part of an {@link IWrapper}.
-           * @typedef WrapperToObjectConverter
-           * @type {function}
-           * @param {Message<{}>} message Message instance
-           * @param {IConversionOptions} [options] Conversion options
-           * @returns {Object.<string,*>} Plain object
-           * @this Type
-           */
-
-          /**
-           * Common type wrapper part of {@link wrappers}.
-           * @interface IWrapper
-           * @property {WrapperFromObjectConverter} [fromObject] From object converter
-           * @property {WrapperToObjectConverter} [toObject] To object converter
-           */
-          // Custom wrapper for Any
-
-
-          wrappers[".google.protobuf.Any"] = {
-            fromObject: function fromObject(object) {
-              // unwrap value type if mapped
-              if (object && object["@type"]) {
-                // Only use fully qualified type name after the last '/'
-                var name = object["@type"].substring(object["@type"].lastIndexOf("/") + 1);
-                var type = this.lookup(name);
-                /* istanbul ignore else */
-
-                if (type) {
-                  // type_url does not accept leading "."
-                  var type_url = object["@type"].charAt(0) === "." ? object["@type"].substr(1) : object["@type"]; // type_url prefix is optional, but path seperator is required
-
-                  if (type_url.indexOf("/") === -1) {
-                    type_url = "/" + type_url;
-                  }
-
-                  return this.create({
-                    type_url: type_url,
-                    value: type.encode(type.fromObject(object)).finish()
-                  });
-                }
-              }
-
-              return this.fromObject(object);
-            },
-            toObject: function toObject(message, options) {
-              // Default prefix
-              var googleApi = "type.googleapis.com/";
-              var prefix = "";
-              var name = ""; // decode value if requested and unmapped
-
-              if (options && options.json && message.type_url && message.value) {
-                // Only use fully qualified type name after the last '/'
-                name = message.type_url.substring(message.type_url.lastIndexOf("/") + 1); // Separate the prefix used
-
-                prefix = message.type_url.substring(0, message.type_url.lastIndexOf("/") + 1);
-                var type = this.lookup(name);
-                /* istanbul ignore else */
-
-                if (type) message = type.decode(message.value);
-              } // wrap value if unmapped
-
-
-              if (!(message instanceof this.ctor) && message instanceof Message) {
-                var object = message.$type.toObject(message, options);
-                var messageName = message.$type.fullName[0] === "." ? message.$type.fullName.substr(1) : message.$type.fullName; // Default to type.googleapis.com prefix if no prefix is used
-
-                if (prefix === "") {
-                  prefix = googleApi;
-                }
-
-                name = prefix + messageName;
-                object["@type"] = name;
-                return object;
-              }
-
-              return this.toObject(message, options);
-            }
-          };
         })();
 
         _cjsExports = exports('default', module.exports);
@@ -7567,6 +7567,201 @@ System.register("chunks:///_virtual/reader.js", ['./cjs-loader.mjs', './minimal.
               }
             });
           };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/writer_buffer.js", ['./cjs-loader.mjs', './minimal.js', './writer.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./writer": __cjsMetaURL$1,
+          "./util/minimal": __cjsMetaURL$2
+        }, _require);
+
+        (function () {
+          module.exports = BufferWriter; // extends Writer
+
+          var Writer = require("./writer");
+
+          (BufferWriter.prototype = Object.create(Writer.prototype)).constructor = BufferWriter;
+
+          var util = require("./util/minimal");
+          /**
+           * Constructs a new buffer writer instance.
+           * @classdesc Wire format writer using node buffers.
+           * @extends Writer
+           * @constructor
+           */
+
+
+          function BufferWriter() {
+            Writer.call(this);
+          }
+
+          BufferWriter._configure = function () {
+            /**
+             * Allocates a buffer of the specified size.
+             * @function
+             * @param {number} size Buffer size
+             * @returns {Buffer} Buffer
+             */
+            BufferWriter.alloc = util._Buffer_allocUnsafe;
+            BufferWriter.writeBytesBuffer = util.Buffer && util.Buffer.prototype instanceof Uint8Array && util.Buffer.prototype.set.name === "set" ? function writeBytesBuffer_set(val, buf, pos) {
+              buf.set(val, pos); // faster than copy (requires node >= 4 where Buffers extend Uint8Array and set is properly inherited)
+              // also works for plain array values
+            }
+            /* istanbul ignore next */
+            : function writeBytesBuffer_copy(val, buf, pos) {
+              if (val.copy) // Buffer values
+                val.copy(buf, pos, 0, val.length);else for (var i = 0; i < val.length;) {
+                // plain array values
+                buf[pos++] = val[i++];
+              }
+            };
+          };
+          /**
+           * @override
+           */
+
+
+          BufferWriter.prototype.bytes = function write_bytes_buffer(value) {
+            if (util.isString(value)) value = util._Buffer_from(value, "base64");
+            var len = value.length >>> 0;
+            this.uint32(len);
+            if (len) this._push(BufferWriter.writeBytesBuffer, len, value);
+            return this;
+          };
+
+          function writeStringBuffer(val, buf, pos) {
+            if (val.length < 40) // plain js is faster for short strings (probably due to redundant assertions)
+              util.utf8.write(val, buf, pos);else if (buf.utf8Write) buf.utf8Write(val, pos);else buf.write(val, pos);
+          }
+          /**
+           * @override
+           */
+
+
+          BufferWriter.prototype.string = function write_string_buffer(value) {
+            var len = util.Buffer.byteLength(value);
+            this.uint32(len);
+            if (len) this._push(writeStringBuffer, len, value);
+            return this;
+          };
+          /**
+           * Finishes the write operation.
+           * @name BufferWriter#finish
+           * @function
+           * @returns {Buffer} Finished buffer
+           */
+
+
+          BufferWriter._configure();
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/reader_buffer.js", ['./cjs-loader.mjs', './minimal.js', './reader.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./reader": __cjsMetaURL$1,
+          "./util/minimal": __cjsMetaURL$2
+        }, _require);
+
+        (function () {
+          module.exports = BufferReader; // extends Reader
+
+          var Reader = require("./reader");
+
+          (BufferReader.prototype = Object.create(Reader.prototype)).constructor = BufferReader;
+
+          var util = require("./util/minimal");
+          /**
+           * Constructs a new buffer reader instance.
+           * @classdesc Wire format reader using node buffers.
+           * @extends Reader
+           * @constructor
+           * @param {Buffer} buffer Buffer to read from
+           */
+
+
+          function BufferReader(buffer) {
+            Reader.call(this, buffer);
+            /**
+             * Read buffer.
+             * @name BufferReader#buf
+             * @type {Buffer}
+             */
+          }
+
+          BufferReader._configure = function () {
+            /* istanbul ignore else */
+            if (util.Buffer) BufferReader.prototype._slice = util.Buffer.prototype.slice;
+          };
+          /**
+           * @override
+           */
+
+
+          BufferReader.prototype.string = function read_string_buffer() {
+            var len = this.uint32(); // modifies pos
+
+            return this.buf.utf8Slice ? this.buf.utf8Slice(this.pos, this.pos = Math.min(this.pos + len, this.len)) : this.buf.toString("utf-8", this.pos, this.pos = Math.min(this.pos + len, this.len));
+          };
+          /**
+           * Reads a sequence of bytes preceeded by its length as a varint.
+           * @name BufferReader#bytes
+           * @function
+           * @returns {Buffer} Value read
+           */
+
+
+          BufferReader._configure();
         })();
 
         _cjsExports = exports('default', module.exports);
@@ -8197,202 +8392,7 @@ System.register("chunks:///_virtual/rpc.js", ['./cjs-loader.mjs', './service2.js
   };
 });
 
-System.register("chunks:///_virtual/reader_buffer.js", ['./cjs-loader.mjs', './minimal.js', './reader.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./reader": __cjsMetaURL$1,
-          "./util/minimal": __cjsMetaURL$2
-        }, _require);
-
-        (function () {
-          module.exports = BufferReader; // extends Reader
-
-          var Reader = require("./reader");
-
-          (BufferReader.prototype = Object.create(Reader.prototype)).constructor = BufferReader;
-
-          var util = require("./util/minimal");
-          /**
-           * Constructs a new buffer reader instance.
-           * @classdesc Wire format reader using node buffers.
-           * @extends Reader
-           * @constructor
-           * @param {Buffer} buffer Buffer to read from
-           */
-
-
-          function BufferReader(buffer) {
-            Reader.call(this, buffer);
-            /**
-             * Read buffer.
-             * @name BufferReader#buf
-             * @type {Buffer}
-             */
-          }
-
-          BufferReader._configure = function () {
-            /* istanbul ignore else */
-            if (util.Buffer) BufferReader.prototype._slice = util.Buffer.prototype.slice;
-          };
-          /**
-           * @override
-           */
-
-
-          BufferReader.prototype.string = function read_string_buffer() {
-            var len = this.uint32(); // modifies pos
-
-            return this.buf.utf8Slice ? this.buf.utf8Slice(this.pos, this.pos = Math.min(this.pos + len, this.len)) : this.buf.toString("utf-8", this.pos, this.pos = Math.min(this.pos + len, this.len));
-          };
-          /**
-           * Reads a sequence of bytes preceeded by its length as a varint.
-           * @name BufferReader#bytes
-           * @function
-           * @returns {Buffer} Value read
-           */
-
-
-          BufferReader._configure();
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/writer_buffer.js", ['./cjs-loader.mjs', './minimal.js', './writer.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./writer": __cjsMetaURL$1,
-          "./util/minimal": __cjsMetaURL$2
-        }, _require);
-
-        (function () {
-          module.exports = BufferWriter; // extends Writer
-
-          var Writer = require("./writer");
-
-          (BufferWriter.prototype = Object.create(Writer.prototype)).constructor = BufferWriter;
-
-          var util = require("./util/minimal");
-          /**
-           * Constructs a new buffer writer instance.
-           * @classdesc Wire format writer using node buffers.
-           * @extends Writer
-           * @constructor
-           */
-
-
-          function BufferWriter() {
-            Writer.call(this);
-          }
-
-          BufferWriter._configure = function () {
-            /**
-             * Allocates a buffer of the specified size.
-             * @function
-             * @param {number} size Buffer size
-             * @returns {Buffer} Buffer
-             */
-            BufferWriter.alloc = util._Buffer_allocUnsafe;
-            BufferWriter.writeBytesBuffer = util.Buffer && util.Buffer.prototype instanceof Uint8Array && util.Buffer.prototype.set.name === "set" ? function writeBytesBuffer_set(val, buf, pos) {
-              buf.set(val, pos); // faster than copy (requires node >= 4 where Buffers extend Uint8Array and set is properly inherited)
-              // also works for plain array values
-            }
-            /* istanbul ignore next */
-            : function writeBytesBuffer_copy(val, buf, pos) {
-              if (val.copy) // Buffer values
-                val.copy(buf, pos, 0, val.length);else for (var i = 0; i < val.length;) {
-                // plain array values
-                buf[pos++] = val[i++];
-              }
-            };
-          };
-          /**
-           * @override
-           */
-
-
-          BufferWriter.prototype.bytes = function write_bytes_buffer(value) {
-            if (util.isString(value)) value = util._Buffer_from(value, "base64");
-            var len = value.length >>> 0;
-            this.uint32(len);
-            if (len) this._push(BufferWriter.writeBytesBuffer, len, value);
-            return this;
-          };
-
-          function writeStringBuffer(val, buf, pos) {
-            if (val.length < 40) // plain js is faster for short strings (probably due to redundant assertions)
-              util.utf8.write(val, buf, pos);else if (buf.utf8Write) buf.utf8Write(val, pos);else buf.write(val, pos);
-          }
-          /**
-           * @override
-           */
-
-
-          BufferWriter.prototype.string = function write_string_buffer(value) {
-            var len = util.Buffer.byteLength(value);
-            this.uint32(len);
-            if (len) this._push(writeStringBuffer, len, value);
-            return this;
-          };
-          /**
-           * Finishes the write operation.
-           * @name BufferWriter#finish
-           * @function
-           * @returns {Buffer} Finished buffer
-           */
-
-
-          BufferWriter._configure();
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/minimal.js", ['./cjs-loader.mjs', './index7.js', './index8.js', './index6.js', './index11.js', './index10.js', './index9.js', './index12.js', './longbits.js'], function (exports, module) {
+System.register("chunks:///_virtual/minimal.js", ['./cjs-loader.mjs', './index10.js', './index7.js', './index6.js', './index11.js', './index12.js', './index8.js', './index9.js', './longbits.js'], function (exports, module) {
   'use strict';
 
   var loader, __cjsMetaURL$1, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$5, __cjsMetaURL$6, __cjsMetaURL$7, __cjsMetaURL$8;
@@ -8888,6 +8888,86 @@ System.register("chunks:///_virtual/index3.js", ['./cjs-loader.mjs'], function (
         var require = loader.createRequireWithReqMap({}, _require);
 
         (function () {
+          /**
+           * A minimal path module to resolve Unix, Windows and URL paths alike.
+           * @memberof util
+           * @namespace
+           */
+          var path = exports$1;
+
+          var isAbsolute =
+          /**
+           * Tests if the specified path is absolute.
+           * @param {string} path Path to test
+           * @returns {boolean} `true` if path is absolute
+           */
+          path.isAbsolute = function isAbsolute(path) {
+            return /^(?:\/|\w+:)/.test(path);
+          };
+
+          var normalize =
+          /**
+           * Normalizes the specified path.
+           * @param {string} path Path to normalize
+           * @returns {string} Normalized path
+           */
+          path.normalize = function normalize(path) {
+            path = path.replace(/\\/g, "/").replace(/\/{2,}/g, "/");
+            var parts = path.split("/"),
+                absolute = isAbsolute(path),
+                prefix = "";
+            if (absolute) prefix = parts.shift() + "/";
+
+            for (var i = 0; i < parts.length;) {
+              if (parts[i] === "..") {
+                if (i > 0 && parts[i - 1] !== "..") parts.splice(--i, 2);else if (absolute) parts.splice(i, 1);else ++i;
+              } else if (parts[i] === ".") parts.splice(i, 1);else ++i;
+            }
+
+            return prefix + parts.join("/");
+          };
+          /**
+           * Resolves the specified include path against the specified origin path.
+           * @param {string} originPath Path to the origin file
+           * @param {string} includePath Include path relative to origin path
+           * @param {boolean} [alreadyNormalized=false] `true` if both paths are already known to be normalized
+           * @returns {string} Path to the include file
+           */
+
+
+          path.resolve = function resolve(originPath, includePath, alreadyNormalized) {
+            if (!alreadyNormalized) includePath = normalize(includePath);
+            if (isAbsolute(includePath)) return includePath;
+            if (!alreadyNormalized) originPath = normalize(originPath);
+            return (originPath = originPath.replace(/(?:\/|^)[^/]+$/, "")).length ? normalize(originPath + "/" + includePath) : includePath;
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/index4.js", ['./cjs-loader.mjs'], function (exports, module) {
+  'use strict';
+
+  var loader;
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({}, _require);
+
+        (function () {
           module.exports = codegen;
           /**
            * Begins generating a function.
@@ -9010,7 +9090,7 @@ System.register("chunks:///_virtual/index3.js", ['./cjs-loader.mjs'], function (
   };
 });
 
-System.register("chunks:///_virtual/index4.js", ['./cjs-loader.mjs', './index7.js', './index10.js'], function (exports, module) {
+System.register("chunks:///_virtual/index5.js", ['./cjs-loader.mjs', './index10.js', './index12.js'], function (exports, module) {
   'use strict';
 
   var loader, __cjsMetaURL$1, __cjsMetaURL$2;
@@ -9143,86 +9223,6 @@ System.register("chunks:///_virtual/index4.js", ['./cjs-loader.mjs', './index7.j
 
             xhr.open("GET", filename);
             xhr.send();
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/index5.js", ['./cjs-loader.mjs'], function (exports, module) {
-  'use strict';
-
-  var loader;
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({}, _require);
-
-        (function () {
-          /**
-           * A minimal path module to resolve Unix, Windows and URL paths alike.
-           * @memberof util
-           * @namespace
-           */
-          var path = exports$1;
-
-          var isAbsolute =
-          /**
-           * Tests if the specified path is absolute.
-           * @param {string} path Path to test
-           * @returns {boolean} `true` if path is absolute
-           */
-          path.isAbsolute = function isAbsolute(path) {
-            return /^(?:\/|\w+:)/.test(path);
-          };
-
-          var normalize =
-          /**
-           * Normalizes the specified path.
-           * @param {string} path Path to normalize
-           * @returns {string} Normalized path
-           */
-          path.normalize = function normalize(path) {
-            path = path.replace(/\\/g, "/").replace(/\/{2,}/g, "/");
-            var parts = path.split("/"),
-                absolute = isAbsolute(path),
-                prefix = "";
-            if (absolute) prefix = parts.shift() + "/";
-
-            for (var i = 0; i < parts.length;) {
-              if (parts[i] === "..") {
-                if (i > 0 && parts[i - 1] !== "..") parts.splice(--i, 2);else if (absolute) parts.splice(i, 1);else ++i;
-              } else if (parts[i] === ".") parts.splice(i, 1);else ++i;
-            }
-
-            return prefix + parts.join("/");
-          };
-          /**
-           * Resolves the specified include path against the specified origin path.
-           * @param {string} originPath Path to the origin file
-           * @param {string} includePath Include path relative to origin path
-           * @param {boolean} [alreadyNormalized=false] `true` if both paths are already known to be normalized
-           * @returns {string} Path to the include file
-           */
-
-
-          path.resolve = function resolve(originPath, includePath, alreadyNormalized) {
-            if (!alreadyNormalized) includePath = normalize(includePath);
-            if (isAbsolute(includePath)) return includePath;
-            if (!alreadyNormalized) originPath = normalize(originPath);
-            return (originPath = originPath.replace(/(?:\/|^)[^/]+$/, "")).length ? normalize(originPath + "/" + includePath) : includePath;
           };
         })();
 
@@ -9747,93 +9747,6 @@ System.register("chunks:///_virtual/index7.js", ['./cjs-loader.mjs'], function (
         var require = loader.createRequireWithReqMap({}, _require);
 
         (function () {
-          module.exports = asPromise;
-          /**
-           * Callback as used by {@link util.asPromise}.
-           * @typedef asPromiseCallback
-           * @type {function}
-           * @param {Error|null} error Error, if any
-           * @param {...*} params Additional arguments
-           * @returns {undefined}
-           */
-
-          /**
-           * Returns a promise from a node-style callback function.
-           * @memberof util
-           * @param {asPromiseCallback} fn Function to call
-           * @param {*} ctx Function context
-           * @param {...*} params Function arguments
-           * @returns {Promise<*>} Promisified function
-           */
-
-          function asPromise(fn, ctx
-          /*, varargs */
-          ) {
-            var params = new Array(arguments.length - 1),
-                offset = 0,
-                index = 2,
-                pending = true;
-
-            while (index < arguments.length) {
-              params[offset++] = arguments[index++];
-            }
-
-            return new Promise(function executor(resolve, reject) {
-              params[offset] = function callback(err
-              /*, varargs */
-              ) {
-                if (pending) {
-                  pending = false;
-                  if (err) reject(err);else {
-                    var params = new Array(arguments.length - 1),
-                        offset = 0;
-
-                    while (offset < params.length) {
-                      params[offset++] = arguments[offset];
-                    }
-
-                    resolve.apply(null, params);
-                  }
-                }
-              };
-
-              try {
-                fn.apply(ctx || null, params);
-              } catch (err) {
-                if (pending) {
-                  pending = false;
-                  reject(err);
-                }
-              }
-            });
-          }
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/index8.js", ['./cjs-loader.mjs'], function (exports, module) {
-  'use strict';
-
-  var loader;
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({}, _require);
-
-        (function () {
           /**
            * A minimal base64 implementation for number arrays.
            * @memberof util
@@ -9996,7 +9909,7 @@ System.register("chunks:///_virtual/index8.js", ['./cjs-loader.mjs'], function (
   };
 });
 
-System.register("chunks:///_virtual/index9.js", ['./cjs-loader.mjs'], function (exports, module) {
+System.register("chunks:///_virtual/index8.js", ['./cjs-loader.mjs'], function (exports, module) {
   'use strict';
 
   var loader;
@@ -10127,6 +10040,81 @@ System.register("chunks:///_virtual/index9.js", ['./cjs-loader.mjs'], function (
   };
 });
 
+System.register("chunks:///_virtual/index9.js", ['./cjs-loader.mjs'], function (exports, module) {
+  'use strict';
+
+  var loader;
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({}, _require);
+
+        (function () {
+          module.exports = pool;
+          /**
+           * An allocator as used by {@link util.pool}.
+           * @typedef PoolAllocator
+           * @type {function}
+           * @param {number} size Buffer size
+           * @returns {Uint8Array} Buffer
+           */
+
+          /**
+           * A slicer as used by {@link util.pool}.
+           * @typedef PoolSlicer
+           * @type {function}
+           * @param {number} start Start offset
+           * @param {number} end End offset
+           * @returns {Uint8Array} Buffer slice
+           * @this {Uint8Array}
+           */
+
+          /**
+           * A general purpose buffer pool.
+           * @memberof util
+           * @function
+           * @param {PoolAllocator} alloc Allocator
+           * @param {PoolSlicer} slice Slicer
+           * @param {number} [size=8192] Slab size
+           * @returns {PoolAllocator} Pooled allocator
+           */
+
+          function pool(alloc, slice, size) {
+            var SIZE = size || 8192;
+            var MAX = SIZE >>> 1;
+            var slab = null;
+            var offset = SIZE;
+            return function pool_alloc(size) {
+              if (size < 1 || size > MAX) return alloc(size);
+
+              if (offset + size > SIZE) {
+                slab = alloc(SIZE);
+                offset = 0;
+              }
+
+              var buf = slice.call(slab, offset, offset += size);
+              if (offset & 7) // align to 32 bit
+                offset = (offset | 7) + 1;
+              return buf;
+            };
+          }
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
 System.register("chunks:///_virtual/index10.js", ['./cjs-loader.mjs'], function (exports, module) {
   'use strict';
 
@@ -10144,23 +10132,65 @@ System.register("chunks:///_virtual/index10.js", ['./cjs-loader.mjs'], function 
         var require = loader.createRequireWithReqMap({}, _require);
 
         (function () {
-          module.exports = inquire;
+          module.exports = asPromise;
           /**
-           * Requires a module only if available.
-           * @memberof util
-           * @param {string} moduleName Module to require
-           * @returns {?Object} Required module if available and not empty, otherwise `null`
+           * Callback as used by {@link util.asPromise}.
+           * @typedef asPromiseCallback
+           * @type {function}
+           * @param {Error|null} error Error, if any
+           * @param {...*} params Additional arguments
+           * @returns {undefined}
            */
 
-          function inquire(moduleName) {
-            try {
-              var mod = eval("quire".replace(/^/, "re"))(moduleName); // eslint-disable-line no-eval
+          /**
+           * Returns a promise from a node-style callback function.
+           * @memberof util
+           * @param {asPromiseCallback} fn Function to call
+           * @param {*} ctx Function context
+           * @param {...*} params Function arguments
+           * @returns {Promise<*>} Promisified function
+           */
 
-              if (mod && (mod.length || Object.keys(mod).length)) return mod;
-            } catch (e) {} // eslint-disable-line no-empty
+          function asPromise(fn, ctx
+          /*, varargs */
+          ) {
+            var params = new Array(arguments.length - 1),
+                offset = 0,
+                index = 2,
+                pending = true;
 
+            while (index < arguments.length) {
+              params[offset++] = arguments[index++];
+            }
 
-            return null;
+            return new Promise(function executor(resolve, reject) {
+              params[offset] = function callback(err
+              /*, varargs */
+              ) {
+                if (pending) {
+                  pending = false;
+                  if (err) reject(err);else {
+                    var params = new Array(arguments.length - 1),
+                        offset = 0;
+
+                    while (offset < params.length) {
+                      params[offset++] = arguments[offset];
+                    }
+
+                    resolve.apply(null, params);
+                  }
+                }
+              };
+
+              try {
+                fn.apply(ctx || null, params);
+              } catch (err) {
+                if (pending) {
+                  pending = false;
+                  reject(err);
+                }
+              }
+            });
           }
         })();
 
@@ -10529,53 +10559,23 @@ System.register("chunks:///_virtual/index12.js", ['./cjs-loader.mjs'], function 
         var require = loader.createRequireWithReqMap({}, _require);
 
         (function () {
-          module.exports = pool;
+          module.exports = inquire;
           /**
-           * An allocator as used by {@link util.pool}.
-           * @typedef PoolAllocator
-           * @type {function}
-           * @param {number} size Buffer size
-           * @returns {Uint8Array} Buffer
-           */
-
-          /**
-           * A slicer as used by {@link util.pool}.
-           * @typedef PoolSlicer
-           * @type {function}
-           * @param {number} start Start offset
-           * @param {number} end End offset
-           * @returns {Uint8Array} Buffer slice
-           * @this {Uint8Array}
-           */
-
-          /**
-           * A general purpose buffer pool.
+           * Requires a module only if available.
            * @memberof util
-           * @function
-           * @param {PoolAllocator} alloc Allocator
-           * @param {PoolSlicer} slice Slicer
-           * @param {number} [size=8192] Slab size
-           * @returns {PoolAllocator} Pooled allocator
+           * @param {string} moduleName Module to require
+           * @returns {?Object} Required module if available and not empty, otherwise `null`
            */
 
-          function pool(alloc, slice, size) {
-            var SIZE = size || 8192;
-            var MAX = SIZE >>> 1;
-            var slab = null;
-            var offset = SIZE;
-            return function pool_alloc(size) {
-              if (size < 1 || size > MAX) return alloc(size);
+          function inquire(moduleName) {
+            try {
+              var mod = eval("quire".replace(/^/, "re"))(moduleName); // eslint-disable-line no-eval
 
-              if (offset + size > SIZE) {
-                slab = alloc(SIZE);
-                offset = 0;
-              }
+              if (mod && (mod.length || Object.keys(mod).length)) return mod;
+            } catch (e) {} // eslint-disable-line no-empty
 
-              var buf = slice.call(slab, offset, offset += size);
-              if (offset & 7) // align to 32 bit
-                offset = (offset | 7) + 1;
-              return buf;
-            };
+
+            return null;
           }
         })();
 

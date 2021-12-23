@@ -7241,13 +7241,13 @@ System.register("chunks:///_virtual/Lobby.ts", ['./_rollupPluginModLoBabelHelper
       MessageBox = module.MessageBox;
     }],
     execute: function () {
-      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2, _class3, _temp;
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _class3, _temp;
 
       cclegacy._RF.push({}, "2405fX3EmhOqLxXcFJAVU2Z", "Lobby", undefined);
 
       var ccclass = _decorator.ccclass,
           property = _decorator.property;
-      var Lobby = exports('Lobby', (_dec = ccclass('Lobby'), _dec2 = property(Button), _dec3 = property(MySprite), _dec(_class = (_class2 = (_temp = _class3 = /*#__PURE__*/function (_Screen) {
+      var Lobby = exports('Lobby', (_dec = ccclass('Lobby'), _dec2 = property(Button), _dec3 = property(MySprite), _dec4 = property(MySprite), _dec(_class = (_class2 = (_temp = _class3 = /*#__PURE__*/function (_Screen) {
         _inheritsLoose(Lobby, _Screen);
 
         function Lobby() {
@@ -7263,6 +7263,8 @@ System.register("chunks:///_virtual/Lobby.ts", ['./_rollupPluginModLoBabelHelper
 
           _initializerDefineProperty(_assertThisInitialized(_this), "sprite", _descriptor2, _assertThisInitialized(_this));
 
+          _initializerDefineProperty(_assertThisInitialized(_this), "sprite2", _descriptor3, _assertThisInitialized(_this));
+
           return _this;
         }
 
@@ -7274,7 +7276,8 @@ System.register("chunks:///_virtual/Lobby.ts", ['./_rollupPluginModLoBabelHelper
 
         _proto.start = function start() {
           this.btnStart.node.on("click", this.onStartClick, this);
-          this.sprite.Fetch("https://img.mservice.com.vn/momo_app_v2/new_version/img/Marketing/icon-transfer-menu-update-v-mo-mo-2@2x.png");
+          this.sprite.Fetch("https://suno.vn/blog/wp-content/uploads/2014/12/nike-lich-su-thiet-ke-logo.jpg");
+          this.sprite2.Fetch("https://atc-edge01.mservice.com.vn/momo-payment//business/merchant/22578/Logo-1548424689099_22578.jpg");
         };
 
         _proto.update = function update(dt) {};
@@ -7306,6 +7309,13 @@ System.register("chunks:///_virtual/Lobby.ts", ['./_rollupPluginModLoBabelHelper
           return null;
         }
       }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "sprite", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "sprite2", [_dec4], {
         configurable: true,
         enumerable: true,
         writable: true,
