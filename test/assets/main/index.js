@@ -157,7 +157,7 @@ System.register("chunks:///_virtual/CameraCtrl.ts", ['cc', './_rollupPluginModLo
 
           _initializerDefineProperty(_assertThisInitialized(_this), "target", _descriptor, _assertThisInitialized(_this));
 
-          _defineProperty(_assertThisInitialized(_this), "angle", 2);
+          _defineProperty(_assertThisInitialized(_this), "angle", 10);
 
           _defineProperty(_assertThisInitialized(_this), "_quat", new Quat());
 
