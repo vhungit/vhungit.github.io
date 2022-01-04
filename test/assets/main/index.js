@@ -45,6 +45,230 @@ System.register("chunks:///_virtual/Utils.ts", ['cc'], function (exports) {
   };
 });
 
+System.register("chunks:///_virtual/bodyPart.ts", ['cc', './_rollupPluginModLoBabelHelpers.js'], function (exports) {
+  'use strict';
+
+  var cclegacy, _decorator, Node, Component, _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized;
+
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Component = module.Component;
+    }, function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }],
+    execute: function () {
+      var _dec, _dec2, _class, _class2, _descriptor, _temp;
+
+      cclegacy._RF.push({}, "69d49i6+EBPVqqp3f0EO0BL", "bodyPart", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var BodyPart = exports('BodyPart', (_dec = ccclass('BodyPart'), _dec2 = property(Node), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(BodyPart, _Component);
+
+        function BodyPart() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "bone", _descriptor, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = BodyPart.prototype;
+
+        _proto.start = function start() {};
+
+        return BodyPart;
+      }(Component), _temp), _descriptor = _applyDecoratedDescriptor(_class2.prototype, "bone", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/body.ts", ['cc', './_rollupPluginModLoBabelHelpers.js'], function (exports) {
+  'use strict';
+
+  var cclegacy, _decorator, Node, Component, _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized;
+
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Component = module.Component;
+    }, function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _class, _class2, _descriptor, _descriptor2, _temp;
+
+      cclegacy._RF.push({}, "8f5dcPLKbtEqbkxevbRct7V", "body", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var Body = exports('Body', (_dec = ccclass('Body'), _dec2 = property(Node), _dec3 = property(Node), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Body, _Component);
+
+        function Body() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "boneTop", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "boneBack", _descriptor2, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = Body.prototype;
+
+        _proto.start = function start() {};
+
+        return Body;
+      }(Component), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "boneTop", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "boneBack", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/character.ts", ['cc', './_rollupPluginModLoBabelHelpers.js', './bodyPart.ts', './body.ts'], function (exports) {
+  'use strict';
+
+  var cclegacy, _decorator, Vec3, Component, _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, _defineProperty, BodyPart, Body;
+
+  return {
+    setters: [function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Vec3 = module.Vec3;
+      Component = module.Component;
+    }, function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+      _defineProperty = module.defineProperty;
+    }, function (module) {
+      BodyPart = module.BodyPart;
+    }, function (module) {
+      Body = module.Body;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp;
+
+      cclegacy._RF.push({}, "9fe02FY1lJFmqhoENEht2sb", "character", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var Character = exports('Character', (_dec = ccclass('Character'), _dec2 = property(Body), _dec3 = property(BodyPart), _dec4 = property(BodyPart), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Character, _Component);
+
+        function Character() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "body", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "top", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_assertThisInitialized(_this), "back", _descriptor3, _assertThisInitialized(_this));
+
+          _defineProperty(_assertThisInitialized(_this), "temp", new Vec3());
+
+          return _this;
+        }
+
+        var _proto = Character.prototype;
+
+        _proto.start = function start() {
+          this.updateBonePos(this.body.boneTop, this.top);
+          this.updateBonePos(this.body.boneBack, this.back);
+        };
+
+        _proto.updateBonePos = function updateBonePos(bone, part) {
+          part.node.worldPosition = this.body.node.worldPosition;
+          Vec3.subtract(this.temp, bone.worldPosition, part.bone.worldPosition);
+          Vec3.add(this.temp, this.body.node.worldPosition, this.temp);
+          part.node.worldPosition = this.temp;
+        };
+
+        return Character;
+      }(Component), _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "body", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "top", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "back", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
 System.register("chunks:///_virtual/GameMgr.ts", ['cc', './_rollupPluginModLoBabelHelpers.js'], function (exports) {
   'use strict';
 
@@ -427,11 +651,11 @@ System.register("chunks:///_virtual/Rotation.ts", ['cc', './_rollupPluginModLoBa
   };
 });
 
-System.register("chunks:///_virtual/main", ['./Utils.ts', './GameMgr.ts', './CameraCtrl.ts', './Input.ts', './Rotation.ts'], function () {
+System.register("chunks:///_virtual/main", ['./Utils.ts', './bodyPart.ts', './body.ts', './character.ts', './GameMgr.ts', './CameraCtrl.ts', './Input.ts', './Rotation.ts'], function () {
   'use strict';
 
   return {
-    setters: [null, null, null, null, null],
+    setters: [null, null, null, null, null, null, null, null],
     execute: function () {}
   };
 });
