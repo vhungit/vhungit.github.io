@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 524132862
+CRC: 2624964170
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e6e3b1f7542feb97d675bcc2695b51f4
+    Hash: 8bd022e2b07e3b9ea8980b133df9e0d1
   TypeTreeHash:
     serializedVersion: 2
     Hash: dcea7a1c2cecaec7d696f86c88df18dd
@@ -39,5 +39,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Resources/Maps/Wonderland.prefab
+- Assets/Prefabs/Maps/Wonderland.prefab
 Dependencies: []
