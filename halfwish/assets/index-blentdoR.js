@@ -645,8 +645,8 @@ Please use Assets.add({ alias, src, data, format, loadParser }) instead.`),o.pus
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 100vw;
-    height: 100vh; 
+    width: 100%;
+    height: 100%; 
 `;function g2(t){const{title:e,banner:r,body:n,rightBtn:i,leftBtn:s,leftBtnCallback:o,rightBtnCallback:a,onExitBtnCallBack:l}=t;b.useEffect(()=>{Hf.play(Ln.Action)},[]);const u=()=>{a==null||a(),Hf.play(Ln.Back)},c=()=>{o==null||o(),Hf.play(Ln.Back)};return C.jsx(y2,{children:C.jsxs(_2,{children:[C.jsxs(v2,{children:[C.jsx(x2,{children:e}),C.jsx(T2,{show:l!=null,onClick:l})]}),C.jsxs(E2,{children:[!!r&&C.jsx(w2,{}),C.jsx(A2,{children:n}),C.jsxs(S2,{children:[s&&C.jsx(iv,{full:!i,onClick:c,children:s}),i&&C.jsx(iv,{full:!s,onClick:u,children:i})]})]})]})})}const y2=Y.div`
     position: absolute;
     width: 100%;
@@ -805,7 +805,7 @@ Please use Assets.add({ alias, src, data, format, loadParser }) instead.`),o.pus
         color: white;
         ${Jn}
     }
-`,B2=()=>{const t=vl(),e=_l(a=>a.main.isLoggedIn),r=b.useRef(null),n=b.useRef(null),i=b.useRef(null),s=b.useRef(null),o=b.useCallback(()=>{t("decode")},[]);return b.useEffect(()=>{e||t("home")},[e]),b.useEffect(()=>{Ct.from(r.current,{duration:.5,y:200}),Ct.from(n.current,{duration:.5,y:200,delay:.1}),Ct.from(i.current,{duration:.5,y:200,delay:.2}),Ct.from(s.current,{duration:.5,y:200,delay:.3})},[e]),C.jsx(U2,{src:"images/home/bg.png",children:C.jsxs("div",{className:"bg",children:[C.jsx(sS,{type:"leaderboard"}),C.jsxs(D2,{children:[C.jsx("div",{className:"icon"}),C.jsxs("div",{className:"info",children:["This is ",C.jsx("span",{children:"TZEH"}),C.jsx("br",{}),"a rare and limited resource.",C.jsx("br",{}),C.jsx("br",{}),"The more you have, the more influence you have as a Djinn. Over the next two months, collect as much as you can via the minigames below and be ready for The Drop."]})]}),C.jsxs($2,{children:[C.jsx(zi,{ref:r,className:"btn-decode",onClick:o}),C.jsx(zi,{ref:n,className:"btn-predict"}),C.jsx(zi,{ref:i,className:"btn-shop"})]}),C.jsx(G2,{ref:s,src:"images/menu/btn-invite.png"})]})})},U2=Y(Ir)`
+`,B2=()=>{const t=vl(),e=_l(a=>a.main.isLoggedIn),r=b.useRef(null),n=b.useRef(null),i=b.useRef(null),s=b.useRef(null),o=b.useCallback(()=>{t("decode")},[]);return b.useEffect(()=>{e||t("home")},[e]),b.useEffect(()=>{Ct.from(r.current,{duration:.5,y:200}),Ct.from(n.current,{duration:.5,y:200,delay:.1}),Ct.from(i.current,{duration:.5,y:200,delay:.2}),Ct.from(s.current,{duration:.5,y:200,delay:.3})},[e]),C.jsx(U2,{src:"images/home/bg.png",children:C.jsxs("div",{className:"bg",children:[C.jsx(sS,{type:"leaderboard"}),C.jsxs(D2,{children:[C.jsx("div",{className:"icon"}),C.jsxs("div",{className:"info",children:["This is ",C.jsx("span",{children:"TZEH"}),C.jsx("br",{}),"a rare and limited resource.",C.jsx("br",{}),C.jsx("br",{}),"The more you have, the more influence you have as a Djinn. Over the next two months, collect as much as you can via the minigames below and be ready for The Drop."]})]}),C.jsxs($2,{children:[C.jsx("div",{ref:r,children:C.jsx(zi,{className:"btn-decode",onClick:o})}),C.jsx("div",{ref:n,children:C.jsx(zi,{className:"btn-predict"})}),C.jsx("div",{ref:i,children:C.jsx(zi,{className:"btn-shop"})})]}),C.jsx("div",{ref:s,children:C.jsx(G2,{src:"images/menu/btn-invite.png"})})]})})},U2=Y(Ir)`
     ${ei}
     background-size: cover;
     >.bg{
